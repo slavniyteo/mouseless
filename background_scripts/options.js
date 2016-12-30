@@ -27,6 +27,7 @@ var defaultSettings = {
   insertmappings: true,
   defaultnewtabpage: false,
   dimhintcharacters: true,
+  ignorenumerickeys: false,
   smoothscroll: false,
   autoupdategist: false,
   nativelinkorder: false,

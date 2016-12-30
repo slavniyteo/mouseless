@@ -691,6 +691,10 @@ var KeyHandler = {
       Visual.action(key.replace(/^<BS>$/, 'h').replace(/^<Space>$/, 'l'));
       return;
     }
+    
+    if($.isNumeric(key) && settings.ignorenumerickeys) {
+      return
+    }
 
     if (escapeKey) {
       Mappings.handleEscapeKey();
