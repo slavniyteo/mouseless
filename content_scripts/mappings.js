@@ -659,6 +659,12 @@ Mappings.actions = {
   },
   quitChrome: function() { PORT('quitChrome'); },
   passKeys: function(repeats) { Mappings.keyPassesLeft = repeats; },
+  enterPassMode: function() {
+    passMode = true
+  },
+  exitPassMode: function() {
+    passMode = false
+  },
   resetScrollFocus: function() { window.resetScrollFocus(); },
   clearSearchHighlight: function() {
     Find.clear();

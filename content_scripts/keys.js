@@ -1,4 +1,4 @@
-var insertMode, commandMode, settings;
+var insertMode, commandMode, passMode, settings;
 
 var KeyListener;
 
@@ -617,6 +617,12 @@ if (HAS_EVENT_KEY_SUPPORT) {
 
 var KeyHandler = {
   down: function(key, event) {
+
+    var commandName = currentTrieNode.getKey(key) && currentTrieNode.getKey(key).value
+    if(passMode && commandName !== "exitPassMode") {
+      return;
+    }
+    
     if (HAS_EVENT_KEY_SUPPORT) {
       if (Hints.active) {
         event.preventDefault();
