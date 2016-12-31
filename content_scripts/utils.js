@@ -279,6 +279,21 @@ Object.setPrototypeOf(TrieNode.prototype, {
         parent.remove();
     }
   },
+  removeRecursive: function() {
+    this.value = null;
+    var parent = this.parent;
+    if (parent) {
+      parent.removeChild(this);
+      if (parent.value === null)
+        parent.remove();
+    }   
+  },
+  removeRecursiveByKey: function(keys) {
+    var node = this.find(keys);
+    if (node !== null)
+      node.removeRecursive();
+    return node !== null;
+  },
   removeByKey: function(keys) {
     var node = this.find(keys);
     if (node !== null)

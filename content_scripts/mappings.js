@@ -886,7 +886,7 @@ Mappings.parseLine = function(line) {
       return;
     case 'unmap':
       map.slice(1).forEach(function(unmap) {
-        mappingTrie.removeByKey(this.splitMapping(unmap));
+        mappingTrie.removeRecursiveByKey(this.splitMapping(unmap));
       }.bind(this));
       return;
     case 'call':
