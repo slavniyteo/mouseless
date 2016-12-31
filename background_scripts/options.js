@@ -11,6 +11,7 @@ var defaultSettings = {
   sites: {},
   searchengines: {},
   searchaliases: {},
+  debug: false,
   hud: true,
   regexp: true,
   scalehints: false,

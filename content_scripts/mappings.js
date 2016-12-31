@@ -1087,6 +1087,7 @@ Mappings.convertToAction = function(key) {
       this.repeats = +mapVal.replace(/\D.*/g, '') || 1;
       mapVal = mapVal.replace(/^\d+/, '');
     }
+    settings.debug && console.log(mapVal)
     for (var mapLinks = [mapVal];
          !this.actions[mapVal] && mapVal.charAt(0) !== ':';
          mapLinks.push(mapVal)) {
