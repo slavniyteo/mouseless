@@ -2,16 +2,19 @@
 
 Settings: 
 
-- ignorenumerickeys - 145126dd83edd6b05b780e7245bf1988d2c26bb9
-- debug - 3dbbfe831412c44ec16ba5dea6411514b56e48a0
+- ignorenumerickeys - https://github.com/hbt/mouseless/commit/145126dd83edd6b05b780e7245bf1988d2c26bb9
+- debug - https://github.com/hbt/mouseless/commit/3dbbfe831412c44ec16ba5dea6411514b56e48a0
 
 
 Commands:
 
+- enterPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
+- exitPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
+
 
 Features:
 
-- enabled on chrome:// pages 5d30159913f5acd0c1277e2d06e1ff46521a22e1
+- enabled on chrome:// pages https://github.com/hbt/mouseless/commit/5d30159913f5acd0c1277e2d06e1ff46521a22e1
 
 
 Fixes:
