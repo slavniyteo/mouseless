@@ -15,6 +15,7 @@ Commands:
 Features:
 
 - enabled on chrome:// pages https://github.com/hbt/mouseless/commit/5d30159913f5acd0c1277e2d06e1ff46521a22e1
+- unmap removes keys recursives https://github.com/hbt/mouseless/commit/53053184d32529d1b60e1396fee1b134c6b8f1ef
 
 
 Fixes:
