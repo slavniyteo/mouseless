@@ -20,11 +20,13 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 PORT = 8001
 
 
-def edit_file(command, content):
+def edit_file(command, content, line, column):
+    
     fd, fn = mkstemp(suffix='.txt', prefix='cvim-', text=True)
     os.write(fd, content.encode('utf8'))
     os.close(fd)
-    subprocess.Popen(shlex.split(command) + [fn]).wait()
+    command = command + " " + fn + ' -c "call cursor(' + str(line) + ',' + str(column) + ')"'
+    subprocess.Popen(shlex.split(command)).wait()
     text = None
     with open(fn, 'r') as f:
         text = f.read()
@@ -36,7 +38,7 @@ class CvimServer(BaseHTTPRequestHandler):
     def do_POST(self):
         length = int(self.headers['Content-Length'])
         content = loads(self.rfile.read(length).decode('utf8'))
-        edit = edit_file(content['command'], content['data'])
+        edit = edit_file(content['command'], content['data'], content['line'], content['column'])
         self.send_response(200)
         self.send_header('Content-Type', 'text/plain')
         self.end_headers()

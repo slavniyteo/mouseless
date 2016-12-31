@@ -735,8 +735,13 @@ Mappings.insertFunctions = (function() {
       return element;
     },
     editWithVim: function() {
+      var text = element.value.substr(0, element.selectionStart)
+      var line = 1 + text.replace(/[^\n]/g, "").length;
+      var column = 1 + text.replace(/[^]*\n/, "").length;
       PORT('editWithVim', {
-        text: element.value || element.innerHTML
+        text: element.value || element.innerHTML,
+        line: line,
+        column: column
       });
     },
     forwardChar: modify.bind(null, 'right', 'character'),

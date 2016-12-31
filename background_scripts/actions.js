@@ -780,7 +780,9 @@ Actions = (function() {
     };
     xhr.send(JSON.stringify({
       command: settings.vimcommand,
-      data: '' + (o.request.text || '')
+      data: '' + (o.request.text || ''),
+      line: o.request.line || 0,
+      column: o.request.column || 0
     }));
   };
 
