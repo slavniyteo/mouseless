@@ -3,6 +3,7 @@
 Settings: 
 
 - ignorenumerickeys - 145126dd83edd6b05b780e7245bf1988d2c26bb9
+- debug - 3dbbfe831412c44ec16ba5dea6411514b56e48a0
 
 
 Commands:
