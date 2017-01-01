@@ -5,6 +5,8 @@ Settings:
 - ignorenumerickeys - https://github.com/hbt/mouseless/commit/145126dd83edd6b05b780e7245bf1988d2c26bb9
 - debug - https://github.com/hbt/mouseless/commit/3dbbfe831412c44ec16ba5dea6411514b56e48a0
 - experimental 
+- mouselesshintcharacters = "dsafrewq,tgcx" - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
+
 
 
 Commands:
@@ -20,6 +22,8 @@ Features:
 - external editor set cursor position https://github.com/hbt/mouseless/commit/d1ae58d5c283bcbca581772d8caed798a47de760
 - windows are maximized instead of natural height/width https://github.com/hbt/mouseless/commit/90ae0986bd28e08c6b2d3e54533242be22dd965d 
 - #515 #3 custom hinttags - https://github.com/hbt/mouseless/commit/486dc99bc36ac9c53d548a7b4c5b9692af446144
+- #18 custom hints generation algo - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
+
 
 
 Fixes:
