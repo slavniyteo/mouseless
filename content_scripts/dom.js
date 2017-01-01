@@ -86,7 +86,6 @@ window.DOM = {
         }
       }
     }
-    console.log(node, node.innerHTML)
     if (boundingRect === void 0) {
       return null;
     }
