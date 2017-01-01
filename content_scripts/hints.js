@@ -607,7 +607,8 @@ Hints.getLinks = function() {
 // };
 
 // Golomb
-Hints.genHints = function(M) {
+Hints.genHintsOld = function(M) {
+  //Hints.genHints= function(M) {
   var base = settings.hintcharacters.length;
   if (M <= base) {
     return settings.hintcharacters.slice(0, M).split('');
@@ -632,6 +633,73 @@ Hints.genHints = function(M) {
   codes1.sort();
   return codes0.concat(codes1);
 };
+
+Hints.genHints = function(M) {
+  //Hints.genHintsOld = function(M) {
+  var linkCount = M;
+  var hintKeys = settings.mouselesshintcharacters
+  var linkHintCharacters = hintKeys
+
+
+  // provided two sets of hint keys e.g dsafrewq,tgcx  We try to use the first for combinations as much as possible
+  // second set is for keys that are too far away but necessary to avoid 3 letters combinations
+  if (hintKeys.indexOf(',') != -1) {
+    var arrhintKeys = hintKeys.split(',');
+    if (linkCount <= arrhintKeys[0].length) {
+      linkHintCharacters = arrhintKeys[0]
+    } else {
+      linkHintCharacters = arrhintKeys[1] + arrhintKeys[0]
+    }
+  }
+
+  var logXOfBase = function (x, base) {
+    return Math.log(x) / Math.log(base);
+  }
+
+  /*
+   * Converts a number like "8" into a hint string like "JK". This is used to sequentially generate all of
+   * the hint text. The hint string will be "padded with zeroes" to ensure its length is equal to numHintDigits.
+   */
+  var numberToHintString = function (number, numHintDigits, characterSet) {
+    var base = characterSet.length;
+    var hintString = [];
+    var remainder = 0;
+    do {
+      remainder = number % base;
+      hintString.unshift(characterSet[remainder]);
+      number -= remainder;
+      number /= Math.floor(base);
+    } while (number > 0);
+
+    // Pad the hint string we're returning so that it matches numHintDigits.
+    // Note: the loop body changes hintString.length, so the original length must be cached!
+    var hintStringLength = hintString.length;
+    for (var i = 0; i < numHintDigits - hintStringLength; i++)
+      hintString.unshift(characterSet[0]);
+
+    return hintString.join("");
+  }
+
+  // Determine how many digits the link hints will require in the worst case. Usually we do not need
+  // all of these digits for every link single hint, so we can show shorter hints for a few of the links.
+  var digitsNeeded = Math.ceil(logXOfBase(linkCount, linkHintCharacters.length));
+
+  // Short hints are the number of hints we can possibly show which are (digitsNeeded - 1) digits in length.
+  var shortHintCount = Math.floor(
+    (Math.pow(linkHintCharacters.length, digitsNeeded) - linkCount) / linkHintCharacters.length);
+  var longHintCount = linkCount - shortHintCount;
+
+  var hintStrings = [];
+
+  if (digitsNeeded > 1) for (var i = 0; i < shortHintCount; i++)
+    hintStrings.push(numberToHintString(i, digitsNeeded - 1, linkHintCharacters));
+
+  var start = shortHintCount * linkHintCharacters.length;
+  for (i = start; i < start + longHintCount; i++)
+    hintStrings.push(numberToHintString(i, digitsNeeded, linkHintCharacters));
+
+  return hintStrings
+}
 
 Hints.create = function(type, multi) {
   var self = this;
