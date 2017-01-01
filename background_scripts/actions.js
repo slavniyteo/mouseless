@@ -48,6 +48,7 @@ Actions = (function() {
           url: o.url,
           focused: o.request.tab.active,
           incognito: o.request.tab.incognito,
+          state: 'maximized'
         });
       }
     } else if (o.request.tab.tabbed) {
@@ -184,7 +185,8 @@ Actions = (function() {
         for (var i = 1; i < urls.length; i++) {
           chrome.tabs.create({
             url: urls[i],
-            windowId: win.id
+            windowId: win.id,
+            state: 'maximized'
           });
         }
       });
@@ -196,7 +198,8 @@ Actions = (function() {
       chrome.windows.create({
         url: o.url,
         focused: o.request.focused,
-        incognito: o.request.incognito
+        incognito: o.request.incognito,
+        state: 'maximized'
       });
     }
   };
@@ -287,7 +290,8 @@ Actions = (function() {
             chrome.windows.create({
               tabId: o.sender.tab.id,
               incognito: o.sender.tab.incognito,
-              focused: true
+              focused: true,
+              state: 'maximized'
             }, repin);
           }
         });
@@ -490,6 +494,7 @@ Actions = (function() {
       if (!o.request.sameWindow) {
         chrome.windows.create({
           url: 'chrome://newtab',
+          state: 'maximized'
         }, function(tabInfo) {
           chrome.tabs.update(tabInfo.tabs[0].id,
             {url: tabs[0].url, pinned: tabs[0].pinned}

@@ -162,7 +162,7 @@ var Listeners = {
           chrome.tabs.sendMessage(tab[0].id, {
             action: 'nextCompletionResult'
           }, function() {
-            chrome.windows.create({url: 'chrome://newtab'});
+            chrome.windows.create({url: 'chrome://newtab', state: 'maximized'});
           });
         });
         break;
