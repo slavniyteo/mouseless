@@ -86,13 +86,19 @@ window.DOM = {
         }
       }
     }
+    console.log(node, node.innerHTML)
     if (boundingRect === void 0) {
       return null;
     }
     if (boundingRect.top > innerHeight || boundingRect.left > innerWidth) {
       return null;
     }
-    if (boundingRect.width <= 1 || boundingRect.height <= 1) {
+    
+    var checkChildren = boundingRect.width <= 1 || boundingRect.height <= 1;
+    if(settings.experimental) {
+      checkChildren = node.children.length > 0 && (boundingRect.width <= 1 || boundingRect.height <= 1)
+    }
+    if (checkChildren) {
       var children = node.children;
       var visibleChildNode = false;
       for (i = 0, l = children.length; i < l; ++i) {
@@ -106,20 +112,24 @@ window.DOM = {
         return null;
       }
     }
+    
     if (boundingRect.top + boundingRect.height < 10 || boundingRect.left + boundingRect.width < -10) {
       return null;
     }
     var computedStyle = getComputedStyle(node, null);
-    if (computedStyle.visibility !== 'visible' ||
+    var visible = computedStyle.visibility !== 'visible' ||
         computedStyle.display === 'none' ||
-        node.hasAttribute('disabled') 
+        node.hasAttribute('disabled');
 
+    if(!settings.experimental) {
+      // Note(hbt) disabled for now since it doesn't work with floating elements. 
+      // possible solution is to check if computedStyle has "float" and not check the height since it will be 0px when floating
+      visible = visible ||
+        parseInt(computedStyle.width, 10) === 0 ||
+        parseInt(computedStyle.height, 10) === 0
+    }
 
-        // Note(hbt) disabled for now since it doesn't work with floating elements. 
-        // possible solution is to check if computedStyle has "float" and not check the height since it will be 0px when floating
-        //parseInt(computedStyle.width, 10) === 0 ||
-        //parseInt(computedStyle.height, 10) === 0
-    ) {
+    if(visible) {
       return null;
     }
     return boundingRect;

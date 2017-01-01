@@ -3,6 +3,7 @@ var storageMethod = 'local',
     Options = {};
 
 var defaultSettings = {
+  experimental: false,
   searchlimit: 25,
   scrollstep: 70,
   fullpagescrollpercent: 0,
