@@ -17,6 +17,7 @@ Features:
 - enabled on chrome:// pages https://github.com/hbt/mouseless/commit/5d30159913f5acd0c1277e2d06e1ff46521a22e1
 - unmap removes keys recursives https://github.com/hbt/mouseless/commit/53053184d32529d1b60e1396fee1b134c6b8f1ef
 - external editor set cursor position https://github.com/hbt/mouseless/commit/d1ae58d5c283bcbca581772d8caed798a47de760
+- windows are maximized instead of natural height/width https://github.com/hbt/mouseless/commit/90ae0986bd28e08c6b2d3e54533242be22dd965d 
 
 
 Fixes:
