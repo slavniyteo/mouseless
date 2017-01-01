@@ -112,9 +112,14 @@ window.DOM = {
     var computedStyle = getComputedStyle(node, null);
     if (computedStyle.visibility !== 'visible' ||
         computedStyle.display === 'none' ||
-        node.hasAttribute('disabled') ||
-        parseInt(computedStyle.width, 10) === 0 ||
-        parseInt(computedStyle.height, 10) === 0) {
+        node.hasAttribute('disabled') 
+
+
+        // Note(hbt) disabled for now since it doesn't work with floating elements. 
+        // possible solution is to check if computedStyle has "float" and not check the height since it will be 0px when floating
+        //parseInt(computedStyle.width, 10) === 0 ||
+        //parseInt(computedStyle.height, 10) === 0
+    ) {
       return null;
     }
     return boundingRect;
