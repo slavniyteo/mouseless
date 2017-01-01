@@ -24,6 +24,13 @@ Fixes:
 
 - #498 viewsource not working - https://github.com/hbt/mouseless/commit/958d0b0c6cbb439649b8404cd591f7d214b19319
 
+Experiments:
+
+- #17 - hints appear over visible elements even when they are floating (css property) and their height/width might be 0px 
+https://github.com/hbt/mouseless/commit/d016e6e1d968fc09e22ab657dddbb931833207ef
+
+https://github.com/hbt/mouseless/commit/
+
 
 
 
