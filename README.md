@@ -22,6 +22,8 @@ Features:
 
 Fixes:
 
+- #498 viewsource not working - https://github.com/hbt/mouseless/commit/958d0b0c6cbb439649b8404cd591f7d214b19319
+
 
 
 
