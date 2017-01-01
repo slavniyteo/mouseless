@@ -30,7 +30,7 @@ def edit_file(command, content, line, column):
     text = None
     with open(fn, 'r') as f:
         text = f.read()
-    os.unlink(fn)
+    #os.unlink(fn)
     return text
 
 
