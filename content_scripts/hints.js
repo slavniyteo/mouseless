@@ -535,9 +535,23 @@ Hints.acceptHint = function(node) {
 };
 
 Hints.getLinks = function() {
-  var applicableFilters = Object.keys(this.siteFilters).filter(function(key) {
+
+  // Note(hbt) optimize by caching -- same as this.siteFilters
+  var siteFilters = this.siteFilters;
+  if(settings.FUNCTIONS['siteFilters'])
+  {
+    var filters = eval(settings.FUNCTIONS['siteFilters'])()
+    
+    Object.keys(filters).forEach(function(key) {
+    filters[key] = new HintFilter(filters[key][0], filters[key][1]);
+  });
+    
+    siteFilters = filters;
+  }
+  
+  var applicableFilters = Object.keys(siteFilters).filter(function(key) {
     return matchLocation(document.URL, key);
-  }).map(function(key) { return this.siteFilters[key]; }.bind(this));
+  }).map(function(key) { return siteFilters[key]; }.bind(this));
 
   if (settings.sortlinkhints) {
     traverseDOM(document.body, this.acceptHint).map(function(node) {
