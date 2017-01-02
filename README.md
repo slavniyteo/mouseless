@@ -24,6 +24,11 @@ Commands:
     - windowUnpinAllTabs
     - browserUnpinAllTabs
 
+- https://github.com/hbt/mouseless/commit/a21ae2067ff9faa2d09b9649034e910f64f0e8ab
+    - markMergeTab
+    - markMergeWindow
+    - putMergeTabs
+
 
 Features:
 
