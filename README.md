@@ -29,6 +29,8 @@ Commands:
     - markMergeWindow
     - putMergeTabs
 
+- toggleDomainStylesheets - https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
+
 
 Features:
 
@@ -40,6 +42,7 @@ Features:
 - #18 custom hints generation algo - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
 - #20 escape key not sent to page - https://github.com/hbt/mouseless/commit/b95912f512dec8334f196ed667395551d98a7835
 - #5 save local marks per domain - https://github.com/hbt/mouseless/commit/82e342948bc5eb1dafaeff64a40d405b90f0930d
+- #23 https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
 
 
 Fixes:
