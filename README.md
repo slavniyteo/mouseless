@@ -23,6 +23,9 @@ Features:
 - windows are maximized instead of natural height/width https://github.com/hbt/mouseless/commit/90ae0986bd28e08c6b2d3e54533242be22dd965d 
 - #515 #3 custom hinttags - https://github.com/hbt/mouseless/commit/486dc99bc36ac9c53d548a7b4c5b9692af446144
 - #18 custom hints generation algo - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
+- #20 escape key not sent to page - https://github.com/hbt/mouseless/commit/b95912f512dec8334f196ed667395551d98a7835
+
+
 
 
 
