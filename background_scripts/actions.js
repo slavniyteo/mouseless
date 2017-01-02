@@ -251,7 +251,6 @@ Actions = (function() {
       delete msg.count;
     }
 
-    console.log(cond, msg)
     if (cond || msg.count > 1) {
       chrome.windows.getAll({
         populate: true
@@ -1100,6 +1099,31 @@ Actions = (function() {
   _.muteTab = function(o) {
     chrome.tabs.update(o.sender.tab.id, {muted: !o.sender.tab.mutedInfo.muted});
   };
+  
+  _.toggleDomainStylesheets = function(o) {
+    var styleurl = o.request.url
+    var hostname = o.request.hostname
+    var tab = o.sender.tab
+
+    settings.domainStylesheets[hostname] = settings.domainStylesheets[hostname] || {}
+
+    // toggle 
+    if (settings.domainStylesheets[hostname] === styleurl) {
+      settings.domainStylesheets[hostname] = ''
+      delete settings.domainStylesheets[hostname]
+    } else {
+      settings.domainStylesheets[hostname] = styleurl
+    }
+
+    chrome.runtime.sendMessage({
+      action: 'saveSettings',
+      settings: settings,
+      sendSettings: true
+    });
+
+    chrome.tabs.reload(tab.id)
+
+  }
 
   return function(_request, _sender, _callback) {
     var action = _request.action;

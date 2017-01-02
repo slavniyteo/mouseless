@@ -233,6 +233,9 @@ Mappings.actions = {
   rootFrame: function() {
     RUNTIME('focusFrame', {isRoot: true});
   },
+  toggleDomainStylesheets: function(repeats, url) {
+    RUNTIME('toggleDomainStylesheets', {url: url, hostname: getHostname(window.location.href)})
+  },
   markMergeTab: function() {
     RUNTIME('mergeMarkTab', {
       msg: {
@@ -481,6 +484,7 @@ Mappings.actions = {
     Scroll.positions[mark] = pos
 
     // save position in settings
+    // TODO(hbt) ENHANCE add localMarks to settings in options.js same as domainStylesheets -- refactor goToMark
     settings.localMarks = settings.localMarks || {}
     settings.localMarks[getHostname(window.location.href)] = settings.localMarks[getHostname(window.location.href)] || {}
     settings.localMarks[getHostname(window.location.href)][mark] = pos

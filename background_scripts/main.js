@@ -30,6 +30,32 @@ function updateTabIndices() {
   }
 }
 
+function loadDomainStylesheet(changeInfo, tab) {
+
+  if (changeInfo.status === 'loading') {
+    var hostname = getHostname(tab.url)
+    if (!settings.domainStylesheets.hasOwnProperty(hostname)) {
+      return;
+    }
+
+    var styleurl = settings.domainStylesheets[hostname]
+
+    // TODO(hbt) ENHANCE by caching the ajax response 
+
+    $.ajax({
+      url: styleurl
+    }).done(function (data) {
+      chrome.tabs.insertCSS(tab.id, {
+        code: data,
+        runAt: 'document_start',
+        allFrames: true
+      }, function (res) {
+      });
+
+    });
+  }
+}
+
 chrome.storage.local.get('sessions', function(e) {
   if (e.sessions === void 0) {
     chrome.storage.local.set({ sessions: {} });
@@ -58,8 +84,9 @@ function getTab(tab, reverse, count, first, last) {
 var Listeners = {
 
   tabs: {
-    onUpdated: function(id, changeInfo) {
+    onUpdated: function(id, changeInfo, tab) {
       updateTabIndices();
+      loadDomainStylesheet(changeInfo, tab)
       if (changeInfo.hasOwnProperty('url')) {
         History.shouldRefresh = true;
         if (TabHistory.hasOwnProperty(id)) {
