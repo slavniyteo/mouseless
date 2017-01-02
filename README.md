@@ -15,6 +15,16 @@ Commands:
 - exitPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
 - openUrlExternalEditor - https://github.com/hbt/mouseless/commit/b9f811e2fbdc89ab80039431af6d894dadec8c2c
 
+- https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6
+
+    - myCloseTabsOthers
+    - myCloseTabsAllExcept
+    - myCloseTabsRight
+    - myCloseTabsLeft
+    - windowUnpinAllTabs
+    - browserUnpinAllTabs
+
+
 Features:
 
 - enabled on chrome:// pages https://github.com/hbt/mouseless/commit/5d30159913f5acd0c1277e2d06e1ff46521a22e1
