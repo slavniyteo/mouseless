@@ -235,6 +235,111 @@ Actions = (function() {
     };
   })();
 
+  /**
+   * migrated from vrome
+   * could be improved by making the pinned a setting i.e protectpinnedtab
+   * when on, pinned tabs cant be closed 
+   */
+  _.myCloseTab = function(o) {
+    var _ = window._
+    var tab = o.sender.tab
+    var cond = o.request.msg.type
+    var msg = o.request.msg
+    msg.count = o.request.repeats
+    if (msg.count == 1) {
+      delete msg.count;
+    }
+
+    console.log(cond, msg)
+    if (cond || msg.count > 1) {
+      chrome.windows.getAll({
+        populate: true
+      }, function(windows) {
+        if (msg.otherWindows) {
+          // filter windows  without pinned tabs
+          windows = _.filter(windows, function(w) {
+            if (w.id === tab.windowId) return false
+            else {
+              var noPinned = true;
+              _.each(w.tabs, function(v) {
+                if (v.pinned) {
+                  noPinned = false
+                }
+              })
+              return noPinned
+            }
+          })
+        } else {
+          // limit to current window
+          windows = _.filter(windows, function(w) {
+            return w.id === tab.windowId;
+          })
+        }
+
+        _.each(windows, function(w) {
+          var tabs = w.tabs
+          tabs = _.filter(tabs, function(v) {
+
+            var closeMap = {
+              closeOther: v.id == tab.id || v.pinned,
+              closeLeft: v.id == tab.id || v.pinned || tab.index < v.index,
+              closeRight: v.id == tab.id || v.pinned || tab.index > v.index,
+              closePinned: !v.pinned,
+              closeUnPinned: v.pinned,
+              otherWindows: v.windowId == tab.windowId || v.pinned,
+              count: v.index >= tab.index
+            }
+            return !closeMap[cond]
+          })
+          _.each(tabs, function(v, k) {
+            if (msg.count && k > msg.count) return;
+            chrome.tabs.remove(v.id)
+          })
+        })
+      })
+    } else {
+      if (!tab.pinned) {
+        chrome.tabs.remove(tab.id);
+      }
+    }
+  },
+    
+  _.unpinTabs = function(o) {
+    var _ = window._
+    var msg = o.request.msg
+
+    var tab = o.sender.tab
+
+    chrome.windows.getAll({
+      populate: true
+    }, function (windows) {
+      if (!msg.allWindows) {
+        windows = _.filter(windows, function (w) {
+          return w.id === tab.windowId
+        })
+      }
+      _.each(windows, function (w) {
+        var tabs = _.filter(w.tabs, function (v) {
+          return v.pinned;
+        })
+
+        // no unpinned, then pin all of them
+        var pinned = false
+        if (tabs.length === 0) {
+          tabs = w.tabs
+          pinned = true
+        }
+
+        _.each(tabs, function (t) {
+          chrome.tabs.update(t.id, {pinned: pinned}, function (new_tab) {
+
+          });
+        })
+      })
+    })
+    
+  },
+
   _.getWindows = function(o) {
     var _ret = {};
     chrome.windows.getAll(function(info) {

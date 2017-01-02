@@ -68,6 +68,7 @@
   "background": {
     "persistant": false,
     "scripts": [
+      "vendor/underscore-min.js",
       "content_scripts/utils.js",
       "content_scripts/cvimrc_parser.js",
       "background_scripts/clipboard.js",

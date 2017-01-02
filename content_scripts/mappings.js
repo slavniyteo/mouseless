@@ -233,6 +233,50 @@ Mappings.actions = {
   rootFrame: function() {
     RUNTIME('focusFrame', {isRoot: true});
   },
+  myCloseWindowsOthers: function() {
+    RUNTIME('myCloseTab', {msg: {
+      otherWindows: true,
+      type: 'otherWindows'
+    }})
+  },
+  myCloseTabsLeft: function() {
+    RUNTIME('myCloseTab', {msg: {
+      type: 'closeLeft'
+    }})
+  },
+  myCloseTabsRight: function() {
+    RUNTIME('myCloseTab', {msg: {
+      type: 'closeRight'
+    }})
+  },
+  myCloseTabsOthers: function() {
+    RUNTIME('myCloseTab', {msg: {
+      type: 'closeOther'
+    }})
+  },
+  myCloseTabsAllExcept: function() {
+    RUNTIME('myCloseTab', {
+      msg: {
+        type: 'closeOther'
+      }
+    })
+    RUNTIME('myCloseTab', {
+      msg: {
+        otherWindows: true,
+        type: 'otherWindows'
+      }
+    })
+  },
+  windowUnpinAllTabs: function() {
+    RUNTIME('unpinTabs', {msg: {}})
+  },
+  browserUnpinAllTabs: function() {
+    RUNTIME('unpinTabs', {
+      msg: {
+        allWindows: true
+      }
+    })
+  },
   closeTab: function(repeats) {
     RUNTIME('closeTab', {repeats: repeats});
   },
