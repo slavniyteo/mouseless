@@ -171,6 +171,11 @@ port.onMessage.addListener(function(response) {
       Mappings.lastCommand = JSON.parse(request.data);
     }
     break;
+
+    case 'openUrlExternalEditorCallback':
+      window.location.href = response.text
+      break;
+    
   }
 });
 

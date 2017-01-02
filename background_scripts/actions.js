@@ -780,7 +780,8 @@ Actions = (function() {
     xhr.open('POST', 'http://127.0.0.1:' + settings.vimport);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        o.callback({type: 'editWithVim', text: xhr.responseText});
+        var method = o.request.callback || 'editWithVim'
+        o.callback({type: method, text: xhr.responseText});
       }
     };
     xhr.send(JSON.stringify({

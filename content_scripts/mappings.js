@@ -426,6 +426,12 @@ Mappings.actions = {
       Hints.create('script');
     }
   },
+  openUrlExternalEditor: function() {
+    PORT('editWithVim', {
+      text: window.location.href,
+      callback: 'openUrlExternalEditorCallback'
+      });
+  },
   yankUrl: function() { Hints.create('yank'); },
   multiYankUrl: function() { Hints.create('multiyank'); },
   fullImageHint: function() { Hints.create('fullimage'); },
