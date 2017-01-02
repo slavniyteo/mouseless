@@ -175,6 +175,10 @@ port.onMessage.addListener(function(response) {
     case 'openUrlExternalEditorCallback':
       window.location.href = response.text
       break;
+
+    case 'Status.setMessage':
+      Status.setMessage(response.text)
+      break;
     
   }
 });

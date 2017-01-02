@@ -1125,6 +1125,61 @@ Actions = (function() {
     chrome.tabs.reload(tab.id)
 
   }
+  
+  
+  _.toggleBookmark = function(o) {
+    // TODO(hbt) ENHANCE refactor to remove vrome msg object
+    var _ = window._
+    var msg = o.request.msg
+    var tab = o.sender.tab
+
+    chrome.bookmarks.search({
+      title: msg.folder
+    }, function (collection) {
+      var folder = collection[0]
+      chrome.bookmarks.getChildren(folder.id, children => {
+
+        // fix inconsistent trailing slash in urls
+        var tabUrl = tab.url
+        tabUrl = removeTrailingSlash(tabUrl)
+
+        function removeTrailingSlash(url) {
+          if (url && url.endsWith("/")) {
+            url = url.substring(0, url.length - 1)
+          }
+          return url
+        }
+
+        children = _.map(children, child => {
+          child.url = removeTrailingSlash(child.url)
+          return child
+        })
+
+
+        // toggle
+        var children = _.indexBy(children, 'url')
+
+        if (_.keys(children).includes(tabUrl)) {
+
+          var b = children[tabUrl]
+          chrome.bookmarks.remove(b.id, function () {
+            o.callback({type: 'Status.setMessage', text: 'removed bookmark from ' + msg.folder})
+          })
+
+        } else {
+
+          chrome.bookmarks.create({
+            parentId: folder.id,
+            url: tabUrl,
+            title: tab.title
+          }, function () {
+            o.callback({type: 'Status.setMessage', text: 'added bookmark to ' + msg.folder})
+          })
+        }
+      })
+    }) 
+    
+  }
 
   return function(_request, _sender, _callback) {
     var action = _request.action;
