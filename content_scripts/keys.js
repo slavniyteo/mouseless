@@ -704,6 +704,8 @@ var KeyHandler = {
 
     if (escapeKey) {
       Mappings.handleEscapeKey();
+      event.preventDefault()
+      event.stopImmediatePropagation()
       return;
     }
 
