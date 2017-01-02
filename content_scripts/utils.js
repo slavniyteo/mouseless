@@ -149,6 +149,18 @@ definePrototype(String, 'convertLink', function(engineUrl) {
   return engineUrl.embedString(encodeURIComponent(this));
 });
 
+function getHostname(href) {
+  var res = window.location.host || "file"
+
+  if (href) {
+    var a = document.createElement("a")
+    a.href = href
+    res = a.host
+  }
+
+  return res
+}
+
 var matchLocation = function(url, pattern) { // Uses @match syntax
   // See https://code.google.com/p/chromium/codesearch#chromium/src/extensions/common/url_pattern.h&sq=package:chromium
   if (typeof pattern !== 'string' || !pattern.trim()) {

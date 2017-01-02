@@ -462,8 +462,12 @@ Mappings.actions = {
     Scroll.lastPosition = currentPosition;
   },
   goToMark: function() {
+    settings.localMarks = settings.localMarks || {}
+    settings.localMarks[getHostname(window.location.href)] = settings.localMarks[getHostname(window.location.href)] || {}
+
     var key = Mappings.lastCommand.queue.slice(-1);
-    if (Scroll.positions.hasOwnProperty(key)) {
+    if (settings.localMarks[getHostname(window.location.href)].hasOwnProperty(key)) {
+      Scroll.positions[key] = settings.localMarks[getHostname(window.location.href)][key]
       Scroll.lastPosition =
         [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
       window.scrollTo.apply(null, Scroll.positions[key]);
@@ -472,8 +476,21 @@ Mappings.actions = {
     }
   },
   setMark: function() {
-    Scroll.positions[Mappings.lastCommand.queue.slice(-1)] =
-      [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
+    var mark = Mappings.lastCommand.queue.slice(-1)
+    var pos = [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
+    Scroll.positions[mark] = pos
+
+    // save position in settings
+    settings.localMarks = settings.localMarks || {}
+    settings.localMarks[getHostname(window.location.href)] = settings.localMarks[getHostname(window.location.href)] || {}
+    settings.localMarks[getHostname(window.location.href)][mark] = pos
+    PORT('syncSettings', {settings: settings});
+    chrome.runtime.sendMessage({
+      action: 'saveSettings',
+      settings: settings,
+      sendSettings: true
+    });
+    
   },
   createHint: function() { Hints.create(); },
   createTabbedHint: function() { Hints.create('tabbed'); },
