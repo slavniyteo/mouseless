@@ -242,6 +242,7 @@ Actions = (function() {
    * when on, pinned tabs cant be closed 
    */
   _.myCloseTab = function(o) {
+    // TODO(hbt) ENHANCE refactor myCloseTabXXX implementation -- ref https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6
     var _ = window._
     var tab = o.sender.tab
     var cond = o.request.msg.type
