@@ -233,6 +233,25 @@ Mappings.actions = {
   rootFrame: function() {
     RUNTIME('focusFrame', {isRoot: true});
   },
+  markMergeTab: function() {
+    RUNTIME('mergeMarkTab', {
+      msg: {
+      }
+    })
+  },
+  markMergeWindow: function() {
+     RUNTIME('mergeMarkTab', {
+      msg: {
+        all: true
+      }
+    })   
+  },
+  putMergeTabs: function() {
+      RUNTIME('mergePutTab', {
+      msg: {
+      }
+    })      
+  },
   myCloseWindowsOthers: function() {
     RUNTIME('myCloseTab', {msg: {
       otherWindows: true,

@@ -3,6 +3,7 @@ var Quickmarks = {};
 Actions = (function() {
 
   var lastCommand = null;
+  var markedTabs = []
 
   var openTab = function(options, times) {
     times = +times || 1;
@@ -339,7 +340,77 @@ Actions = (function() {
     })
     
   },
+  _.mergeMarkTab = function(o) {
+    var tab = o.sender.tab
+    var _ = window._
+    var msg = o.request.msg
 
+    // add tab or all tabs in window as marked_tabs
+    chrome.tabs.query({
+      windowId: tab.windowId
+    }, function(tabs) {
+      tabs = _.filter(tabs, function(v) {
+        return !v.pinned;
+      })
+
+      // limit to current tab
+      if (!msg.all) {
+        tabs = [tab]
+      }
+
+      var title = ''
+      _.each(tabs, function(v) {
+        markedTabs = _.uniq(markedTabs)
+
+        // toggle marked/unmarked
+        var posi = _.indexOf(markedTabs, v.id)
+
+        if (posi === -1) {
+
+          // mark it
+          markedTabs.push(v.id)
+          title = markedTabs.length + ' Tab(s) marked '
+        } else {
+          // unmark it
+          delete markedTabs[posi]
+
+          // remove null entries
+          markedTabs= _.select(markedTabs, function(vid) {
+            return vid != null
+          })
+
+          title = tabs.length + " Tab(s) unmarked"
+          if (markedTabs.length) title += " -- " + markedTabs.length + " Tab(s) still marked"
+        }
+      })
+
+      //Post(tab, {
+      //  action: "CmdBox.set",
+      //  title: title,
+      //  timeout: 4000
+      //})
+      
+    }) 
+  }, 
+  _.mergePutTab = function(o) {
+    var tab = o.sender.tab
+    var _ = window._
+
+    if (markedTabs.length > 0) {
+
+      chrome.tabs.move(markedTabs, {
+        windowId: tab.windowId,
+        index: tab.index + 1
+      }, function(tmp) {
+        //Post(tab, {
+        //  action: "CmdBox.set",
+        //  title: tmp.length + ' Tab(s) moved',
+        //  timeout: 4000
+        //})
+        markedTabs= []
+      })
+    }
+  }, 
   _.getWindows = function(o) {
     var _ret = {};
     chrome.windows.getAll(function(info) {
