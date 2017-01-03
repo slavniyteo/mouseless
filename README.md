@@ -50,6 +50,8 @@ Features:
 Fixes:
 
 - #498 viewsource not working - https://github.com/hbt/mouseless/commit/958d0b0c6cbb439649b8404cd591f7d214b19319
+- #25 stop numeric keys propagation https://github.com/hbt/mouseless/commit/19c3d9cb64c2db2ff4bd299f82938128f5befaa6
+
 
 Experiments:
 
