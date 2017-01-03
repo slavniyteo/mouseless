@@ -1116,11 +1116,9 @@ Actions = (function() {
       settings.domainStylesheets[hostname] = styleurl
     }
 
-    chrome.runtime.sendMessage({
-      action: 'saveSettings',
-      settings: settings,
-      sendSettings: true
-    });
+    Options.saveSettings({
+      settings: settings
+    })
 
     chrome.tabs.reload(tab.id)
 
