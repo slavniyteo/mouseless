@@ -641,6 +641,11 @@ var KeyHandler = {
       }
     }
 
+
+    if($.isNumeric(key) && !settings.ignorenumerickeys) {
+      event.stopImmediatePropagation()
+    }
+
     if (['Control', 'Alt', 'Meta', 'Shift'].indexOf(key) !== -1)
       return false;
 
