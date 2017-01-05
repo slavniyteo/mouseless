@@ -4,7 +4,7 @@ Settings:
 
 - ignorenumerickeys - https://github.com/hbt/mouseless/commit/145126dd83edd6b05b780e7245bf1988d2c26bb9
 - debug - https://github.com/hbt/mouseless/commit/3dbbfe831412c44ec16ba5dea6411514b56e48a0
-- experimental 
+- experimental  - turns on experiments (view below)
 - mouselesshintcharacters = "dsafrewq,tgcx" - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
 
 
@@ -15,7 +15,7 @@ Commands:
 - exitPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
 - openUrlExternalEditor - https://github.com/hbt/mouseless/commit/b9f811e2fbdc89ab80039431af6d894dadec8c2c
 
-- https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6
+- https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6 (wip)
 
     - myCloseTabsOthers
     - myCloseTabsAllExcept
@@ -24,7 +24,7 @@ Commands:
     - windowUnpinAllTabs
     - browserUnpinAllTabs
 
-- https://github.com/hbt/mouseless/commit/a21ae2067ff9faa2d09b9649034e910f64f0e8ab
+- https://github.com/hbt/mouseless/commit/a21ae2067ff9faa2d09b9649034e910f64f0e8ab (wip)
     - markMergeTab
     - markMergeWindow
     - putMergeTabs
@@ -36,7 +36,7 @@ Commands:
 Features:
 
 - enabled on chrome:// pages https://github.com/hbt/mouseless/commit/5d30159913f5acd0c1277e2d06e1ff46521a22e1
-- unmap removes keys recursives https://github.com/hbt/mouseless/commit/53053184d32529d1b60e1396fee1b134c6b8f1ef
+- unmap removes keys recursively https://github.com/hbt/mouseless/commit/53053184d32529d1b60e1396fee1b134c6b8f1ef
 - external editor set cursor position https://github.com/hbt/mouseless/commit/d1ae58d5c283bcbca581772d8caed798a47de760
 - windows are maximized instead of natural height/width https://github.com/hbt/mouseless/commit/90ae0986bd28e08c6b2d3e54533242be22dd965d 
 - #515 #3 custom hinttags - https://github.com/hbt/mouseless/commit/486dc99bc36ac9c53d548a7b4c5b9692af446144
