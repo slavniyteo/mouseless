@@ -62,6 +62,17 @@ https://github.com/hbt/mouseless/commit/
 
 
 
+# How to install?
+
+- turn on flag chrome://flags/#extensions-on-chrome-urls
+- download zip
+- load extension 
+
+---
+---
+
+Readme from chromium-vim
+
 
 # What is cVim?
 
