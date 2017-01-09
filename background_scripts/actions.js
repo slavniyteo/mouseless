@@ -1100,6 +1100,61 @@ Actions = (function() {
   _.muteTab = function(o) {
     chrome.tabs.update(o.sender.tab.id, {muted: !o.sender.tab.mutedInfo.muted});
   };
+
+  _.pauseDownloads = function(o) {
+    chrome.downloads.search({
+      state: 'in_progress'
+    }, function(downloads) {
+      downloads.forEach(download => {
+        chrome.downloads.pause(download.id)
+        console.log(download)
+      })
+    })
+  };
+
+
+  _.resumeDownloads = function(o) {
+    chrome.downloads.search({
+      state: 'in_progress'
+    }, function(downloads) {
+      downloads.forEach(download => {
+        chrome.downloads.resume(download.id)
+      })
+    })
+  };
+
+
+  _.cancelDownloads = function(o) {
+    chrome.downloads.search({
+      state: 'in_progress'
+    }, function(downloads) {
+      downloads.forEach(download => {
+        chrome.downloads.cancel(download.id)
+      })
+    })
+  };
+
+  _.copyURLDownloads = function(o) {
+    chrome.downloads.search({
+      state: 'in_progress'
+    }, function (downloads) {
+      var urls = []
+      downloads.forEach(download => {
+        urls.push(download.finalUrl)
+      })
+      Clipboard.copy(urls.join("\n"))
+    })
+  };
+
+  _.restartLastDownload = function(o) {
+     chrome.downloads.search({
+    }, function(downloads) {
+      var last = downloads.pop()
+      chrome.downloads.download({
+        url: last.finalUrl
+      }) 
+    })   
+  }
   
   _.toggleDomainStylesheets = function(o) {
     var styleurl = o.request.url

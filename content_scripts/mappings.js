@@ -779,8 +779,26 @@ Mappings.actions = {
     a.href = uriContent
     a.download = "cvim-settings.json"
     a.click()
-  }
+  },
 
+  pauseDownloads: () => {
+    RUNTIME('pauseDownloads')
+  },
+  resumeDownloads: () => {
+    RUNTIME('resumeDownloads')
+  },
+  cancelDownloads: () => {
+    RUNTIME('cancelDownloads')
+  },
+  restartLastDownload: () => {
+    RUNTIME('restartLastDownload')
+  },
+  copyURLDownloads: () => {
+    RUNTIME('copyURLDownloads', function(o) {
+      console.log(o)
+    })
+  }
+  
 };
 
 (function() {
