@@ -32,6 +32,16 @@ Commands:
 - toggleDomainStylesheets - https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
 - toggleBookmark - https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
 
+https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
+
+    - pauseDownloads
+    - resumeDownloads
+    - cancelDownloads
+    - restartLastDownload
+    - copyURLDownloads
+
+
+
 
 Features:
 
@@ -45,6 +55,8 @@ Features:
 - #5 save local marks per domain - https://github.com/hbt/mouseless/commit/82e342948bc5eb1dafaeff64a40d405b90f0930d
 - #23 stylesheet toggler https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
 - #24 bookmarks toggler https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
+- #27 downloads manipulation https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
+
 
 
 Fixes:
