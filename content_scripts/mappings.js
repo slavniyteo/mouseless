@@ -758,9 +758,11 @@ Mappings.actions = {
   passKeys: function(repeats) { Mappings.keyPassesLeft = repeats; },
   enterPassMode: function() {
     passMode = true
+    Status.setMessage('Entering pass-mode', 1)
   },
   exitPassMode: function() {
     passMode = false
+    Status.setMessage('Exited pass-mode', 1)
   },
   resetScrollFocus: function() { window.resetScrollFocus(); },
   clearSearchHighlight: function() {
