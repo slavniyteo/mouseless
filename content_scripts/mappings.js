@@ -771,6 +771,14 @@ Mappings.actions = {
   },
   muteTab: function() {
     RUNTIME('muteTab');
+  },
+  exportSettings: function() {
+    var content = JSON.stringify(settings)
+    var uriContent = "data:text/plain;charset=utf-8," + encodeURIComponent(content);
+    var a = document.createElement('a')
+    a.href = uriContent
+    a.download = "cvim-settings.json"
+    a.click()
   }
 
 };
