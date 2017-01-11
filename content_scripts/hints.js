@@ -177,6 +177,7 @@ Hints.dispatchAction = function(link, shift) {
     eval(settings.FUNCTIONS[this.scriptFunction])(link);
     break;
   default:
+    console.log('hh')
     if (node === 'textarea' || (node === 'input' &&
           /^(text|password|email|search)$/i.test(link.type)) ||
         link.hasAttribute('contenteditable')) {
@@ -191,6 +192,7 @@ Hints.dispatchAction = function(link, shift) {
     if (node === 'input' ||
         node === 'select' ||
         /^(checkbox|menu)$/.test(link.getAttribute('role'))) {
+      link.focus()
       window.setTimeout(function() { DOM.mouseEvent('click', link); }, 0);
       break;
     }
