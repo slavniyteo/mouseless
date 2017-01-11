@@ -1070,12 +1070,12 @@ Actions = (function() {
       added.localconfig = oldSettings.localconfig;
       Object.merge(settingsClone, added);
       if (oldSettings.localconfig) {
-        Options.saveSettings({
-          settings: Object.clone(settingsClone),
-          sendSettings: false
-        });
         Object.merge(settings, oldSettings);
         Object.merge(settings, added);
+        Options.saveSettings({
+          settings: Object.clone(settings),
+          sendSettings: false
+        });
         Options.sendSettings();
       } else {
         Object.merge(settings, added);
