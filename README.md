@@ -64,7 +64,7 @@ Fixes:
 - #498 viewsource not working - https://github.com/hbt/mouseless/commit/958d0b0c6cbb439649b8404cd591f7d214b19319
 - #25 stop numeric keys propagation https://github.com/hbt/mouseless/commit/19c3d9cb64c2db2ff4bd299f82938128f5befaa6
 - #42 fix dropdown doing nothing on click https://github.com/hbt/mouseless/commit/94767903708ddfa747cce3c303c1a50fd476385a
-
+- #41 settings overwritten by local config when reloaded instead of merging https://github.com/hbt/mouseless/commit/defb4bd48234e7dd2ff82160c327f267963acb0d
 
 
 Experiments:
