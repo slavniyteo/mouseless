@@ -1107,7 +1107,6 @@ Actions = (function() {
     }, function(downloads) {
       downloads.forEach(download => {
         chrome.downloads.pause(download.id)
-        console.log(download)
       })
     })
   };
