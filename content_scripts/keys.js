@@ -924,8 +924,15 @@ window.addEventListener('DOMContentLoaded', function() {
         alert(message);
       }
     });
-    if(settings.automakelinks) {
-      document.body.innerHTML = document.body.innerHTML.transformURL()
-    }
+
+    var i = window.setInterval(() => {
+      if (settings) {
+        window.clearInterval(i)
+        if (settings.automakelinks) {
+          linkifyElement(document.body)
+        }
+      }
+    }, 0)
+    
   }
 });

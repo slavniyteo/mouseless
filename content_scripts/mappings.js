@@ -799,7 +799,8 @@ Mappings.actions = {
     })
   },
   makeLinks: () => {
-    document.body.innerHTML = document.body.innerHTML.transformURL()
+    // TODO(hbt) ENHANCE only load linkify deps on demand instead of having 3 js files in manifest loaded every time
+    linkifyElement(document.body)
   }
   
 };
