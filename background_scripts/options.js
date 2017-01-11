@@ -13,6 +13,7 @@ var defaultSettings = {
   searchengines: {},
   searchaliases: {},
   debug: false,
+  newtabalwaysontheright: false,
   hud: true,
   regexp: true,
   scalehints: false,

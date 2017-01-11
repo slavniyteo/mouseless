@@ -14,6 +14,14 @@ var getTabOrderIndex = (function() {
         tabCreationOrder[lastActiveTabId] = [];
       tabCreationOrder[lastActiveTabId].push(tab.id);
     }
+    
+    if(tab.openerTabId && settings.newtabalwaysontheright) {
+      chrome.tabs.get(tab.openerTabId, (ot) => {
+        chrome.tabs.move(tab.id, {
+          index: ot.index + 1
+        })
+      })
+    }
   });
 
   chrome.tabs.onRemoved.addListener(function(tabId) {
