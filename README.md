@@ -55,7 +55,6 @@ Features:
 - windows are maximized instead of natural height/width https://github.com/hbt/mouseless/commit/90ae0986bd28e08c6b2d3e54533242be22dd965d 
 - #515 #3 custom hinttags - https://github.com/hbt/mouseless/commit/486dc99bc36ac9c53d548a7b4c5b9692af446144
 - #18 custom hints generation algo - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
-- #20 escape key not sent to page - https://github.com/hbt/mouseless/commit/b95912f512dec8334f196ed667395551d98a7835
 - #5 save local marks per domain - https://github.com/hbt/mouseless/commit/82e342948bc5eb1dafaeff64a40d405b90f0930d
 - #23 stylesheet toggler https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
 - #24 bookmarks toggler https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
@@ -72,6 +71,7 @@ Features:
 
 Fixes:
 
+- #20 escape key not sent to page - https://github.com/hbt/mouseless/commit/b95912f512dec8334f196ed667395551d98a7835
 - #498 viewsource not working - https://github.com/hbt/mouseless/commit/958d0b0c6cbb439649b8404cd591f7d214b19319
 - #25 stop numeric keys propagation https://github.com/hbt/mouseless/commit/19c3d9cb64c2db2ff4bd299f82938128f5befaa6
 - #42 fix dropdown doing nothing on click https://github.com/hbt/mouseless/commit/94767903708ddfa747cce3c303c1a50fd476385a
