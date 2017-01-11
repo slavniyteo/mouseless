@@ -46,6 +46,7 @@ var defaultSettings = {
   locale: '',
   mapleader: '\\',
   timeoutlen: 1000,
+  newtaburl: '',
   defaultengine: 'google',
   hintcharacters: 'asdfgqwertzxcvb',
   homedirectory: '',
