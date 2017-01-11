@@ -7,6 +7,7 @@ Settings:
 - experimental  - turns on experiments (view below)
 - mouselesshintcharacters = "dsafrewq,tgcx" - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
 - newtabalwaysontheright https://github.com/hbt/mouseless/commit/a17f3e3f0c9917af1f944b4d5ff21ccc30da7085
+- automakelinks https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
 
 
 Commands:
@@ -40,6 +41,7 @@ https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
     - restartLastDownload
     - copyURLDownloads
 
+- makeLinks https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
 
 
 
@@ -57,6 +59,9 @@ Features:
 - #24 bookmarks toggler https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
 - #27 downloads manipulation https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
 - #38 always open new tabs on the right https://github.com/hbt/mouseless/commit/a17f3e3f0c9917af1f944b4d5ff21ccc30da7085
+- #14 transform plain text URL into clickable links https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
+
+
 
 
 
