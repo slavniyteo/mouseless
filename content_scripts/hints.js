@@ -177,7 +177,6 @@ Hints.dispatchAction = function(link, shift) {
     eval(settings.FUNCTIONS[this.scriptFunction])(link);
     break;
   default:
-    console.log('hh')
     if (node === 'textarea' || (node === 'input' &&
           /^(text|password|email|search)$/i.test(link.type)) ||
         link.hasAttribute('contenteditable')) {
