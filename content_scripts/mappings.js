@@ -797,6 +797,9 @@ Mappings.actions = {
     RUNTIME('copyURLDownloads', function(o) {
       console.log(o)
     })
+  },
+  makeLinks: () => {
+    document.body.innerHTML = document.body.innerHTML.transformURL()
   }
   
 };

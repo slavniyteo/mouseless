@@ -924,5 +924,8 @@ window.addEventListener('DOMContentLoaded', function() {
         alert(message);
       }
     });
+    if(settings.automakelinks) {
+      document.body.innerHTML = document.body.innerHTML.transformURL()
+    }
   }
 });

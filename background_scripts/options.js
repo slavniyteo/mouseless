@@ -6,6 +6,7 @@ var defaultSettings = {
   experimental: false,
   searchlimit: 25,
   scrollstep: 70,
+  automakelinks: false,
   fullpagescrollpercent: 0,
   typelinkhintsdelay: 300,
   qmarks: {},
