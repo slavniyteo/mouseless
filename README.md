@@ -1,3 +1,26 @@
+
+// TODO(hbt) NEXT readme
+
+- what is it
+- contribute
+- install 
+- faq
+-- gstore
+-- gh issues
+-- list of pages
+-- list of branches
+-- wip/exp
+- list of commands/settings
+- examples / tips
+- site
+
+
+
+Site:
+- hbtlabs mouseless
+- github pages
+
+
 # What this fork adds?
 
 Settings: 
