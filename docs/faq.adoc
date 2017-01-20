@@ -1,0 +1,10 @@
+= FAQ
+
+. user support and expectations
+
+. what about alternatives
+// TODO(hbt) NEXT add
+
+. branches and releases
+
+. chromium-vim fork

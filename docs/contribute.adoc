@@ -1,0 +1,26 @@
+= Contribution guideline
+
+
+== Contribute code
+
+We always want new commands. You can new commands or new options and send a pull request.
+
+Modifying the behavior of existing commands must be discussed. 
+
+=== Steps
+
+. Log an issue in https://github.com/hbt/mouseless/issues explaining the new command, bug etc.
+. Fix it and refer to issue number in commit
+. Send a pull request
+
+We try to process all pull requests within a week. 
+
+
+NOTE: Do not bother proposing a mapping. It will be ignored. Add the new function as an isolated module and it will be merged.
+
+
+== Other ways of contributing
+
+. Answering questions on issue tracker https://github.com/hbt/mouseless/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion
+. Enhancing documentation/FAQ/tips/examples
+

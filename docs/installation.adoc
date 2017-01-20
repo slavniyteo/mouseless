@@ -1,0 +1,23 @@
+= How to install
+
+
+There are two releases:
+
+. the google store version which does not work on chrome:// pages
+. the zip version with works on chrome:// pages
+
+
+
+== Google store version
+
+// TODO(hbt) NEXT create google store branch + remove chrome:// + create release and link zip here
+
+== ZIP version
+
+. Download latest from https://github.com/hbt/mouseless/releases
+. turn on flag chrome://flags/#extensions-on-chrome-urls
+. restart browser
+. load unpacked extension 
+. should work on every tab except `view-source`
+
+NOTE: You can disable the yellow bar warning when starting chrome using `--disable-infobars`

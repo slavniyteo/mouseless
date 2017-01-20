@@ -1,0 +1,21 @@
+= Tips
+
+// TODO(hbt) NEXT add my config
+
+// TODO(hbt) NEXT add python instructions
+
+// TODO(hbt) NEXT add sitefilters example and other stuff from fork
+
+// TODO(hbt) NEXT add github search + mention penta/vimpe examples
+
+
+== How to generate the documentation?
+
+Original files are in adoc, generated files are in HTML. We store both instead of relying on github pages.
+
+```
+cd docs
+bundle 
+asciidoctor -v  -B docs/ *.adoc  
+```
+

@@ -1,141 +1,24 @@
-// TODO(hbt) NEXT remove stuff from readme or move it
-// TODO(hbt) NEXT move the what this fork adds to a changes file in docs
-// TODO(hbt) NEXT add mention to site + mirror 
+= All commands
 
-# What this fork adds?
-
-Settings: 
-
-- ignorenumerickeys - https://github.com/hbt/mouseless/commit/145126dd83edd6b05b780e7245bf1988d2c26bb9
-- debug - https://github.com/hbt/mouseless/commit/3dbbfe831412c44ec16ba5dea6411514b56e48a0
-- experimental  - turns on experiments (view below)
-- mouselesshintcharacters = "dsafrewq,tgcx" - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
-- newtabalwaysontheright https://github.com/hbt/mouseless/commit/a17f3e3f0c9917af1f944b4d5ff21ccc30da7085
-- automakelinks https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
-- newtaburl https://github.com/hbt/mouseless/commit/2ea0bcf53df09cc83edf0dcea278f9965212abef
+link:settings.html[settings list]
 
 
+INFO: We recommand disabling all mapping and only enabling what you use
 
-Commands:
+```
+unmapAll
 
-- enterPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
-- exitPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
-- openUrlExternalEditor - https://github.com/hbt/mouseless/commit/b9f811e2fbdc89ab80039431af6d894dadec8c2c
+map x myCommand
+```
 
-- https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6 (wip)
-
-    - myCloseTabsOthers
-    - myCloseTabsAllExcept
-    - myCloseTabsRight
-    - myCloseTabsLeft
-    - windowUnpinAllTabs
-    - browserUnpinAllTabs
-
-- https://github.com/hbt/mouseless/commit/a21ae2067ff9faa2d09b9649034e910f64f0e8ab (wip)
-    - markMergeTab
-    - markMergeWindow
-    - putMergeTabs
-
-- toggleDomainStylesheets - https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
-- toggleBookmark - https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
-
-https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
-
-    - pauseDownloads
-    - resumeDownloads
-    - cancelDownloads
-    - restartLastDownload
-    - copyURLDownloads
-
-- makeLinks https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
+// TODO(hbt) NEXT add all commands including from fork
+// TODO(hbt) NEXT format properly
+// TODO(hbt) NEXT move settings to their own map + add usage
+// TODO(hbt) NEXT add example configuration in tips
+// TODO(hbt) NEXT flag wip/experimental features and add note 
 
 
-
-Features:
-
-- enabled on chrome:// pages https://github.com/hbt/mouseless/commit/5d30159913f5acd0c1277e2d06e1ff46521a22e1
-- unmap removes keys recursively https://github.com/hbt/mouseless/commit/53053184d32529d1b60e1396fee1b134c6b8f1ef
-- external editor set cursor position https://github.com/hbt/mouseless/commit/d1ae58d5c283bcbca581772d8caed798a47de760
-- windows are maximized instead of natural height/width https://github.com/hbt/mouseless/commit/90ae0986bd28e08c6b2d3e54533242be22dd965d 
-- #515 #3 custom hinttags - https://github.com/hbt/mouseless/commit/486dc99bc36ac9c53d548a7b4c5b9692af446144
-- #18 custom hints generation algo - https://github.com/hbt/mouseless/commit/acd2c474ee940872500aca98a75648d0bf4d3efa 
-- #5 save local marks per domain - https://github.com/hbt/mouseless/commit/82e342948bc5eb1dafaeff64a40d405b90f0930d
-- #23 stylesheet toggler https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
-- #24 bookmarks toggler https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
-- #27 downloads manipulation https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
-- #38 always open new tabs on the right https://github.com/hbt/mouseless/commit/a17f3e3f0c9917af1f944b4d5ff21ccc30da7085
-- #14 transform plain text URL into clickable links https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
-- #2 specify custom new tab url https://github.com/hbt/mouseless/commit/2ea0bcf53df09cc83edf0dcea278f9965212abef
-
-
-
-
-
-
-
-Fixes:
-
-- #20 escape key not sent to page - https://github.com/hbt/mouseless/commit/b95912f512dec8334f196ed667395551d98a7835
-- #498 viewsource not working - https://github.com/hbt/mouseless/commit/958d0b0c6cbb439649b8404cd591f7d214b19319
-- #25 stop numeric keys propagation https://github.com/hbt/mouseless/commit/19c3d9cb64c2db2ff4bd299f82938128f5befaa6
-- #42 fix dropdown doing nothing on click https://github.com/hbt/mouseless/commit/94767903708ddfa747cce3c303c1a50fd476385a
-- #41 settings overwritten by local config when reloaded instead of merging https://github.com/hbt/mouseless/commit/defb4bd48234e7dd2ff82160c327f267963acb0d
-
-
-Experiments:
-
-- #17 - hints appear over visible elements even when they are floating (css property) and their height/width might be 0px 
-https://github.com/hbt/mouseless/commit/d016e6e1d968fc09e22ab657dddbb931833207ef
-
-https://github.com/hbt/mouseless/commit/
-
-
-
-# How to install?
-
-- turn on flag chrome://flags/#extensions-on-chrome-urls
-- download zip
-- load extension 
-
----
----
-
-Readme from chromium-vim
-
-
-# What is cVim?
-
-Vim for Google Chrome. I hate using the mouse, especially after learning Vim. With my desktop (Linux), I have a lot of key bindings that make doing things easier: I open Chrome with `Alt+w`, I close a window with `Alt+Shift+d`, I open a terminal with `Alt+t`. This is harder to do with Chrome because it has no section for customizing keyboard shortcuts, and it is still necessary to use the mouse to do things like click links. cVim aims to eliminate this problem as best as the Chrome extensions API will allow it to.
-
-# Where can I get cVim?
-
- * There are two ways:
-  * You can install it through the [Chrome web store](https://chrome.google.com/webstore/detail/cvim/ihlenndgcmojhcghmfjfneahoeklbjjh)
-  * You can download the `.zip` file [here](https://github.com/1995eaton/chromium-vim/archive/master.zip) and enable cVim by going to the `chrome://extensions` URL and checking developer mode, then pointing Chrome to the unzipped folder via the `Load unpacked extensions...` button.
-
-# Why is this different than Vimium, ViChrome, or Vrome?
-
-These extensions do a wonderful job of adding Vim-like keybindings to Google Chrome, but they lack many of the features that Firefox Addon, Pentadactyl, have.
-
- * What features does cVim add to Chrome?
-  * Google/IMDB/Wikipedia/Amazon/Duckduckgo/Yahoo/Bing search completion
-  * Support for custom search engines
-  * History and Bookmark search/completion with bookmark folder support
-  * Caret/Visual mode
-  * Efficient link hints (with support for custom mappings)
-  * Support for custom keyboard mappings
-  * Regex page search with highlighting
-  * Command bar with tab-completion
-  * Smooth scrolling
-
-# cVim Help
-### cVimrc
-
- * Boolean cVimrc settings are enabled with the command ```'set' + <SETTING_NAME>``` and disabled with
-   the command ```'set' + no<SETTING_NAME>``` (for example, ```set regexp``` and ```set noregexp```)
- * Boolean cVimrc settings can be inversed by adding "!" to the end
- * Other settings are defined with ```=``` used as a separator and are prefixed by ```let``` (for example, ```let hintcharacters="abc"```)
-
+++++
 | setting                             | type                               | description                                                                               | default                                                                     |
 | ----------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------: |
 | searchlimit                         | integer                            | set the amount of results displayed in the command bar                                    | 25                                                                          |
@@ -593,27 +476,4 @@ let completionengines = ['google', 'google-image', 'youtube'] " Show only these 
 | :pintab                                     | pin the current tab                                                                    |
 | :unpintab                                   | unpin the current tab                                                                  |
 
-# Tips
-
- * You can use `@%` in "open" commands to specify the current URL.
-   For example, `:open @%` would essentially refresh the current page.
- * Prepend a number to the command to repeat that command N times
- * Use the up/down arrows in command/find mode to navigate through previously
-   executed commands/searches -- you can also use this to search for previously
-   executed commands starting with a certain combination of letters (for example,
-   entering `ta` in the command bar and pressing the up arrow will search command
-   history for all matches beginning with `ta`
-
-# Contributing
-
-Nice that you want to spend some time improving this extension.
-Solving issues is always appreciated. If you're going to add a feature,
-it would be best to [submit an issue](https://github.com/1995eaton/chromium-vim/issues).
-You'll get feedback whether it will likely be merged.
-
-1. Run `npm install` in the repository's root folder
-1. Run `make`
-1. Navigate to `chrome://extensions`
-1. Toggle into Developer Mode
-1. Click on "Load Unpacked Extension..."
-1. Select the cVim directory.
+++++

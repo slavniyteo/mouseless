@@ -1,0 +1,37 @@
+= Mouseless
+
+// TODO(hbt) NEXT host on mouseless.hbtlabs.com + github pages
+
+== What is it?
+
+Chrome extension empowering users to browse more with the keyboard  and less with the mouse.
+
+
+== Who is it for?
+
+Mouseless is for *advanced users*. If you are not familiar with vim, vimperator/pentadactyl etc. Please use a beginner extension. We recommend vimium https://vimium.github.io/
+
+== Installation
+
+link:installation.html[install instructions]
+
+
+== Contribute
+
+Mouseless is always hungry for contributions. New commands, features, bugs, ideas, pull requests, review, Q&A etc.? 
+
+link:contribute.html[Feed mouseless]
+
+
+== Commands and settings
+
+link:commands.html[All commands]
+
+link:settings.html[All settings]
+
+
+== Help
+
+link:faq.html[FAQ]
+
+link:tips.html[Tips & Examples of configurations]
