@@ -1116,6 +1116,7 @@ Mappings.handleEscapeKey = function() {
     return;
   }
 
+  // TODO(hbt) ENHANCE review where else Dom.isEditable is used + if it has similar bugs as #61
   if(document.activeElement) {
     document.activeElement.blur();
     this.actions.inputFocused = false;
