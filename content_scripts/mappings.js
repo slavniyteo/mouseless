@@ -1116,6 +1116,10 @@ Mappings.handleEscapeKey = function() {
     return;
   }
 
+  if(document.activeElement) {
+    document.activeElement.blur();
+    this.actions.inputFocused = false;
+  }
   if (DOM.isEditable(document.activeElement)) {
     if (document.getSelection().type === 'Range') {
       document.getSelection().collapseToEnd();
