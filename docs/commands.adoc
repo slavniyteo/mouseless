@@ -721,3 +721,5 @@ NOTE: Marks (aka local marks) are limited to the current page and are saved by d
 | exits visual mode to caret, caret to normal and removes focus on active element 
 |===
 
+// TODO(hbt) NEXT include :XXXX commands + think about adding JS equivalent
+// TODO(hbt) NEXT migrate commands from config such as copyDescription -- custom functions as new commands + log ticket
