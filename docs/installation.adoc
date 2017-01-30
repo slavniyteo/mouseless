@@ -8,14 +8,17 @@
 
 There are two releases:
 
-. the google store version which does not work on chrome:// pages
-. the zip version with works on chrome:// pages
+. the google store version which does not work on chrome:// pages (due to chrome store limitation)
+. the zip version which works on chrome:// pages
 
 
 
 == Google store version
 
-// TODO(hbt) NEXT create google store branch + remove chrome:// + create release and link zip here
+// TODO(hbt) create google store branch + remove chrome:// + create release and link zip here
+
+No google store version available. Mainly because most contributors are from github and google store version is more likely to generate support requests and reach the wrong audience. 
+It also requires additional branding + review to prevent confusion with cVim. 
 
 == ZIP version
 

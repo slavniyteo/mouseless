@@ -25,6 +25,7 @@ link:settings.html[settings list]
 . <<External Editor>>
 . <<Browser>>
 . <<Hardcoded key-bindings>>
+. <<CLI Commands>>
 
 NOTE: We recommand disabling all default mappings and only enabling what you use
 
@@ -39,12 +40,6 @@ unmapAll
 map x mouselessCommandName
 ----
 
-// TODO(hbt) NEXT list commands starting by :
-// TODO(hbt) NEXT fix commands flagged as review
-// TODO(hbt) NEXT move settings to their own map + add usage
-// TODO(hbt) NEXT add example configuration in tips
-// TODO(hbt) NEXT flag wip/experimental features and add note 
-// TODO(hbt) NEXT add indication whether a counter is supported by a command
 
 
 === Scrolling
@@ -160,10 +155,6 @@ map x mouselessCommandName
 | fullImageHint                   
 |       opens images in a new tab                                             
 
-// TODO(hbt) NEXT fix
-|                                 
-|       change the link hint focus                                            
-
 
 |===
 
@@ -228,7 +219,6 @@ map x mouselessCommandName
 | closeTabsToRight                
 |       close all tabs to the right of the current tab                        
 
-// TODO(hbt) NEXT wip
 | myCloseTabsOthers
 | close other tabs in the current window except current tab
 
@@ -256,7 +246,6 @@ map x mouselessCommandName
 | browserUnpinAllTabs
 | unpin all tabs in all windows
 
-// TODO(hbt) NEXT review
 
 | :buffer                         
 |       search for another active tab                                         
@@ -280,22 +269,18 @@ map x mouselessCommandName
 | lastClosedTab                   
 |       open the last closed tab                                              
 
-// TODO(hbt) NEXT review
 | :tabnew google                  
 |       alias to ":tabnew google "                                            
 
 
-// TODO(hbt) NEXT review
 | :tabnew                         
 |       :tabnew                                                               
 
 
-// TODO(hbt) NEXT review
 | :tabnew @%                      
 |       :tabnew &lt;CURRENT URL&gt;                                           
 
 
-// TODO(hbt) NEXT review
 | :open @%                        
 |       :open &lt;CURRENT URL&gt;                                             
 
@@ -306,7 +291,6 @@ map x mouselessCommandName
 |===
 
 
-// TODO(hbt) NEXT think about breaking it down further
 === Page
 |===
 |Name|Description
@@ -385,7 +369,6 @@ map x mouselessCommandName
 | decrement the last number in the URL path
 
 
-// TODO(hbt) NEXT review
 
 | :viewsource!                    
 |       go to the view-source:// page for the current Url                     
@@ -458,7 +441,6 @@ map x mouselessCommandName
 |       open search bar (reverse search)                                      
 
 
-// TODO(hbt) NEXT review
 | openLinkSearchBar               
 |       open link search bar (same as pressing `/?`)                          
 
@@ -608,18 +590,19 @@ map x mouselessCommandName
 |===
 
 
-// TODO(hbt) NEXT  add note
 === External Editor
 |===
 |Name|Description
 
-// TODO(hbt) NEXT review
 
 | editWithVim     
 | edit with Vim in a terminal (need the [cvim_server.py](https://github.com/1995eaton/chromium-vim/blob/master/cvim_server.py) script running for this to work) 
 
 | openUrlExternalEditor
 | open current url in external editor for editing
+
+| viewSourceExternalEditor
+| same as viewsource but opens in configured external editor
 
 |===
 
@@ -635,7 +618,6 @@ map x mouselessCommandName
 | cancelAllWebRequests            
 |       stop all tabs from loading                                            
 
-// TODO(hbt) NEXT review
 | :chrome://restart&lt;CR&gt;     
 |       restart Google Chrome                                                 
 
@@ -643,12 +625,8 @@ map x mouselessCommandName
 | quitChrome                      
 |       close all browser windows                                             
 
-// TODO(hbt) NEXT review
-
 | :chrome://downloads&lt;CR&gt;   
 |       alias to :chrome://downloads&lt;CR&gt;                                
-
-// TODO(hbt) NEXT review
 
 | :chrome://extensions&lt;CR&gt;  
 |       alias to :chrome://extensions&lt;CR&gt;                               
@@ -663,7 +641,6 @@ map x mouselessCommandName
 |===
 |Name|Description
 
-// TODO(hbt) NEXT add note quickmark vs mark
 
 | addQuickMark                    
 |       create quickmark &lt;*&gt;                                            
@@ -691,7 +668,6 @@ NOTE: Marks (aka local marks) are limited to the current page and are saved by d
 |===
 |Name|Description
 
-// TODO(hbt) NEXT review
 
 | :history                        
 |       search through browser history                                        
@@ -736,5 +712,122 @@ NOTE: Marks (aka local marks) are limited to the current page and are saved by d
 | exits visual mode to caret, caret to normal and removes focus on active element 
 |===
 
-// TODO(hbt) NEXT include :XXXX commands + think about adding JS equivalent
-// TODO(hbt) NEXT migrate commands from config such as copyDescription -- custom functions as new commands + log ticket
+
+=== CLI Commands
+
+NOTE: Type `:` before calling command 
+
+|===
+|Name|Description
+
+|open
+|Open a link in the current tab
+
+|tabnew
+|Open a link in a new tab
+
+|tabnext
+|Switch to the next open tab
+
+|tabprevious
+|Switch to the previous open tab
+
+|new
+|Open a link in a new window
+
+|buffer
+|Select from a list of current tabs
+
+|history
+|Search through your browser history
+
+|bookmarks
+|Search through your bookmarks
+
+|file
+|Browse local directories
+
+|source
+|Load a config from a local file
+
+|set
+|Configure boolean settings
+
+|call
+|Call a cVim command
+
+|let
+|Configure non-boolean settings
+
+|tabhistory
+|Open a tab from its history states
+
+|execute
+|Execute a sequence of keys
+
+|session
+|Open a saved session in a new window
+
+|restore
+|Open a recently closed tab
+
+|mksession
+|Create a saved session of current tabs
+
+|delsession
+|Delete sessions
+
+|map
+|Map a command
+
+|unmap
+|Unmap a command
+
+|tabattach
+|Move current tab to another window
+
+|tabdetach
+|Move current tab to a new window
+
+|chrome
+|Opens Chrome urls
+
+|duplicate
+|Clone the current tab
+
+|settings
+|Open the options page for this extension
+
+|help
+|Shows the help page
+
+|changelog
+|Shows the changelog page
+
+|quit
+|Close the current tab
+
+|qall
+|Close the current window
+
+|stop
+|Stop the current page from loading
+
+|stopall
+|Stop all pages in Chrome from loading
+
+|undo
+|Reopen the last closed tab
+
+|togglepin
+|Toggle the tab\'s pinned state
+
+|nohlsearch
+|Clears the search highlight
+
+|viewsource
+|View the source for the current document
+
+|script
+|Run JavaScript on the current page
+

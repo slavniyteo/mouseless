@@ -1,27 +1,27 @@
 = Mouseless
 
+// TODO(hbt) NEXT add layout to click on homepage and come back here from any page
+// TODO(hbt) NEXT add analytics
 // TODO(hbt) NEXT host on mouseless.hbtlabs.com + github pages
 
 == What is it?
 
 Chrome extension empowering users to browse more with the keyboard  and less with the mouse.
+It is a cVim fork adding more features (view link:changelog.html[changelog])
+
 
 
 == Who is it for?
 
-Mouseless is for *advanced users*. If you are not familiar with vim, vimperator/pentadactyl etc. Please use a beginner extension. We recommend vimium https://vimium.github.io/
+Mouseless is dedicated to power users. 
+
+It follows Arch Linux philosophy by being *user-centric* not user-friendly. It is intended to fill the needs of those contributing to it rather than appeal to as many users as possible.
+
+If you are familiar with vimperator/pentadactyl/vim, you will feel right at home. Otherwise, please consider using a beginner extension like vimium https://vimium.github.io/
 
 == Installation
 
 link:installation.html[install instructions]
-
-
-== Contribute
-
-Mouseless is always hungry for contributions. New commands, features, bugs, ideas, pull requests, review, Q&A etc.? 
-
-// TODO(hbt) NEXT add type of contributions (docs, todos next, labeled work)
-link:contribute.html[Feed mouseless]
 
 
 == Commands and settings
@@ -31,8 +31,14 @@ link:commands.html[All commands]
 link:settings.html[All settings]
 
 
-== Help
+== Contribute
 
-link:faq.html[FAQ]
+Mouseless is always hungry for contributions and seeking improvements.
 
-link:tips.html[Tips & Examples of configurations]
+There are plenty of ways to link:contribute.html[contribute]
+
+
+// == Help
+
+// TODO(hbt) NEXT enable when done
+// link:tips.html[FAQ & Tips]

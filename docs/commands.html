@@ -552,6 +552,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p><a href="#_hardcoded_key_bindings">Hardcoded key-bindings</a></p>
 </li>
+<li>
+<p><a href="#_cli_commands">CLI Commands</a></p>
+</li>
 </ol>
 </div>
 <div class="admonitionblock note">
@@ -711,10 +714,6 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">fullImageHint</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">opens images in a new tab</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the link hint focus</p></td>
 </tr>
 </tbody>
 </table>
@@ -1280,6 +1279,10 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openUrlExternalEditor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">open current url in external editor for editing</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewSourceExternalEditor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">same as viewsource but opens in configured external editor</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1464,6 +1467,183 @@ Marks (aka local marks) are limited to the current page and are saved by domain.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;ESC&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">exits visual mode to caret, caret to normal and removes focus on active element</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_cli_commands">CLI Commands</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Type <code>:</code> before calling command
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a link in the current tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabnew</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a link in a new tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabnext</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch to the next open tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabprevious</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch to the previous open tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a link in a new window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">buffer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select from a list of current tabs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">history</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search through your browser history</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bookmarks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Search through your bookmarks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Browse local directories</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Load a config from a local file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure boolean settings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">call</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Call a cVim command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">let</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure non-boolean settings</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabhistory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a tab from its history states</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">execute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Execute a sequence of keys</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a saved session in a new window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">restore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a recently closed tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mksession</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a saved session of current tabs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delsession</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete sessions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Map a command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unmap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unmap a command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabattach</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move current tab to another window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabdetach</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move current tab to a new window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chrome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opens Chrome urls</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">duplicate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clone the current tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">settings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open the options page for this extension</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows the help page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">changelog</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shows the changelog page</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Close the current tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Close the current window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stop the current page from loading</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stopall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stop all pages in Chrome from loading</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reopen the last closed tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">togglepin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toggle the tab's pinned state</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nohlsearch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clears the search highlight</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewsource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View the source for the current document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run JavaScript on the current page</p></td>
 </tr>
 </tbody>
 </table>
