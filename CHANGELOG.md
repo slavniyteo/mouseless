@@ -5,6 +5,8 @@
 
 ## 1.3.1
  * Added `openLastDownload` command
+ * Added alias `incrementURLFirstPath` to command `incrementURLPath` and `decrementURLFirstPath` to `decrementURLPath`
+ * Added `incrementURLLastPath` `decrementURLLastPath` commands
  
 ## 1.3.0
 

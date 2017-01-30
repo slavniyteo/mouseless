@@ -20,6 +20,7 @@ link:installation.html[install instructions]
 
 Mouseless is always hungry for contributions. New commands, features, bugs, ideas, pull requests, review, Q&A etc.? 
 
+// TODO(hbt) NEXT add type of contributions (docs, todos next, labeled work)
 link:contribute.html[Feed mouseless]
 
 

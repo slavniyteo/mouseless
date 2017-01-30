@@ -814,12 +814,42 @@ Mappings.actions = {
     if (url !== document.URL)
       RUNTIME('openLink', { url: url, tab: { tabbed: false } });
   };
+  var replaceURLLastNumber = function(repeats) {
+    if (document.location.href.match(/(.*?)(\d+)(\D*)$/)) {
+      var pre = RegExp.$1,
+        number = RegExp.$2,
+        post = RegExp.$3;
+      var newNumber = parseInt(number, 10) + repeats;
+      var newNumberStr = String(newNumber > 0 ? newNumber : 0);
+      if (number.match(/^0/)) { // add 0009<C-a> should become 0010
+        while (newNumberStr.length < number.length) {
+          newNumberStr = "0" + newNumberStr;
+        }
+      }
+
+      var url = pre + newNumberStr + post
+      RUNTIME('openLink', { url: url, tab: { tabbed: false } });
+    }
+  }
   Mappings.actions.incrementURLPath = function(repeats) {
     replaceURLNumber(function(e) { return +e + repeats; });
+  };
+  Mappings.actions.incrementURLFirstPath = function(repeats) {
+    Mappings.actions.incrementURLPath(repeats);
   };
   Mappings.actions.decrementURLPath = function(repeats) {
     replaceURLNumber(function(e) { return Math.max(0, +e - repeats); });
   };
+  Mappings.actions.decrementURLFirstPath = function(repeats) {
+    Mappings.actions.decrementURLPath(repeats);
+  };
+  Mappings.actions.incrementURLLastPath = function(repeats) {
+    replaceURLLastNumber(repeats)
+  };
+  Mappings.actions.decrementURLLastPath = function(repeats) {
+    replaceURLLastNumber(repeats * -1)
+  };
+  
 })();
 
 Mappings.insertDefaults = [

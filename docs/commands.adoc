@@ -370,11 +370,19 @@ map x mouselessCommandName
 | goToRootUrl                     
 |       go to to the base URL                                                 
 
-| decrementURLPath 
+
+| incrementURLPath, incrementURLFirstPath
+| increment the first number in the URL path                            
+
+| decrementURLPath, decrementURLFirstPath 
 | decrement the first number in the URL path 
 
-| incrementURLPath                
-| increment the first number in the URL path                            
+| incrementURLLastPath
+| increment the last number in the URL path
+
+| decrementURLLastPath
+| decrement the last number in the URL path
+
 
 // TODO(hbt) NEXT review
 
