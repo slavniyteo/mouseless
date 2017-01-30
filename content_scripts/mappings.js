@@ -205,9 +205,6 @@ Mappings.actions = {
   goToTab: function(repeats) {
     RUNTIME('goToTab', {index: repeats - 1});
   },
-  hideDownloadsShelf: function() {
-    RUNTIME('hideDownloadsShelf');
-  },
   goToRootUrl: function() {
     RUNTIME('openLink', {
       url: location.protocol + '//' + location.hostname +
@@ -779,6 +776,12 @@ Mappings.actions = {
     a.href = uriContent
     a.download = "cvim-settings.json"
     a.click()
+  },
+  viewSourceExternalEditor: function() {
+    RUNTIME('viewSourceExternalEditor', {url: window.location.href});
+  },
+  hideDownloadsShelf: function() {
+    RUNTIME('hideDownloadsShelf');
   },
   openLastDownload: function() {
     // TODO(hbt) ENHANCE add counter support where it would download the the second last download for example

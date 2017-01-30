@@ -40,6 +40,21 @@ Actions = (function() {
     o.url = 'view-source:' + o.sender.tab.url;
     _.openLink(o);
   };
+  
+  _.viewSourceExternalEditor = function(o) {
+    $.ajax({
+      url: o.url
+    }).done(function (data) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://127.0.0.1:' + settings.vimport);
+      xhr.send(JSON.stringify({
+        command: settings.vimcommand,
+        data: data,
+        line: 0,
+        column: 0
+      }));
+    });
+  }
 
   _.openLink = function(o) {
     var i;

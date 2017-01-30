@@ -9,6 +9,7 @@
  * Added `openLastDownload` command
  * Added alias `incrementURLFirstPath` to command `incrementURLPath` and `decrementURLFirstPath` to `decrementURLPath`
  * Added `incrementURLLastPath` `decrementURLLastPath` commands
+ * Added `viewSourceExternalEditor` command
  
 ## 1.3.0
 
