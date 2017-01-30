@@ -1,5 +1,9 @@
 # cVim Changelog
 
+// TODO(hbt) NEXT add change log + tagging
+// TODO(hbt) NEXT add checklist for new features/bugs/fixes - ticket/doc/changelog/tag
+
+
 ## 1.2.86
  * Add `openQuickMarkWindowed` command
 

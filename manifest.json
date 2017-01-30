@@ -59,8 +59,9 @@
     "storage",
     "sessions",
     "downloads",
-    "topSites",
+    "downloads.open",
     "downloads.shelf",
+    "topSites",
     "clipboardRead",
     "clipboardWrite",
     "webNavigation"

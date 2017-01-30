@@ -1111,6 +1111,16 @@ Actions = (function() {
     })
   };
 
+  _.openLastDownloadedFile = function(o) {
+    // Note(hbt) partial implementation - view http://stackoverflow.com/questions/26775564/how-to-open-a-downloaded-file
+    chrome.downloads.search({
+      exists: true,
+      state: 'complete'
+    }, function(dlds) {
+      var last = dlds.pop();
+      chrome.downloads.open(last.id);
+    });
+  };
 
   _.resumeDownloads = function(o) {
     chrome.downloads.search({

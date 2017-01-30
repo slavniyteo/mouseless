@@ -780,7 +780,10 @@ Mappings.actions = {
     a.download = "cvim-settings.json"
     a.click()
   },
-
+  openLastDownload: function() {
+    // TODO(hbt) ENHANCE add counter support where it would download the the second last download for example
+    RUNTIME('openLastDownloadedFile')
+  },
   pauseDownloads: () => {
     RUNTIME('pauseDownloads')
   },
