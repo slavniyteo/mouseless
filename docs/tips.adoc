@@ -19,3 +19,11 @@ bundle
 asciidoctor -v  -B docs/ *.adoc  
 ```
 
+== Contributions checklist
+
+. open a ticket discussing bug (use case scenario with example, expected/unexpected). For features, explain use case scenario justifying the feature
+. create branch and commit work referring to ticket
+. update docs/commands.md docs/settings.md if relevant
+. send pull request
+. update CHANGELOG
+. tag

@@ -43,6 +43,7 @@ map x mouselessCommandName
 // TODO(hbt) NEXT move settings to their own map + add usage
 // TODO(hbt) NEXT add example configuration in tips
 // TODO(hbt) NEXT flag wip/experimental features and add note 
+// TODO(hbt) NEXT add indication whether a counter is supported by a command
 
 
 === Scrolling
@@ -589,6 +590,9 @@ map x mouselessCommandName
 
 | copyURLDownloads
 | copy final url of all active download
+
+| openLastDownload
+| opens last downloaded file
 
 |===
 

@@ -3,6 +3,10 @@
 // TODO(hbt) NEXT add change log + tagging
 // TODO(hbt) NEXT add checklist for new features/bugs/fixes - ticket/doc/changelog/tag
 
+## 1.3.1
+ * Added `openLastDownload` command
+ 
+## 1.3.0
 
 ## 1.2.86
  * Add `openQuickMarkWindowed` command
