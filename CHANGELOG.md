@@ -2,6 +2,8 @@
 
 // TODO(hbt) NEXT add change log + tagging
 // TODO(hbt) NEXT add checklist for new features/bugs/fixes - ticket/doc/changelog/tag
+// TODO(hbt) NEXT review :changelog
+// TODO(hbt) NEXT deprecate pages in favor of docs/
 
 ## 1.3.1
  * Added `openLastDownload` command
