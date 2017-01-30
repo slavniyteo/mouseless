@@ -934,5 +934,7 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     }, 0)
     
+    //Mappings.actions.openLastDownloadedFile()
+    
   }
 });

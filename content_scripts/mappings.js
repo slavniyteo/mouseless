@@ -205,9 +205,6 @@ Mappings.actions = {
   goToTab: function(repeats) {
     RUNTIME('goToTab', {index: repeats - 1});
   },
-  hideDownloadsShelf: function() {
-    RUNTIME('hideDownloadsShelf');
-  },
   goToRootUrl: function() {
     RUNTIME('openLink', {
       url: location.protocol + '//' + location.hostname +
@@ -780,7 +777,16 @@ Mappings.actions = {
     a.download = "cvim-settings.json"
     a.click()
   },
-
+  viewSourceExternalEditor: function() {
+    RUNTIME('viewSourceExternalEditor', {url: window.location.href});
+  },
+  hideDownloadsShelf: function() {
+    RUNTIME('hideDownloadsShelf');
+  },
+  openLastDownload: function() {
+    // TODO(hbt) ENHANCE add counter support where it would download the the second last download for example
+    RUNTIME('openLastDownloadedFile')
+  },
   pauseDownloads: () => {
     RUNTIME('pauseDownloads')
   },
@@ -811,12 +817,42 @@ Mappings.actions = {
     if (url !== document.URL)
       RUNTIME('openLink', { url: url, tab: { tabbed: false } });
   };
+  var replaceURLLastNumber = function(repeats) {
+    if (document.location.href.match(/(.*?)(\d+)(\D*)$/)) {
+      var pre = RegExp.$1,
+        number = RegExp.$2,
+        post = RegExp.$3;
+      var newNumber = parseInt(number, 10) + repeats;
+      var newNumberStr = String(newNumber > 0 ? newNumber : 0);
+      if (number.match(/^0/)) { // add 0009<C-a> should become 0010
+        while (newNumberStr.length < number.length) {
+          newNumberStr = "0" + newNumberStr;
+        }
+      }
+
+      var url = pre + newNumberStr + post
+      RUNTIME('openLink', { url: url, tab: { tabbed: false } });
+    }
+  }
   Mappings.actions.incrementURLPath = function(repeats) {
     replaceURLNumber(function(e) { return +e + repeats; });
+  };
+  Mappings.actions.incrementURLFirstPath = function(repeats) {
+    Mappings.actions.incrementURLPath(repeats);
   };
   Mappings.actions.decrementURLPath = function(repeats) {
     replaceURLNumber(function(e) { return Math.max(0, +e - repeats); });
   };
+  Mappings.actions.decrementURLFirstPath = function(repeats) {
+    Mappings.actions.decrementURLPath(repeats);
+  };
+  Mappings.actions.incrementURLLastPath = function(repeats) {
+    replaceURLLastNumber(repeats)
+  };
+  Mappings.actions.decrementURLLastPath = function(repeats) {
+    replaceURLLastNumber(repeats * -1)
+  };
+  
 })();
 
 Mappings.insertDefaults = [
@@ -1116,6 +1152,11 @@ Mappings.handleEscapeKey = function() {
     return;
   }
 
+  // TODO(hbt) ENHANCE review where else Dom.isEditable is used + if it has similar bugs as #61
+  if(document.activeElement) {
+    document.activeElement.blur();
+    this.actions.inputFocused = false;
+  }
   if (DOM.isEditable(document.activeElement)) {
     if (document.getSelection().type === 'Range') {
       document.getSelection().collapseToEnd();

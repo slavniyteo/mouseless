@@ -1,0 +1,56 @@
+== Tips
+
+*****************************************************************************8
+// TODO(hbt) NEXT review todos in this file it is a giant mess of ideas and stuff
+*****************************************************************************8
+
+// TODO(hbt) NEXT migrate commands from config such as copyDescription -- custom functions as new commands + log ticket
+// TODO(hbt) NEXT add my config
+
+// TODO(hbt) NEXT add python instructions
+
+// TODO(hbt) NEXT add sitefilters example and other stuff from fork
+
+// TODO(hbt) NEXT add github search + mention penta/vimpe examples
+
+// TODO(hbt) NEXT search github configs
+// TODO(hbt) NEXT add my config as example
+
+== How to generate the documentation?
+
+Original files are in adoc, generated files are in HTML. We store both instead of relying on github pages.
+
+```
+cd docs
+bundle 
+asciidoctor -v  -B docs/ *.adoc  
+```
+// TODO(hbt) NEXT add dev flow
+
+== Contributions checklist
+
+. open a ticket discussing bug (use case scenario with example, expected/unexpected). For features, explain use case scenario justifying the feature
+. create branch and commit work referring to ticket
+. update docs/commands.md docs/settings.md if relevant
+. send pull request
+. update CHANGELOG
+. tag
+edit manifest.json
+git tag -a v1.3.0
+git push origin v1.3.0
+ 
+
+== FAQ
+
+. user support and expectations
+
+. what about alternatives
+// TODO(hbt) NEXT add
+
+. branches and releases
+
+. chromium-vim fork
+
+// TODO(hbt) NEXT 
+
+// TODO(hbt) NEXT migrate small commands into mapping
