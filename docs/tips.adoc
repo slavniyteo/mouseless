@@ -38,6 +38,7 @@ asciidoctor -v  -B docs/ *.adoc
 edit manifest.json
 git tag -a v1.3.0
 git push origin v1.3.0
+-- TODO: add step for thanks.adoc
  
 
 == FAQ
