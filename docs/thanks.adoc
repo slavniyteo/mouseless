@@ -1,0 +1,9 @@
+== Contributors
+
+
+
+// TODO(hbt) NEXT add list of contributors + thanks
+- 3 so far I think. add them before I lose track.
+
+Name, github repo, contributions
+
