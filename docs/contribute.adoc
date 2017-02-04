@@ -29,7 +29,11 @@
 . share your configuration if you believe it to be the source
 . propose a way of fixing the issue 
 . send pull request <<Pull request guideline>>
-
+:uri-asciidoctor: http://asciidoctor.org
+:icons: font
+:source-highlighter: pygments
+:nofooter:
+link:index.html[Home]
 
 == Ideas
 

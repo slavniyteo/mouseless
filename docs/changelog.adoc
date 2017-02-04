@@ -1,4 +1,11 @@
+:uri-asciidoctor: http://asciidoctor.org
+:icons: font
+:source-highlighter: pygments
+:nofooter:
+link:index.html[Home]
+
 == Mouseless Changelog
+
 
 // TODO(hbt) NEXT review :changelog and make sure it redirects to this page (html)
 // TODO(hbt) NEXT deprecate pages in favor of docs/

@@ -1,3 +1,9 @@
+:uri-asciidoctor: http://asciidoctor.org
+:icons: font
+:source-highlighter: pygments
+:nofooter:
+link:index.html[Home]
+
 == Tips (wip)
 
 *****************************************************************************8
