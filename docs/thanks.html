@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Tips (wip)</title>
+<title>Contributors</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -498,308 +498,61 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="index.html">Home</a></p>
 </div>
 <div class="sect1">
-<h2 id="_tips_wip">Tips (wip)</h2>
+<h2 id="_contributors">Contributors</h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="#_cool_custom_scripts">Cool custom scripts</a> (Contribute more)</p>
-</li>
-<li>
-<p><a href="#_general_tips">General tips</a></p>
+<p>@1995eaton</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><a href="#_how_to_use_python_server_for_extra_commands">How to use python server for extra commands?</a></p>
+<p>retired author</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p><a href="#_example_config">Example config</a></p>
+<p>@hbt</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><a href="#_hbt_cvimrc_configuration_example">hbt cvimrc configuration example</a></p>
-</li>
-<li>
-<p><a href="#_how_to_find_more_examples">How to find more examples?</a></p>
+<p>fork maintainer</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p><a href="#_developer_tips">Developer tips</a></p>
+<p>@akatrevorjay</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><a href="#_what_do_the_branches_mean">What do the branches mean?</a></p>
-</li>
-<li>
-<p><a href="#_how_to_instant_reload_extension_while_developing">How to instant reload extension while developing?</a></p>
-</li>
-<li>
-<p><a href="#_how_to_generate_the_documentation">How to generate the documentation?</a></p>
-</li>
-<li>
-<p><a href="#_how_to_review_pull_request">How to review pull request?</a></p>
-</li>
-<li>
-<p><a href="#_how_to_do_a_release">How to do a release?</a></p>
+<p>Fixed peg.js build file/version</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p><a href="#_faq">FAQ</a></p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cool_custom_scripts">Cool custom scripts</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_reload_configuration_on_demand">reload configuration on demand</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">reloadcvim</span><span class="tok-p">()</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
-<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;reloading cvim &#39;</span> <span class="tok-o">+</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nb">Date</span><span class="tok-p">()));</span>
-<span class="tok-kd">var</span> <span class="tok-nx">value</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;call :source /home/hassen/.cvimrc&lt;CR&gt;&quot;</span><span class="tok-p">;</span>
-<span class="tok-nx">Mappings</span><span class="tok-p">.</span><span class="tok-nx">parseLine</span><span class="tok-p">(</span><span class="tok-nx">value</span><span class="tok-p">);</span>
-<span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">reload</span><span class="tok-p">(</span><span class="tok-kc">true</span><span class="tok-p">);</span>
-<span class="tok-p">}}</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_copy_link_description">copy link description</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">copyDescription</span><span class="tok-p">(</span><span class="tok-nx">elem</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
-<span class="tok-kd">var</span> <span class="tok-nx">text</span> <span class="tok-o">=</span> <span class="tok-nx">elem</span><span class="tok-p">.</span><span class="tok-nx">innerText</span> <span class="tok-o">||</span> <span class="tok-nx">elem</span><span class="tok-p">.</span><span class="tok-nx">value</span><span class="tok-p">;</span>
-<span class="tok-nx">RUNTIME</span><span class="tok-p">(</span><span class="tok-s1">&#39;copy&#39;</span><span class="tok-p">,</span> <span class="tok-p">{</span><span class="tok-nx">text</span><span class="tok-o">:</span> <span class="tok-nx">text</span><span class="tok-p">});</span>
-<span class="tok-p">}}</span>
-<span class="tok-nx">map</span> <span class="tok-nx">yd</span> <span class="tok-nx">createScriptHint</span><span class="tok-p">(</span><span class="tok-nx">copyDescription</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_focus_on_element">focus on element</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">focusElem</span><span class="tok-p">(</span><span class="tok-nx">elem</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
-<span class="tok-nx">elem</span><span class="tok-p">.</span><span class="tok-nx">focus</span><span class="tok-p">();</span>
-<span class="tok-p">}}</span>
-<span class="tok-nx">map</span> <span class="tok-nx">ys</span> <span class="tok-nx">createScriptHint</span><span class="tok-p">(</span><span class="tok-nx">focusElem</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_open_link_in_incognito">open link in incognito</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">openLinkIncognito</span><span class="tok-p">(</span><span class="tok-nx">link</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
-<span class="tok-kd">var</span> <span class="tok-nx">value</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;call :tabopen &quot;</span> <span class="tok-o">+</span> <span class="tok-nx">link</span><span class="tok-p">.</span><span class="tok-nx">href</span> <span class="tok-o">+</span> <span class="tok-s2">&quot; |&lt;CR&gt;&quot;</span>
-<span class="tok-nx">Mappings</span><span class="tok-p">.</span><span class="tok-nx">parseLine</span><span class="tok-p">(</span><span class="tok-nx">value</span><span class="tok-p">);</span>
-<span class="tok-p">}}</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_reopen_current_tab_in_incognito">reopen current tab in incognito</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">reopenInIncognito</span><span class="tok-p">(</span><span class="tok-nx">link</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
-<span class="tok-kd">var</span> <span class="tok-nx">value</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;call :tabopen &quot;</span> <span class="tok-o">+</span> <span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">href</span> <span class="tok-o">+</span> <span class="tok-s2">&quot; |&lt;CR&gt;&quot;</span>
-<span class="tok-nx">Mappings</span><span class="tok-p">.</span><span class="tok-nx">parseLine</span><span class="tok-p">(</span><span class="tok-nx">value</span><span class="tok-p">);</span>
-<span class="tok-p">}}</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_turn_current_youtube_in_fullscreen">turn current youtube in fullscreen</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>(bypassing age restriction when not authenticated)</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-err">&quot;</span> <span class="tok-nx">youtube</span>
-<span class="tok-nx">youtubeFullscreen</span><span class="tok-p">()</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
-        <span class="tok-kd">var</span> <span class="tok-nx">location</span><span class="tok-o">=</span><span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">href</span><span class="tok-p">;</span>
-        <span class="tok-nx">location</span> <span class="tok-o">=</span> <span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">replace</span><span class="tok-p">(</span><span class="tok-s1">&#39;watch&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;watch_popup&#39;</span><span class="tok-p">)</span>
-        <span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">href</span><span class="tok-o">=</span><span class="tok-nx">location</span><span class="tok-p">;</span>
-<span class="tok-p">}}</span>
-<span class="tok-nx">map</span> <span class="tok-p">;</span><span class="tok-nx">yt</span> <span class="tok-o">:</span><span class="tok-nx">call</span> <span class="tok-nx">youtubeFullscreen</span><span class="tok-o">&lt;</span><span class="tok-nx">CR</span><span class="tok-o">&gt;</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_general_tips">General tips</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_how_to_use_python_server_for_extra_commands">How to use python server for extra commands?</h3>
-<div class="paragraph">
-<p>A python server is required.
-Start it using <code>nohup python /home/hassen/workspace/mouseless/cvim_server.py &gt; /dev/null 2&gt;&amp;1 &amp;</code> on boot</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_config">Example config</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_hbt_cvimrc_configuration_example">hbt cvimrc configuration example</h3>
-<div class="paragraph">
-<p><a href="https://gist.github.com/hbt/b3d6b753c5a060667582327b85300ba1">cvimrc</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_how_to_find_more_examples">How to find more examples?</h3>
-<div class="paragraph">
-<p><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=filename%3A.pentadactyl+map&amp;type=Code&amp;ref=searchresults">github search pentadactyl examples</a></p>
-</div>
-<div class="paragraph">
-<p><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=filename%3A.cvimrc+map&amp;type=Code&amp;ref=searchresults">github search cvimrc examples</a></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_developer_tips">Developer tips</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_what_do_the_branches_mean">What do the branches mean?</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>dev = active development branch and could be unstable</p>
-</li>
-<li>
-<p>master = stable code and latest stable release</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_how_to_instant_reload_extension_while_developing">How to instant reload extension while developing?</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><code>./scripts/watch.sh</code></p>
-</li>
-<li>
-<p>Uncomment loop in  background_scripts/extension-reloader.js:25</p>
-</li>
-<li>
-<p>reload extension or restart browser</p>
-</li>
-<li>
-<p>tabs reload whenever a file is saved</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_how_to_generate_the_documentation">How to generate the documentation?</h3>
-<div class="paragraph">
-<p>Original files are in adoc, generated files are in HTML. We store both instead of relying on github pages.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code>cd docs
-bundle
-asciidoctor -v  -B docs/ *.adoc</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_how_to_review_pull_request">How to review pull request?</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>review diffs + quality</p>
-</li>
-<li>
-<p>merge on dev branch</p>
+<p>@rosshadden</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>git checkout -b rosshadden-fix/editing-divs master</p>
-</li>
-<li>
-<p>git pull git://github.com/rosshadden/mouseless.git fix/editing-divs</p>
-</li>
-<li>
-<p>git co dev</p>
-</li>
-<li>
-<p>git merge fix/editing-divs</p>
-</li>
-<li>
-<p>rebase + amend if needed - verify ticket number + code quality</p>
+<p>edit contentEditable divs in external editor</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>add to commands.adoc</p>
-</li>
-<li>
-<p>update changelog.adoc</p>
-</li>
-<li>
-<p>add user to thanks.adoc</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_how_to_do_a_release">How to do a release?</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>merge dev into master</p>
-</li>
-<li>
-<p>edit manifest.json</p>
-</li>
-<li>
-<p>update changelog.adoc</p>
-</li>
-<li>
-<p>tag and release</p>
+<p>@dhda</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>git tag -a 1.3.0</p>
-</li>
-<li>
-<p>git push origin 1.3.0</p>
+<p>added <code>previousDomain</code> <code>nextDomain</code> commands</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_faq">FAQ</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Check issues labeled <a href="https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20label%3Aquestion">question</a></p>
 </div>
 </div>
 </div>

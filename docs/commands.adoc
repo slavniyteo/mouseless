@@ -2,8 +2,9 @@
 :icons: font
 :source-highlighter: pygments
 :nofooter:
+link:index.html[Home]
 
-= All commands
+== All commands
 
 link:settings.html[settings list]
 
@@ -684,6 +685,13 @@ NOTE: Marks (aka local marks) are limited to the current page and are saved by d
 
 | openNextLinkInTab               
 |       open the next URL from the current tab's history in a new tab         
+
+| previousDomain
+| Jump to previous domain in tab's history
+
+
+| nextDomain
+| Jump to next domain in tab's history
 
 
 |===
