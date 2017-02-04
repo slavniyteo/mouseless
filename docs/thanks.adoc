@@ -20,3 +20,5 @@ link:index.html[Home]
 .. edit contentEditable divs in external editor
 
 
+. @dhda
+.. added `previousDomain` `nextDomain` commands

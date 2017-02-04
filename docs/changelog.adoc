@@ -11,10 +11,13 @@ link:index.html[Home]
 // TODO(hbt) NEXT deprecate pages in favor of docs/
 
 ## 1.3.2
+
  . Fixed contentEditable elements not being editable using external editor https://github.com/hbt/mouseless/issues/75
+ . added `previousDomain` `nextDomain` commands
 
 
 ## 1.3.1
+
  . Added `openLastDownload` command https://github.com/hbt/mouseless/issues/60
  . Added alias `incrementURLFirstPath` to command `incrementURLPath` and `decrementURLFirstPath` to `decrementURLPath` https://github.com/hbt/mouseless/issues/59
  . Added `incrementURLLastPath` `decrementURLLastPath` commands  https://github.com/hbt/mouseless/issues/59
