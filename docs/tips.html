@@ -500,15 +500,138 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_tips_wip">Tips (wip)</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong>8
-</strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong><strong><strong></strong><strong></strong></strong>8</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#_cool_custom_scripts">Cool custom scripts</a> (Contribute more)</p>
+</li>
+<li>
+<p><a href="#_general_tips">General tips</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#_how_to_use_python_server_for_extra_commands">How to use python server for extra commands?</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#_example_config">Example config</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#_hbt_cvimrc_configuration_example">hbt cvimrc configuration example</a></p>
+</li>
+<li>
+<p><a href="#_how_to_find_more_examples">How to find more examples?</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#_developer_tips">Developer tips</a></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="#_what_do_the_branches_mean">What do the branches mean?</a></p>
+</li>
+<li>
+<p><a href="#_how_to_instant_reload_extension_while_developing">How to instant reload extension while developing?</a></p>
+</li>
+<li>
+<p><a href="#_how_to_generate_the_documentation">How to generate the documentation?</a></p>
+</li>
+<li>
+<p><a href="#_how_to_review_pull_request">How to review pull request?</a></p>
+</li>
+<li>
+<p><a href="#_how_to_do_a_release">How to do a release?</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a href="#_faq">FAQ</a></p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_how_to_generate_the_documentation">How to generate the documentation?</h2>
+<h2 id="_cool_custom_scripts">Cool custom scripts</h2>
 <div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_general_tips">General tips</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_how_to_use_python_server_for_extra_commands">How to use python server for extra commands?</h3>
+<div class="paragraph">
+<p>A python server is required.
+Start it using <code>nohup python /home/hassen/workspace/mouseless/cvim_server.py &gt; /dev/null 2&gt;&amp;1 &amp;</code> on boot</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_config">Example config</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_hbt_cvimrc_configuration_example">hbt cvimrc configuration example</h3>
+<div class="paragraph">
+<p><a href="https://gist.github.com/hbt/b3d6b753c5a060667582327b85300ba1">cvimrc</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_find_more_examples">How to find more examples?</h3>
+<div class="paragraph">
+<p><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=filename%3A.pentadactyl+map&amp;type=Code&amp;ref=searchresults">github search pentadactyl examples</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=filename%3A.cvimrc+map&amp;type=Code&amp;ref=searchresults">github search cvimrc examples</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_developer_tips">Developer tips</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_do_the_branches_mean">What do the branches mean?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>dev = active development branch and could be unstable</p>
+</li>
+<li>
+<p>master = stable code and latest stable release</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_instant_reload_extension_while_developing">How to instant reload extension while developing?</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>./scripts/watch.sh</code></p>
+</li>
+<li>
+<p>Uncomment loop in  background_scripts/extension-reloader.js:25</p>
+</li>
+<li>
+<p>reload extension or restart browser</p>
+</li>
+<li>
+<p>tabs reload whenever a file is saved</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_generate_the_documentation">How to generate the documentation?</h3>
 <div class="paragraph">
 <p>Original files are in adoc, generated files are in HTML. We store both instead of relying on github pages.</p>
 </div>
@@ -520,55 +643,84 @@ asciidoctor -v  -B docs/ *.adoc</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_contributions_checklist">Contributions checklist</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_how_to_review_pull_request">How to review pull request?</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>open a ticket discussing bug (use case scenario with example, expected/unexpected). For features, explain use case scenario justifying the feature</p>
+<p>review diffs + quality</p>
 </li>
 <li>
-<p>create branch and commit work referring to ticket</p>
+<p>merge on dev branch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>git checkout -b rosshadden-fix/editing-divs master</p>
 </li>
 <li>
-<p>update docs/commands.md docs/settings.md if relevant</p>
+<p>git pull git://github.com/rosshadden/mouseless.git fix/editing-divs</p>
 </li>
 <li>
-<p>send pull request</p>
+<p>git co dev</p>
 </li>
 <li>
-<p>update CHANGELOG</p>
+<p>git merge fix/editing-divs</p>
 </li>
 <li>
-<p>tag
-edit manifest.json
-git tag -a v1.3.0
-git push origin v1.3.0&#8201;&#8212;&#8201;TODO: add step for thanks.adoc</p>
+<p>rebase + amend if needed - verify ticket number + code quality</p>
 </li>
 </ol>
+</div>
+</li>
+<li>
+<p>add to commands.adoc</p>
+</li>
+<li>
+<p>update changelog.adoc</p>
+</li>
+<li>
+<p>add user to thanks.adoc</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_to_do_a_release">How to do a release?</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>merge dev into master</p>
+</li>
+<li>
+<p>edit manifest.json</p>
+</li>
+<li>
+<p>update changelog.adoc</p>
+</li>
+<li>
+<p>tag and release</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>git tag -a 1.3.0</p>
+</li>
+<li>
+<p>git push origin 1.3.0</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_faq">FAQ</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>user support and expectations</p>
-</li>
-<li>
-<p>what about alternatives</p>
-</li>
-<li>
-<p>branches and releases</p>
-</li>
-<li>
-<p>chromium-vim fork</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Check issues labeled question
+<a href="https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20label%3Aquestion">questions</a></p>
 </div>
 </div>
 </div>
