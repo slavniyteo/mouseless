@@ -33,31 +33,29 @@ New Commands:
 - enterPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
 - exitPassMode - https://github.com/hbt/mouseless/commit/de428a2e6030d75bf564a5dda400b6e3c4c5e40a
 - openUrlExternalEditor - https://github.com/hbt/mouseless/commit/b9f811e2fbdc89ab80039431af6d894dadec8c2c
+- toggleDomainStylesheets - https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
+- toggleBookmark - https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
+- https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
+- pauseDownloads
+- resumeDownloads
+- cancelDownloads
+- restartLastDownload
+- copyURLDownloads
 
-- https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6 (wip)
 
+New Commands (wip):
+
+    - https://github.com/hbt/mouseless/commit/97533a4787a7b50e233fe6879d0c8c5707fd71d6 (wip)
     - myCloseTabsOthers
     - myCloseTabsAllExcept
     - myCloseTabsRight
     - myCloseTabsLeft
     - windowUnpinAllTabs
     - browserUnpinAllTabs
-
-- https://github.com/hbt/mouseless/commit/a21ae2067ff9faa2d09b9649034e910f64f0e8ab (wip)
+    - https://github.com/hbt/mouseless/commit/a21ae2067ff9faa2d09b9649034e910f64f0e8ab (wip)
     - markMergeTab
     - markMergeWindow
     - putMergeTabs
-
-- toggleDomainStylesheets - https://github.com/hbt/mouseless/commit/8368a0821665d1f4dd5e899e39dc2e0ec6be8912
-- toggleBookmark - https://github.com/hbt/mouseless/commit/f3dbf256777b0c946565ec64a9949d546a672718
-
-https://github.com/hbt/mouseless/commit/e4da57c1841fa5214db02562094b2c813b7b82f6
-
-    - pauseDownloads
-    - resumeDownloads
-    - cancelDownloads
-    - restartLastDownload
-    - copyURLDownloads
 
 - makeLinks https://github.com/hbt/mouseless/commit/ba34618a09fd78f9aed3c22c0708aeb0ac02bcdc
 
