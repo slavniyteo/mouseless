@@ -560,7 +560,87 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_cool_custom_scripts">Cool custom scripts</h2>
 <div class="sectionbody">
-
+<div class="sect2">
+<h3 id="_reload_configuration_on_demand">reload configuration on demand</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">reloadcvim</span><span class="tok-p">()</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;reloading cvim &#39;</span> <span class="tok-o">+</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nb">Date</span><span class="tok-p">()));</span>
+<span class="tok-kd">var</span> <span class="tok-nx">value</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;call :source /home/hassen/.cvimrc&lt;CR&gt;&quot;</span><span class="tok-p">;</span>
+<span class="tok-nx">Mappings</span><span class="tok-p">.</span><span class="tok-nx">parseLine</span><span class="tok-p">(</span><span class="tok-nx">value</span><span class="tok-p">);</span>
+<span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">reload</span><span class="tok-p">(</span><span class="tok-kc">true</span><span class="tok-p">);</span>
+<span class="tok-p">}}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_copy_link_description">copy link description</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">copyDescription</span><span class="tok-p">(</span><span class="tok-nx">elem</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
+<span class="tok-kd">var</span> <span class="tok-nx">text</span> <span class="tok-o">=</span> <span class="tok-nx">elem</span><span class="tok-p">.</span><span class="tok-nx">innerText</span> <span class="tok-o">||</span> <span class="tok-nx">elem</span><span class="tok-p">.</span><span class="tok-nx">value</span><span class="tok-p">;</span>
+<span class="tok-nx">RUNTIME</span><span class="tok-p">(</span><span class="tok-s1">&#39;copy&#39;</span><span class="tok-p">,</span> <span class="tok-p">{</span><span class="tok-nx">text</span><span class="tok-o">:</span> <span class="tok-nx">text</span><span class="tok-p">});</span>
+<span class="tok-p">}}</span>
+<span class="tok-nx">map</span> <span class="tok-nx">yd</span> <span class="tok-nx">createScriptHint</span><span class="tok-p">(</span><span class="tok-nx">copyDescription</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_focus_on_element">focus on element</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">focusElem</span><span class="tok-p">(</span><span class="tok-nx">elem</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
+<span class="tok-nx">elem</span><span class="tok-p">.</span><span class="tok-nx">focus</span><span class="tok-p">();</span>
+<span class="tok-p">}}</span>
+<span class="tok-nx">map</span> <span class="tok-nx">ys</span> <span class="tok-nx">createScriptHint</span><span class="tok-p">(</span><span class="tok-nx">focusElem</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_open_link_in_incognito">open link in incognito</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">openLinkIncognito</span><span class="tok-p">(</span><span class="tok-nx">link</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
+<span class="tok-kd">var</span> <span class="tok-nx">value</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;call :tabopen &quot;</span> <span class="tok-o">+</span> <span class="tok-nx">link</span><span class="tok-p">.</span><span class="tok-nx">href</span> <span class="tok-o">+</span> <span class="tok-s2">&quot; |&lt;CR&gt;&quot;</span>
+<span class="tok-nx">Mappings</span><span class="tok-p">.</span><span class="tok-nx">parseLine</span><span class="tok-p">(</span><span class="tok-nx">value</span><span class="tok-p">);</span>
+<span class="tok-p">}}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reopen_current_tab_in_incognito">reopen current tab in incognito</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">reopenInIncognito</span><span class="tok-p">(</span><span class="tok-nx">link</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
+<span class="tok-kd">var</span> <span class="tok-nx">value</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;call :tabopen &quot;</span> <span class="tok-o">+</span> <span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">href</span> <span class="tok-o">+</span> <span class="tok-s2">&quot; |&lt;CR&gt;&quot;</span>
+<span class="tok-nx">Mappings</span><span class="tok-p">.</span><span class="tok-nx">parseLine</span><span class="tok-p">(</span><span class="tok-nx">value</span><span class="tok-p">);</span>
+<span class="tok-p">}}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_turn_current_youtube_in_fullscreen">turn current youtube in fullscreen</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(bypassing age restriction when not authenticated)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-err">&quot;</span> <span class="tok-nx">youtube</span>
+<span class="tok-nx">youtubeFullscreen</span><span class="tok-p">()</span> <span class="tok-o">-&gt;</span> <span class="tok-p">{{</span>
+        <span class="tok-kd">var</span> <span class="tok-nx">location</span><span class="tok-o">=</span><span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">href</span><span class="tok-p">;</span>
+        <span class="tok-nx">location</span> <span class="tok-o">=</span> <span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">replace</span><span class="tok-p">(</span><span class="tok-s1">&#39;watch&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;watch_popup&#39;</span><span class="tok-p">)</span>
+        <span class="tok-nb">window</span><span class="tok-p">.</span><span class="tok-nx">location</span><span class="tok-p">.</span><span class="tok-nx">href</span><span class="tok-o">=</span><span class="tok-nx">location</span><span class="tok-p">;</span>
+<span class="tok-p">}}</span>
+<span class="tok-nx">map</span> <span class="tok-p">;</span><span class="tok-nx">yt</span> <span class="tok-o">:</span><span class="tok-nx">call</span> <span class="tok-nx">youtubeFullscreen</span><span class="tok-o">&lt;</span><span class="tok-nx">CR</span><span class="tok-o">&gt;</span></code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -719,8 +799,7 @@ asciidoctor -v  -B docs/ *.adoc</code></pre>
 <h2 id="_faq">FAQ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Check issues labeled question
-<a href="https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20label%3Aquestion">questions</a></p>
+<p>Check issues labeled <a href="https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&amp;q=is%3Aissue%20label%3Aquestion">question</a></p>
 </div>
 </div>
 </div>

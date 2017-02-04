@@ -21,9 +21,80 @@ link:index.html[Home]
 . <<FAQ>>
 
 
-// TODO(hbt) NEXT add scripts
 
 == Cool custom scripts
+
+=== reload configuration on demand
+
+[source,javascript]
+----
+reloadcvim() -> {{
+console.log('reloading cvim ' + (new Date()));
+var value = "call :source /home/hassen/.cvimrc<CR>";
+Mappings.parseLine(value);
+window.location.reload(true);
+}}
+----
+
+
+=== copy link description 
+
+[source,javascript]
+----
+copyDescription(elem) -> {{
+var text = elem.innerText || elem.value;
+RUNTIME('copy', {text: text});
+}}
+map yd createScriptHint(copyDescription)
+----
+
+=== focus on element
+
+[source,javascript]
+----
+focusElem(elem) -> {{
+elem.focus();
+}}
+map ys createScriptHint(focusElem)
+----
+
+== open link in incognito 
+
+[source,javascript]
+----
+openLinkIncognito(link) -> {{
+var value = "call :tabopen " + link.href + " |<CR>"
+Mappings.parseLine(value);
+}}
+----
+
+== reopen current tab in incognito
+
+[source,javascript]
+----
+reopenInIncognito(link) -> {{
+var value = "call :tabopen " + window.location.href + " |<CR>"
+Mappings.parseLine(value);
+}}
+----
+
+
+== turn current youtube in fullscreen 
+
+(bypassing age restriction when not authenticated)
+
+
+[source,javascript]
+----
+" youtube
+youtubeFullscreen() -> {{
+        var location=window.location.href;
+        location = location.replace('watch', 'watch_popup')
+        window.location.href=location;
+}}
+map ;yt :call youtubeFullscreen<CR>
+----
+
 
 == General tips
 
@@ -95,7 +166,6 @@ asciidoctor -v  -B docs/ *.adoc
 
 == FAQ
 
-Check issues labeled question
-link:https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&q=is%3Aissue%20label%3Aquestion[questions]
+Check issues labeled link:https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&q=is%3Aissue%20label%3Aquestion[question]
 
 
