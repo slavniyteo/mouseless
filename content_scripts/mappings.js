@@ -63,8 +63,6 @@ Mappings.defaults = [
   ['mr',        'multiReverseImage'],
   ['L',         'goForward'],
   ['D',         'goForward'],
-  ['[d',        'previousDomain'],
-  [']d',        'nextDomain'],
   ['g0',        'firstTab'],
   ['M*',        'addQuickMark'],
   ['A',         'openLastHint'],
