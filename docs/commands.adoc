@@ -4,7 +4,7 @@
 :nofooter:
 link:index.html[Home]
 
-= All commands
+== All commands
 
 link:settings.html[settings list]
 

@@ -5,7 +5,7 @@
 link:index.html[Home]
 
 
-= How to install
+== How to install
 
 
 There are two releases:
