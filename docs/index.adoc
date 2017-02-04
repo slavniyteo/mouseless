@@ -37,8 +37,11 @@ Mouseless is always hungry for contributions and seeking improvements.
 
 There are plenty of ways to link:contribute.html[contribute]
 
+== Thanks
 
-// == Help
+These contributors shared their time and expertise freely. link:thanks.html[Thank you!]
 
-// TODO(hbt) NEXT enable when done
-// link:tips.html[FAQ & Tips]
+== Help
+
+link:tips.html[FAQ & Tips]
+

@@ -4,12 +4,19 @@
 :nofooter:
 link:index.html[Home]
 
-== Contributors
+== Contributors 
 
 
+. @1995eaton 
+.. retired author 
 
-// TODO(hbt) NEXT add list of contributors + thanks
-- 3 so far I think. add them before I lose track.
+. @hbt
+.. fork maintainer
 
-Name, github repo, contributions
+. @akatrevorjay
+.. Fixed peg.js build file/version
+
+. @rosshadden
+.. edit contentEditable divs in external editor
+
 
