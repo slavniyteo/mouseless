@@ -936,10 +936,14 @@ Mappings.insertFunctions = (function() {
       var text = value.substr(0, element.selectionStart);
       var line = 1 + text.replace(/[^\n]/g, "").length;
       var column = 1 + text.replace(/[^]*\n/, "").length;
+      var __ = window._
+      var mid = __.uniqueId('mouseless')
+      $(element).addClass(mid)
       PORT('editWithVim', {
         text: value,
         line: line,
-        column: column
+        column: column,
+        elementId: mid
       });
     },
     forwardChar: modify.bind(null, 'right', 'character'),

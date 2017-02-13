@@ -158,9 +158,13 @@ Hints.dispatchAction = function(link, shift) {
     break;
   case 'edit':
     Mappings.insertFunctions.__setElement__(link);
+    var __ = window._
+    var mid = __.uniqueId('mouseless')
+    $(element).addClass(mid)
     link.focus();
     PORT('editWithVim', {
-      text: link.value || link.textContent
+      text: link.value || link.textContent,
+      elementId: mid
     });
     break;
   case 'unhover':

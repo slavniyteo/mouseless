@@ -1,4 +1,10 @@
-= Mouseless
+:uri-asciidoctor: http://asciidoctor.org
+:icons: font
+:source-highlighter: pygments
+:nofooter:
+link:index.html[Home]
+
+== Mouseless
 
 
 == What is it?

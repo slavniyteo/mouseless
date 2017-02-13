@@ -595,9 +595,11 @@ map x mouselessCommandName
 |===
 |Name|Description
 
-
 | editWithVim     
 | edit with Vim in a terminal (need the [cvim_server.py](https://github.com/1995eaton/chromium-vim/blob/master/cvim_server.py) script running for this to work) 
+
+| createEditHint                  
+|       edit text with external editor                                        
 
 | openUrlExternalEditor
 | open current url in external editor for editing

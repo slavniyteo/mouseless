@@ -1,4 +1,3 @@
-// TODO(hbt) NEXT config and reenable linter. even old code doesnt pass this config
 {
   "env": {
     "browser": true,
