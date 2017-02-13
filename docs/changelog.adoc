@@ -10,6 +10,10 @@ link:index.html[Home]
 // TODO(hbt) NEXT review :changelog and make sure it redirects to this page (html)
 // TODO(hbt) NEXT deprecate pages in favor of docs/
 
+## 1.3.3
+
+ . Fixed undefined settings.mouselesshintcharacters error https://github.com/hbt/mouseless/issues/82
+
 ## 1.3.2
 
  . Fixed contentEditable elements not being editable using external editor https://github.com/hbt/mouseless/issues/75
