@@ -68,7 +68,6 @@ Improving documentation by:
 
 == Pull request guideline
 
-// TODO(hbt) fix eslint
 . create branch and commit work referring to ticket
 . commits should refer to ticket number created in https://github.com/hbt/mouseless/issues 
 . minimal changes in diffs

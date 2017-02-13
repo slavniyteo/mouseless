@@ -1,6 +1,5 @@
 == All settings
 
-// TODO(hbt) NEXT migrate to commands.adoc instead
 
 link:commands.html[commands list]
 

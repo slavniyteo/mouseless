@@ -439,7 +439,7 @@ Command.callCompletionFunction = (function() {
         self.updateCompletions();
       });
       return true;
-    case 'let': // TODO
+    case 'let': 
       return true;
     case 'history':
       if (search.trim() === '') {

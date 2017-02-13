@@ -1,8 +1,5 @@
 = Mouseless
 
-// TODO(hbt) NEXT add layout to click on homepage and come back here from any page
-// TODO(hbt) NEXT add analytics
-// TODO(hbt) NEXT host on mouseless.hbtlabs.com + github pages
 
 == What is it?
 

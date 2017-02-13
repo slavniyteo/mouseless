@@ -104,9 +104,6 @@ Experiments:
 https://github.com/hbt/mouseless/commit/d016e6e1d968fc09e22ab657dddbb931833207ef
 
 
-// TODO(hbt) NEXT add changes from readme here
-// TODO(hbt) NEXT mention experimental
-
 == cVim Changelog prior to forking
 
 ## 1.2.86
