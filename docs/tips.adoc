@@ -150,8 +150,9 @@ asciidoctor -v  -B docs/ *.adoc
 .. git merge fix/editing-divs
 .. rebase + amend if needed - verify ticket number + code quality
 . add to commands.adoc 
-. update changelog.adoc
+. update changelog.adoc 
 . add user to thanks.adoc
+. render all adoc files
 
 
 === How to do a release?
@@ -159,6 +160,7 @@ asciidoctor -v  -B docs/ *.adoc
 . merge dev into master
 . edit manifest.json
 . update changelog.adoc
+. render all adoc files
 . tag and release
 .. git tag -a 1.3.0
 .. git push origin 1.3.0
