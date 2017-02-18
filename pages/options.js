@@ -33,7 +33,6 @@ Settings.saveSettings = function() {
       console.error('Line %d: %s', res.error.lineno, res.error.message);
       alert('parse error on line ' + res.error.lineno +
             ' of config (see console for more info)');
-      // TODO:
       Status.setMessage('Error in cVimrc (line ' + res.error.lineno + ')', 2, 'error');
     } else {
       Object.merge(this.settings, res.value);

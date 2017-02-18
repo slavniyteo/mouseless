@@ -137,7 +137,8 @@ port.onMessage.addListener(function(response) {
     }
     break;
   case 'editWithVim':
-    var lastInputElement = Mappings.insertFunctions.__getElement__();
+    //var lastInputElement = Mappings.insertFunctions.__getElement__();
+    var lastInputElement = document.getElementsByClassName(response.elementId)[0]
     if (lastInputElement) {
       lastInputElement[lastInputElement.value !== void 0 ? 'value' : 'innerHTML'] =
         response.text.replace(/\n$/, ''); // remove trailing line left by vim

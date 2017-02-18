@@ -97,6 +97,7 @@
       "matches": ["<all_urls>", "chrome://*/*"],
       "js": [
         "vendor/jquery.js",
+        "vendor/underscore-min.js",
         "vendor/linkify.min.js",
         "vendor/linkify-jquery.min.js",
         "vendor/linkify-element.min.js",

@@ -158,9 +158,13 @@ Hints.dispatchAction = function(link, shift) {
     break;
   case 'edit':
     Mappings.insertFunctions.__setElement__(link);
+    var __ = window._
+    var mid = __.uniqueId('mouseless')
+    $(element).addClass(mid)
     link.focus();
     PORT('editWithVim', {
-      text: link.value || link.textContent
+      text: link.value || link.textContent,
+      elementId: mid
     });
     break;
   case 'unhover':
@@ -188,8 +192,11 @@ Hints.dispatchAction = function(link, shift) {
       }.bind(this), 0);
       break;
     }
+    if (node === 'select') {
+      link.focus();
+      break;
+    }
     if (node === 'input' ||
-        node === 'select' ||
         /^(checkbox|menu)$/.test(link.getAttribute('role'))) {
       link.focus()
       window.setTimeout(function() { DOM.mouseEvent('click', link); }, 0);

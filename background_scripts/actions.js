@@ -972,7 +972,7 @@ Actions = (function() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var method = o.request.callback || 'editWithVim'
-        o.callback({type: method, text: xhr.responseText});
+        o.callback({type: method, text: xhr.responseText, elementId: o.request.elementId});
       }
     };
     xhr.send(JSON.stringify({

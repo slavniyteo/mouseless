@@ -16,6 +16,10 @@ from json import loads
 import subprocess
 from tempfile import mkstemp
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from SocketServer import ThreadingMixIn
+from  BaseHTTPServer import HTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+from time import sleep
 
 PORT = 8001
 
@@ -32,9 +36,12 @@ def edit_file(command, content, line, column):
         text = f.read()
     #os.unlink(fn)
     return text
+    
+class ThreadingServer(ThreadingMixIn, HTTPServer):
+    pass
 
 
-class CvimServer(BaseHTTPRequestHandler):
+class CvimServer(SimpleHTTPRequestHandler):
     def do_POST(self):
         length = int(self.headers['Content-Length'])
         content = loads(self.rfile.read(length).decode('utf8'))
@@ -46,11 +53,11 @@ class CvimServer(BaseHTTPRequestHandler):
 
 
 def init_server(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
-    server_address = ('127.0.0.1', PORT)
-    httpd = server_class(server_address, CvimServer)
-    httpd.serve_forever()
+    ThreadingServer(('127.0.0.1', PORT), CvimServer).serve_forever()
 
 try:
     init_server()
 except KeyboardInterrupt:
-    pass
+    exit
+
+

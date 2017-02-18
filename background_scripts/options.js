@@ -49,6 +49,7 @@ var defaultSettings = {
   newtaburl: 'https://www.google.com',
   defaultengine: 'google',
   hintcharacters: 'asdfgqwertzxcvb',
+  mouselesshintcharacters: 'dsafrewq,tgcx',
   homedirectory: '',
   langmap: '',
   completionengines: ['google', 'duckduckgo', 'wikipedia', 'amazon'],
