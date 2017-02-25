@@ -6,6 +6,9 @@ link:index.html[Home]
 
 == Mouseless Changelog
 
+## 1.3.4
+
+  . Merged  fix 819232726ea22e90c317f9e4487f12eff19f172d #516 pegjs single line comment issue
 
 
 ## 1.3.3
