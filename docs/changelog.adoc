@@ -16,7 +16,7 @@ link:index.html[Home]
   .. Removing reverse image change
   .. Reverted pull #502
   .. added view source command with chrome extension keyboard shortcut
-  .. 
+  .. improvements to parser - multi-line arrays and multi-dimensional, variable referencing
 
 
 ## 1.3.3
