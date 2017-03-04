@@ -12,6 +12,11 @@ link:index.html[Home]
   .. fix 819232726ea22e90c317f9e4487f12eff19f172d #516 pegjs single line comment issue
   .. Changed buffers priority 
   .. Fixed CSS Options 
+  .. A lot of refactoring in 7031222822f3e5389f8ad594c54cf9e8e3f18b33 and 43e5a6bbf79468f56d68274e84f18adfa2f3c45d
+  .. Removing reverse image change
+  .. Reverted pull #502
+  .. added view source command with chrome extension keyboard shortcut
+  .. 
 
 
 ## 1.3.3
