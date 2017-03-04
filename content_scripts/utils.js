@@ -1,5 +1,14 @@
 LOG = console.log.bind(console);
 
+var definePrototype = function(obj, name, fn) {
+  Object.defineProperty(obj.prototype, name, {
+    enumerable: false,
+    configurable: false,
+    writeable: false,
+    value: fn
+  });
+};
+
 var Utils = {
   trueModulo: function(a, b) {
     return ((a % b) + b) % b;
