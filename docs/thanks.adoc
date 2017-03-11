@@ -8,7 +8,7 @@ link:index.html[Home]
 
 
 . @1995eaton 
-.. retired author 
+.. author
 
 . @hbt
 .. fork maintainer
@@ -22,3 +22,6 @@ link:index.html[Home]
 
 . @dhda
 .. added `previousDomain` `nextDomain` commands
+
+. @tarao
+.. added `beginningOfLineOrSelectAll`

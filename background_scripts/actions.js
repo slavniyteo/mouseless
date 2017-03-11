@@ -190,7 +190,7 @@ Actions = (function() {
   _.openLinksWindow = function(o) {
     var urls = o.request.urls;
     if (!o.request.noconvert) {
-      urls = urls.map(function(e) { return e.convertLink(); });
+      urls = urls.map(function(e) { return Utils.toSearchURL(e); });
     }
     for (var i = 0; i < o.request.repeats; i++) {
       chrome.windows.create({
@@ -612,17 +612,17 @@ Actions = (function() {
       return;
     }
     paste = paste.split('\n').filter(function(e) { return e.trim(); });
-    if (paste.length && paste[0].convertLink(o.request.engineUrl) !== paste[0]) {
+    if (paste.length && Utils.toSearchURL(paste[0], o.request.engineUrl) !== paste[0]) {
       paste = paste.join('\n');
       openTab({
-        url: paste.convertLink(o.request.engineUrl),
+        url: Utils.toSearchURL(paste, o.request.engineUrl),
         index: getTabOrderIndex(o.sender.tab)
       });
     } else {
       for (var i = 0; i < o.request.repeats; ++i) {
         for (var j = 0, l = paste.length; j < l; ++j) {
           openTab({
-            url: paste[j].convertLink(o.request.engineUrl),
+            url: Utils.toSearchURL(paste[j], o.request.engineUrl),
             index: getTabOrderIndex(o.sender.tab)
           });
         }
@@ -637,7 +637,7 @@ Actions = (function() {
     }
     paste = paste.split('\n')[0];
     chrome.tabs.update({
-      url: paste.convertLink(o.request.engineUrl)
+      url: Utils.toSearchURL(paste, o.request.engineUrl)
     });
   };
 
@@ -854,21 +854,6 @@ Actions = (function() {
     });
   };
 
-  _.urlToBase64 = function(o) {
-    var img = new Image();
-    img.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.width = this.width;
-      canvas.height = this.height;
-      var context = canvas.getContext('2d');
-      context.drawImage(this, 0, 0);
-      var data = canvas.toDataURL('image/png');
-      o.callback(data);
-    };
-    img.src = o.request.url;
-    return true;
-  };
-
   _.getBookmarks = function(o) {
     Bookmarks.getMarks(function(marks) {
       o.callback({type: 'bookmarks', bookmarks: marks});
@@ -893,15 +878,26 @@ Actions = (function() {
 
   _.getBuffers = function(o) {
     chrome.tabs.query({}, function(tabs) {
+      var otherWindows = [];
+      tabs = tabs.filter(function(e) {
+        if (e.windowId === o.sender.tab.windowId)
+          return true;
+        otherWindows.push(e);
+        return false;
+      });
+      tabs = tabs.concat(otherWindows);
+
+      var buffers = tabs.map(function(e, i) {
+        var title = e.title;
+        if (settings.showtabindices) {
+          title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
+        }
+        return [(i + 1) + ': ' + title, e.url];
+      });
+
       o.callback({
         type: 'buffers',
-        buffers: tabs.map(function(e, i) {
-          var title = e.title;
-          if (settings.showtabindices) {
-            title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
-          }
-          return [(i + 1) + ': ' + title, e.url, e.id];
-        })
+        buffers: buffers
       });
     });
   };
@@ -1271,7 +1267,7 @@ Actions = (function() {
     o.request.repeats = Math.max(~~o.request.repeats, 1);
 
     if (o.request.url && !o.request.noconvert) {
-      o.url = o.request.url.convertLink();
+      o.url = Utils.toSearchURL(o.request.url);
     } else if (o.request.url) {
       o.url = o.request.url;
     } else {

@@ -989,6 +989,23 @@ Mappings.insertFunctions = (function() {
     beginningOfLine: function() {
       modify('left', 'lineboundary');
     },
+    beginningOfLineOrSelectAll: function() {
+      var selection = function() {
+        var s = [ element.selectionStart, element.selectionEnd ];
+        return {
+          start: Math.min.apply(null, s),
+          end: Math.max.apply(null, s)
+        };
+      };
+      var s = selection();
+      this.beginningOfLine();
+      if (s.start === selection().start) {
+        this.selectAll();
+      }
+      if (s.end === selection().end) {
+        this.beginningOfLine();
+      }
+    },
     endOfLine: function() {
       modify('right', 'lineboundary');
     },
@@ -1059,7 +1076,7 @@ Mappings.splitMapping = function(string) {
 };
 
 Mappings.parseLine = function(line) {
-  var map = line.split(/ +/).compress();
+  var map = Utils.compressArray(line.split(/ +/));
   if (map.length) {
     switch (map[0]) {
     case 'unmapAll':
@@ -1098,7 +1115,7 @@ Mappings.parseLine = function(line) {
       return;
     case 'call':
       waitForLoad(function() {
-        map = map.slice(1).join(' ').trimAround();
+        map = Utils.trim(map.slice(1).join(' '));
         if (map[0] === ':') {
           Command.execute(map.slice(1).replace(/<CR>/i, ''), 1);
         } else if (Mappings.actions[map]) {
@@ -1125,8 +1142,8 @@ Mappings.parseCustom = function(config) {
     insertMappings.insert(Mappings.splitMapping(e[0]), e[1]);
   });
   var ignore = false; // ignore 'site DOMAIN {...}' blocks
-  config = config.split('\n').compress().forEach(function(e) {
-    var kw = e.split(' ').compress();
+  Utils.split(config, '\n').forEach(function(e) {
+    var kw = Utils.split(e, ' ');
     if (kw.length === 3 && kw[0] === 'site' && kw[2] === '{') {
       ignore = true;
     }

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "cVim",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "An extension adding Vim-like bindings to Google Chrome",
   "update_url": "https://clients2.google.com/service/update2/crx",
   "icons": {
@@ -10,38 +10,41 @@
     "16":  "icons/16.png"
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';",
-   "commands": {
-      "nextTab": {
-         "description": "Go to the next tab"
-      },
-      "previousTab": {
-         "description": "Go to the previous tab"
-      },
-      "togglecVim": {
-         "description": "Toggle the enabled state of cVim"
-      },
-      "toggleBlacklisted": {
-        "description": "Toggle the blacklist for the domain in the current tab"
-      },
-      "nextCompletionResult": {
-        "description": "Let Chrome use <C-n> for cncpcompletion setting (see Help file)"
-      },
-      "deleteBackWord": {
-        "description": "Let Chrome use <C-w> for the deleteBackWord insert mapping"
-      },
-      "closeTab": {
-         "description": "Close the current tab"
-      },
-      "reloadTab": {
-        "description": "Reload the current tab"
-      },
-      "newTab": {
-        "description": "Open a new tab to a blank page"
-      },
-      "restartcVim": {
-        "description": "Restart the background scripts (pages will need a refresh)"
-      }
-   },
+  "commands": {
+    "nextTab": {
+      "description": "Go to the next tab"
+    },
+    "previousTab": {
+      "description": "Go to the previous tab"
+    },
+    "togglecVim": {
+      "description": "Toggle the enabled state of cVim"
+    },
+    "toggleBlacklisted": {
+      "description": "Toggle the blacklist for the domain in the current tab"
+    },
+    "nextCompletionResult": {
+      "description": "Let Chrome use <C-n> for cncpcompletion setting (see Help file)"
+    },
+    "deleteBackWord": {
+      "description": "Let Chrome use <C-w> for the deleteBackWord insert mapping"
+    },
+    "closeTab": {
+      "description": "Close the current tab"
+    },
+    "reloadTab": {
+      "description": "Reload the current tab"
+    },
+    "newTab": {
+      "description": "Open a new tab to a blank page"
+    },
+    "restartcVim": {
+      "description": "Restart the background scripts (pages will need a refresh)"
+    },
+    "viewSource": {
+      "description": "View the page source"
+    }
+  },
   "browser_action": {
     "default_icon": {
       "19": "icons/disabled.png",

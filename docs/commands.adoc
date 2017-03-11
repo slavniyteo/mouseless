@@ -504,6 +504,9 @@ map x mouselessCommandName
 | beginningOfLine                 
 |       move cursor to the beginning of the line                              
 
+| beginningOfLineOrSelectAll
+|       move cursor to the beginning of the line or select all if already at beginning
+
 
 | endOfLine                       
 |       move cursor to the end of the line                                    

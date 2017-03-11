@@ -561,6 +561,82 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_cool_custom_scripts">Cool custom scripts</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="_customize_mapping_per_domain">customize mapping per domain</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-nx">site</span> <span class="tok-s1">&#39;*://mail.google.com/*&#39;</span> <span class="tok-p">{</span>
+  <span class="tok-nx">set</span> <span class="tok-nx">ignorenumerickeys</span>
+  <span class="tok-nx">unmap</span> <span class="tok-sb">`</span>
+<span class="tok-sb">}</span>
+<span class="tok-sb">site &#39;*://*.reddit.com/*&#39; {</span>
+<span class="tok-sb">      &quot; use reddit RES extension instead</span>
+<span class="tok-sb">      unmap j</span>
+<span class="tok-sb">      unmap k</span>
+<span class="tok-sb">      unmap J</span>
+<span class="tok-sb">      unmap K</span>
+<span class="tok-sb">      unmap s</span>
+<span class="tok-sb">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custom_hints_detection_per_domain">custom hints detection per domain</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span class="tok-s2">&quot; site filters</span>
+<span class="tok-s2">siteFilters() -&gt; {{</span>
+<span class="tok-s2"> var filters = {</span>
+<span class="tok-s2">  &#39;*://*.reddit.com/*&#39;: {</span>
+<span class="tok-s2">    reject: [</span>
+<span class="tok-s2">      &#39;a:not([href])&#39;,</span>
+<span class="tok-s2">      &#39;*[onclick^=click_thing]&#39;,</span>
+<span class="tok-s2">    ],</span>
+<span class="tok-s2">    accept: [</span>
+<span class="tok-s2">      &#39;.grippy&#39;</span>
+<span class="tok-s2">    ],</span>
+<span class="tok-s2">  },</span>
+<span class="tok-s2">  &#39;*://*.google.*/*&#39;: {</span>
+<span class="tok-s2">    reject: [</span>
+<span class="tok-s2">      &#39;li[class$=&quot;</span><span class="tok-nx">_dropdownitem</span><span class="tok-s2">&quot;]&#39;,</span>
+<span class="tok-s2">      &#39;div[class$=&quot;</span><span class="tok-nx">_dropdown</span><span class="tok-s2">&quot;]&#39;,</span>
+<span class="tok-s2">      &#39;div[aria-label=&quot;</span><span class="tok-nx">Apps</span><span class="tok-s2">&quot;]&#39;,</span>
+<span class="tok-s2">      &#39;.hdtbna.notl&#39;,</span>
+<span class="tok-s2">      &#39;.irc_rit&#39;,</span>
+<span class="tok-s2">      &#39;a[href^=&quot;</span><span class="tok-nx">imgres</span><span class="tok-s2">&quot;]&#39;,</span>
+<span class="tok-s2">      &#39;div[id=hdtbMenus]&#39;,</span>
+<span class="tok-s2">      &#39;div[aria-label=&quot;</span><span class="tok-nx">Account</span> <span class="tok-nx">Information</span><span class="tok-s2">&quot;]&#39;,</span>
+<span class="tok-s2">      &#39;img[jsaction^=&quot;</span><span class="tok-nx">load</span><span class="tok-o">:</span><span class="tok-err">&quot;</span><span class="tok-p">]</span><span class="tok-s1">&#39;</span>
+<span class="tok-s1">    ],</span>
+<span class="tok-s1">  },</span>
+<span class="tok-s1">  &#39;</span><span class="tok-o">*:</span><span class="tok-c1">//github.com/*&#39;: {</span>
+    <span class="tok-nx">reject</span><span class="tok-o">:</span> <span class="tok-p">[</span>
+      <span class="tok-s1">&#39;.select-menu-modal-holder.js-menu-content&#39;</span>
+    <span class="tok-p">],</span>
+    <span class="tok-nx">accept</span><span class="tok-o">:</span> <span class="tok-p">[</span>
+      <span class="tok-s1">&#39;.js-menu-close&#39;</span><span class="tok-p">,</span>
+    <span class="tok-p">],</span>
+  <span class="tok-p">},</span>
+  <span class="tok-s1">&#39;*://twitter.com/*&#39;</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+    <span class="tok-nx">accept</span><span class="tok-o">:</span> <span class="tok-p">[</span>
+      <span class="tok-s1">&#39;.new-tweets-bar.js-new-tweets-bar&#39;</span>
+    <span class="tok-p">],</span>
+  <span class="tok-p">},</span>
+  <span class="tok-s1">&#39;*://imgur.com/*&#39;</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+    <span class="tok-nx">accept</span><span class="tok-o">:</span> <span class="tok-p">[</span>
+      <span class="tok-s1">&#39;.thumb-title&#39;</span><span class="tok-p">,</span>
+      <span class="tok-s1">&#39;.carousel-button&#39;</span>
+    <span class="tok-p">],</span>
+  <span class="tok-p">},</span>
+  <span class="tok-s1">&#39;*://www.pogdesign.co.uk/*&#39;</span><span class="tok-o">:</span> <span class="tok-p">{</span>
+    <span class="tok-nx">accept</span><span class="tok-o">:</span> <span class="tok-p">[</span><span class="tok-s1">&#39;.largemenutext&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;.dropdown&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;.icon-heart selectison&#39;</span><span class="tok-p">]</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">};</span>
+  <span class="tok-k">return</span> <span class="tok-nx">filters</span><span class="tok-p">;</span>
+<span class="tok-p">}}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_reload_configuration_on_demand">reload configuration on demand</h3>
 <div class="listingblock">
 <div class="content">
@@ -761,6 +837,9 @@ asciidoctor -v  -B docs/ *.adoc</code></pre>
 <li>
 <p>add user to thanks.adoc</p>
 </li>
+<li>
+<p>render all adoc files</p>
+</li>
 </ol>
 </div>
 </div>
@@ -776,6 +855,9 @@ asciidoctor -v  -B docs/ *.adoc</code></pre>
 </li>
 <li>
 <p>update changelog.adoc</p>
+</li>
+<li>
+<p>render all adoc files</p>
 </li>
 <li>
 <p>tag and release</p>

@@ -24,6 +24,82 @@ link:index.html[Home]
 
 == Cool custom scripts
 
+
+=== customize mapping per domain
+
+[source,javascript]
+----
+site '*://mail.google.com/*' {
+  set ignorenumerickeys 
+  unmap `
+}
+site '*://*.reddit.com/*' {
+      " use reddit RES extension instead
+      unmap j
+      unmap k
+      unmap J
+      unmap K
+      unmap s
+}
+----
+
+=== custom hints detection per domain
+
+[source,javascript]
+----
+" site filters
+siteFilters() -> {{
+ var filters = {
+  '*://*.reddit.com/*': {
+    reject: [
+      'a:not([href])',
+      '*[onclick^=click_thing]',
+    ],
+    accept: [
+      '.grippy'
+    ],
+  },
+  '*://*.google.*/*': {
+    reject: [
+      'li[class$="_dropdownitem"]',
+      'div[class$="_dropdown"]',
+      'div[aria-label="Apps"]',
+      '.hdtbna.notl',
+      '.irc_rit',
+      'a[href^="imgres"]',
+      'div[id=hdtbMenus]',
+      'div[aria-label="Account Information"]',
+      'img[jsaction^="load:"]'
+    ],
+  },
+  '*://github.com/*': {
+    reject: [
+      '.select-menu-modal-holder.js-menu-content'
+    ],
+    accept: [
+      '.js-menu-close',
+    ],
+  },
+  '*://twitter.com/*': {
+    accept: [
+      '.new-tweets-bar.js-new-tweets-bar'
+    ],
+  },
+  '*://imgur.com/*': {
+    accept: [
+      '.thumb-title',
+      '.carousel-button'
+    ],
+  },
+  '*://www.pogdesign.co.uk/*': { 
+    accept: ['.largemenutext', '.dropdown', '.icon-heart selectison']
+  }
+};
+  return filters;
+}}
+----
+
+
 === reload configuration on demand
 
 [source,javascript]
@@ -150,8 +226,9 @@ asciidoctor -v  -B docs/ *.adoc
 .. git merge fix/editing-divs
 .. rebase + amend if needed - verify ticket number + code quality
 . add to commands.adoc 
-. update changelog.adoc
+. update changelog.adoc 
 . add user to thanks.adoc
+. render all adoc files
 
 
 === How to do a release?
@@ -159,6 +236,7 @@ asciidoctor -v  -B docs/ *.adoc
 . merge dev into master
 . edit manifest.json
 . update changelog.adoc
+. render all adoc files
 . tag and release
 .. git tag -a 1.3.0
 .. git push origin 1.3.0
