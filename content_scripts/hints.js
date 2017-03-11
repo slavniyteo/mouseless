@@ -468,9 +468,6 @@ Hints.createHintFilter = function(url) {
   {
     // Note(hbt) optimize by caching -- same as this.siteFilters
     var filters = eval(settings.FUNCTIONS['siteFilters'])()
-    //Object.keys(filters).forEach(function (key) {
-    //  filters[key] = new HintFilter(filters[key][0], filters[key][1]);
-    //});
     siteFilters = filters;
   }
   
