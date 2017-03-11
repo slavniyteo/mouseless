@@ -22,3 +22,6 @@ link:index.html[Home]
 
 . @dhda
 .. added `previousDomain` `nextDomain` commands
+
+. @tarao
+.. added `beginningOfLineOrSelectAll`
