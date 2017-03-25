@@ -10,7 +10,7 @@ link:index.html[Home]
 ## 1.4.1
 
   . Merged changes
-  .. workaround for Chrome collapseToEnd() bug
+  .. workaround for Chrome collapseToEnd() bug #527 - command bar focus
 
   
 
