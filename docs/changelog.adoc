@@ -6,6 +6,14 @@ link:index.html[Home]
 
 == Mouseless Changelog
 
+
+## 1.4.1
+
+  . Merged changes
+  .. workaround for Chrome collapseToEnd() bug
+
+  
+
 ## 1.4.0
 
   . Merged changes
