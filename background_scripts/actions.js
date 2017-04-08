@@ -878,6 +878,23 @@ Actions = (function() {
 
   _.getBuffers = function(o) {
     chrome.tabs.query({}, function(tabs) {
+      var otherWindows = [];
+      tabs = tabs.filter(function(e) {
+        if (e.windowId === o.sender.tab.windowId)
+          return true;
+        otherWindows.push(e);
+        return false;
+      });
+      tabs = tabs.concat(otherWindows);
+
+      var buffers = tabs.map(function(e, i) {
+        var title = e.title;
+        if (settings.showtabindices) {
+          title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
+        }
+        return [(i + 1) + ': ' + title, e.url, e.id];
+      });
+
       o.callback({
         type: 'buffers',
         buffers: tabs.map(function(e, i) {

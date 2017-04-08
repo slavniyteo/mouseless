@@ -137,6 +137,12 @@ https://github.com/hbt/mouseless/commit/d016e6e1d968fc09e22ab657dddbb931833207ef
 
 == cVim Changelog prior to forking
 
+## 1.2.87
+ * Fix issue with `:buffer` command
+
+## 1.2.86
+ * Fix input box issues with new versions of Chrome
+
 ## 1.2.86
  * Add `openQuickMarkWindowed` command
 
