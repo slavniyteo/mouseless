@@ -34,6 +34,9 @@ function loadDomainStylesheet(changeInfo, tab) {
 
   if (changeInfo.status === 'loading') {
     var hostname = getHostname(tab.url)
+    // TODO(hbt) ENHANCE issue is with defaultSettings not being applied properly and the settings object not being merged properly from the start. 
+    settings.domainStylesheets = settings.domainStylesheets || {}
+    
     if (!settings.domainStylesheets.hasOwnProperty(hostname)) {
       return;
     }
