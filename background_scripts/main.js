@@ -45,17 +45,27 @@ function loadDomainStylesheet(changeInfo, tab) {
 
     // TODO(hbt) ENHANCE by caching the ajax response 
 
-    $.ajax({
-      url: styleurl
-    }).done(function (data) {
-      chrome.tabs.insertCSS(tab.id, {
-        code: data,
-        runAt: 'document_start',
-        allFrames: true
-      }, function (res) {
-      });
+    try {
+      
+      // workaround error
+      // Unchecked runtime.lastError while running tabs.insertCSS: Cannot access contents of url "data:text/html,chromewebdata". Extension manifest must request permission to access this host.
+      // caused by chrome error pages like network out of reach or the site can't be reached -- e.g paste this in url "http://%20https//www.npmjs.com/package/fs-finder"
 
-    });
+      $.ajax({
+        url: styleurl
+      }).done(function (data) {
+        chrome.tabs.insertCSS(tab.id, {
+          code: data,
+          runAt: 'document_start',
+          allFrames: true
+        }, function (res) {
+        });
+
+      });
+    } catch(e) {
+      console.log(e)
+    }
+    
   }
 }
 
