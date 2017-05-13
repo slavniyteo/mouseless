@@ -15,6 +15,7 @@ link:settings.html[settings list]
 . <<Hints>>
 . <<Tabs>>
 . <<Page>>
+. <<URL Manipulation>>
 . <<Search>>
 . <<Clipboard>>
 . <<History>>
@@ -347,7 +348,27 @@ map x mouselessCommandName
 | rootFrame                       
 |       go to the root frame                                                  
 
+| :viewsource!                    
+|       go to the view-source:// page for the current Url                     
 
+| viewSourceExternalEditor
+| same as viewsource but opens in configured external editor
+
+| toggleImageZoom                 
+|       toggle image zoom (same as clicking the image on image-only pages)    
+
+| toggleDomainStylesheets
+| toggle a stylesheet for this domain
+
+| makeLinks
+| turns plain text url into clickable links
+
+
+|===
+
+=== URL Manipulation
+|===
+|Name|Description
 
 | goUpUrl                         
 |       go up one path in the URL                                             
@@ -369,22 +390,13 @@ map x mouselessCommandName
 | decrementURLLastPath
 | decrement the last number in the URL path
 
+| nextMatchPattern                
+|       click the "next" link on the page (see nextmatchpattern above)        
 
 
-| :viewsource!                    
-|       go to the view-source:// page for the current Url                     
+| previousMatchPattern            
+|       click the "back" link on the page (see previousmatchpattern above)    
 
-| viewSourceExternalEditor
-| same as viewsource but opens in configured external editor
-
-| toggleImageZoom                 
-|       toggle image zoom (same as clicking the image on image-only pages)    
-
-| toggleDomainStylesheets
-| toggle a stylesheet for this domain
-
-| makeLinks
-| turns plain text url into clickable links
 
 
 |===
@@ -445,13 +457,6 @@ map x mouselessCommandName
 | openLinkSearchBar               
 |       open link search bar (same as pressing `/?`)                          
 
-
-| nextMatchPattern                
-|       click the "next" link on the page (see nextmatchpattern above)        
-
-
-| previousMatchPattern            
-|       click the "back" link on the page (see previousmatchpattern above)    
 
 
 | centerMatchH                    

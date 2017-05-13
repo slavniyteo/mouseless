@@ -523,6 +523,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#_page">Page</a></p>
 </li>
 <li>
+<p><a href="#_url_manipulation">URL Manipulation</a></p>
+</li>
+<li>
 <p><a href="#_search">Search</a></p>
 </li>
 <li>
@@ -949,6 +952,43 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">go to the root frame</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:viewsource!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">go to the view-source:// page for the current Url</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">viewSourceExternalEditor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">same as viewsource but opens in configured external editor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggleImageZoom</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle image zoom (same as clicking the image on image-only pages)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggleDomainStylesheets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggle a stylesheet for this domain</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">makeLinks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">turns plain text url into clickable links</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_url_manipulation">URL Manipulation</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">goUpUrl</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">go up one path in the URL</p></td>
 </tr>
@@ -973,24 +1013,12 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">decrement the last number in the URL path</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:viewsource!</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">go to the view-source:// page for the current Url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nextMatchPattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">click the "next" link on the page (see nextmatchpattern above)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">viewSourceExternalEditor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">same as viewsource but opens in configured external editor</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toggleImageZoom</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toggle image zoom (same as clicking the image on image-only pages)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toggleDomainStylesheets</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toggle a stylesheet for this domain</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">makeLinks</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">turns plain text url into clickable links</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">previousMatchPattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">click the "back" link on the page (see previousmatchpattern above)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1073,14 +1101,6 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">openLinkSearchBar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">open link search bar (same as pressing <code>/?</code>)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">nextMatchPattern</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">click the "next" link on the page (see nextmatchpattern above)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">previousMatchPattern</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">click the "back" link on the page (see previousmatchpattern above)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">centerMatchH</p></td>

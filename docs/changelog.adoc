@@ -9,6 +9,9 @@ link:index.html[Home]
 
 ## 1.4.3
   . Fixed #529 buffers search 
+  . Fixed #115 #114 errors when creating new tab
+  . Fixed #108 pasting urls starting by a space now gets trimmed
+  . Fixed documentation commands.adoc search commands
 
 ## 1.4.2
   . Fixed #107 regression from 0e249e0b1b96f43ee06803bc9c23e01114374990
