@@ -17,6 +17,12 @@ link:commands.html[commands list]
 | turns on commands flagged as experimental. View link:changelog.html[changelog]
 | false
 
+
+| handlebothcwevents
+| boolean
+| turns on support for C-w to both close the tab AND delete the backword -- https://github.com/hbt/mouseless/issues/117
+| false
+
 | ignorenumerickeys
 | boolean
 | counter/repeats are ignored. e.g 3j will only execute once
