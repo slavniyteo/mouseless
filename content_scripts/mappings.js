@@ -303,6 +303,21 @@ Mappings.actions = {
       }
     })
   },
+
+
+  toggleIncognitoTab: function () {
+    RUNTIME('toggleIncognitoTab', {
+      msg: {
+        allWindows: true
+      }
+    })
+  },
+
+
+  _toggleIncognitoWindow: function () {
+  },
+
+
   closeTab: function(repeats) {
     RUNTIME('closeTab', {repeats: repeats});
   },

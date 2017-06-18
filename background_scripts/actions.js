@@ -319,6 +319,33 @@ Actions = (function() {
       }
     }
   },
+
+
+  _.toggleIncognitoTab = function(o) {
+    var tab = o.sender.tab
+    
+    if(tab.incognito) {
+      chrome.windows.create({
+        url: tab.url,
+        incognito: false,
+        state: 'maximized'
+      }, function(window) {
+      })
+    } else {
+       chrome.windows.create({
+        url: tab.url,
+        incognito: true,
+        state: 'maximized'
+      }, function(window) {
+      })     
+    }
+    
+    
+  }
+
+
+  _.toggleIncognitoWindow = function(o) {
+  }
     
   _.unpinTabs = function(o) {
     var _ = window._
