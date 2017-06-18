@@ -306,15 +306,12 @@ Mappings.actions = {
 
 
   toggleIncognitoTab: function () {
-    RUNTIME('toggleIncognitoTab', {
-      msg: {
-        allWindows: true
-      }
-    })
+    RUNTIME('toggleIncognitoTab')
   },
 
 
-  _toggleIncognitoWindow: function () {
+  toggleIncognitoWindow: function () {
+    RUNTIME('toggleIncognitoWindow')
   },
 
 

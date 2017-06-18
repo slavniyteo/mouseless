@@ -291,7 +291,11 @@ map x mouselessCommandName
 |       switch to tab &lt;N&gt;                                               
 
 | toggleIncognitoTab
-| reopens tab url in incognito or normal. preserves previous tab.
+| reopens tab url in incognito or normal. preserves current tab.
+
+
+| toggleIncognitoWindow
+| reopens all tabs in current window in incognito or normal mode. preservers current window.
 
 |===
 

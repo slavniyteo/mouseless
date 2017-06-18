@@ -323,28 +323,38 @@ Actions = (function() {
 
   _.toggleIncognitoTab = function(o) {
     var tab = o.sender.tab
-    
-    if(tab.incognito) {
+
+    if (tab.incognito) {
       chrome.windows.create({
         url: tab.url,
         incognito: false,
         state: 'maximized'
-      }, function(window) {
+      }, function (window) {
       })
     } else {
-       chrome.windows.create({
+      chrome.windows.create({
         url: tab.url,
         incognito: true,
         state: 'maximized'
-      }, function(window) {
-      })     
+      }, function (window) {
+      })
     }
-    
-    
   }
 
 
   _.toggleIncognitoWindow = function(o) {
+    var _ = window._
+
+    chrome.windows.getCurrent({populate: true}, function (window) {
+      var urls = _.map(window.tabs, function (tab) {
+        return tab.url
+      })
+      chrome.windows.create({
+        url: urls,
+        incognito: !window.incognito,
+        state: window.state
+      })
+    })
   }
     
   _.unpinTabs = function(o) {
