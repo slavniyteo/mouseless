@@ -92,7 +92,8 @@
       "background_scripts/popup.js",
       "background_scripts/update.js",
       "background_scripts/tab_creation_order.js",
-      "background_scripts/extension-reloader.js"
+      "background_scripts/extension-reloader.js",
+      "background_scripts/frames.js"
     ]
   },
   "content_scripts": [
