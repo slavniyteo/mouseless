@@ -319,6 +319,43 @@ Actions = (function() {
       }
     }
   },
+
+
+  _.toggleIncognitoTab = function(o) {
+    var tab = o.sender.tab
+
+    if (tab.incognito) {
+      chrome.windows.create({
+        url: tab.url,
+        incognito: false,
+        state: 'maximized'
+      }, function (window) {
+      })
+    } else {
+      chrome.windows.create({
+        url: tab.url,
+        incognito: true,
+        state: 'maximized'
+      }, function (window) {
+      })
+    }
+  }
+
+
+  _.toggleIncognitoWindow = function(o) {
+    var _ = window._
+
+    chrome.windows.getCurrent({populate: true}, function (window) {
+      var urls = _.map(window.tabs, function (tab) {
+        return tab.url
+      })
+      chrome.windows.create({
+        url: urls,
+        incognito: !window.incognito,
+        state: window.state
+      })
+    })
+  }
     
   _.unpinTabs = function(o) {
     var _ = window._
@@ -612,17 +649,17 @@ Actions = (function() {
       return;
     }
     paste = paste.split('\n').filter(function(e) { return e.trim(); });
-    if (paste.length && Utils.toSearchURL(paste[0], o.request.engineUrl) !== paste[0]) {
+    if (paste.length && Utils.toSearchURL(paste[0].trim(), o.request.engineUrl) !== paste[0].trim()) {
       paste = paste.join('\n');
       openTab({
-        url: Utils.toSearchURL(paste, o.request.engineUrl),
+        url: Utils.toSearchURL(paste.trim(), o.request.engineUrl),
         index: getTabOrderIndex(o.sender.tab)
       });
     } else {
       for (var i = 0; i < o.request.repeats; ++i) {
         for (var j = 0, l = paste.length; j < l; ++j) {
           openTab({
-            url: Utils.toSearchURL(paste[j], o.request.engineUrl),
+            url: Utils.toSearchURL(paste[j].trim(), o.request.engineUrl),
             index: getTabOrderIndex(o.sender.tab)
           });
         }
@@ -637,7 +674,7 @@ Actions = (function() {
     }
     paste = paste.split('\n')[0];
     chrome.tabs.update({
-      url: Utils.toSearchURL(paste, o.request.engineUrl)
+      url: Utils.toSearchURL(paste.trim(), o.request.engineUrl)
     });
   };
 
@@ -878,6 +915,23 @@ Actions = (function() {
 
   _.getBuffers = function(o) {
     chrome.tabs.query({}, function(tabs) {
+      var otherWindows = [];
+      tabs = tabs.filter(function(e) {
+        if (e.windowId === o.sender.tab.windowId)
+          return true;
+        otherWindows.push(e);
+        return false;
+      });
+      tabs = tabs.concat(otherWindows);
+
+      var buffers = tabs.map(function(e, i) {
+        var title = e.title;
+        if (settings.showtabindices) {
+          title = title.replace(new RegExp('^' + (e.index + 1) + ' '), '');
+        }
+        return [(i + 1) + ': ' + title, e.url, e.id];
+      });
+
       o.callback({
         type: 'buffers',
         buffers: tabs.map(function(e, i) {

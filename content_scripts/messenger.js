@@ -185,6 +185,14 @@ port.onMessage.addListener(function(response) {
 });
 
 chrome.extension.onMessage.addListener(function(request, sender, callback) {
+
+  // Note(hbt) this gets called twice. Since it is included in content_script and cmdline_frame.html
+  // Note(hbt) probably a bug but not fixing until it's a problem
+  // workaround
+//if (window.self === window.top) {
+//}
+
+  
   switch (request.action) {
   case 'hideHud':
     HUD.hide(true);
@@ -224,11 +232,21 @@ chrome.extension.onMessage.addListener(function(request, sender, callback) {
     }
     break;
   case 'deleteBackWord':
-    if (!insertMode && DOM.isEditable(document.activeElement)) {
-      Mappings.insertFunctions.deleteWord();
-      if (Command.commandBarFocused() && Command.type === 'action')
-        Command.complete(Command.input.value);
+    if(window.self === window.top && !DOM.isEditable(document.activeElement) && settings.experimental && settings.handlebothcwevents && document.activeElement.tagName !== 'IFRAME')
+    {
+      RUNTIME('closeTab');
     }
+    else {
+
+      if (!insertMode && DOM.isEditable(document.activeElement)) {
+        Mappings.insertFunctions.deleteWord();
+        if (Command.commandBarFocused() && Command.type === 'action')
+          Command.complete(Command.input.value);
+      }
+    }
+    
+
+    
     break;
   case 'toggleEnabled':
     addListeners();
