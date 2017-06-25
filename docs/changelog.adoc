@@ -7,7 +7,13 @@ link:index.html[Home]
 == Mouseless Changelog
 
 
+## 1.4.4
+
+  . Fixed #547 site mapping being overwritten
+  . Merged refactored code for domain history switching
+
 ## 1.4.3
+
   . Fixed #529 buffers search 
   . Fixed #115 #114 errors when creating new tab
   . Fixed #108 pasting urls starting by a space now gets trimmed
@@ -16,6 +22,7 @@ link:index.html[Home]
   . Fixed #121 toggleIncognitoWindow toggleIncognitoTab commands
 
 ## 1.4.2
+
   . Fixed #107 regression from 0e249e0b1b96f43ee06803bc9c23e01114374990
 
 
@@ -146,7 +153,7 @@ https://github.com/hbt/mouseless/commit/d016e6e1d968fc09e22ab657dddbb931833207ef
 
 == cVim Changelog prior to forking
 
-## 1.2.87
+## 1.2.88
  * Fix issue with `:buffer` command
 
 ## 1.2.86
