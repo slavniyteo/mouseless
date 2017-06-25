@@ -27,7 +27,7 @@ port.onDisconnect.addListener(function() {
   ECHO = function(action, args, callback) {
     args.action = 'echoRequest';
     args.call = action;
-    port.postMessage(args, typeof calback === 'function' ?
+    port.postMessage(args, typeof callback === 'function' ?
         callback : void 0);
   };
 })();
