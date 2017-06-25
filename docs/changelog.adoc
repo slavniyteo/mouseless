@@ -11,6 +11,7 @@ link:index.html[Home]
 
   . Fixed #547 site mapping being overwritten
   . Merged refactored code for domain history switching
+  . Merged frame/port changes 
 
 ## 1.4.3
 
