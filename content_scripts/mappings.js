@@ -63,6 +63,8 @@ Mappings.defaults = [
   ['mr',        'multiReverseImage'],
   ['L',         'goForward'],
   ['D',         'goForward'],
+  ['[d',        'previousDomain'],
+  [']d',        'nextDomain'],
   ['g0',        'firstTab'],
   ['M*',        'addQuickMark'],
   ['A',         'openLastHint'],
@@ -653,38 +655,36 @@ Mappings.actions = {
   goForward: function(repeats) {
     history.go(1 * repeats);
   },
-  previousDomain: function(repeats) {
+
+  _switchDomain: function(direction, repeats) {
     RUNTIME('getHistoryStates', null, function(response) {
-      if (response.links.length == 0 || response.state == 0) {
+      if (response.links.length === 0)
         return;
-      }
 
       var curDomain = new URL(response.links[response.state]).hostname;
-      for (var i = response.state-1; i >= 0; i--) {
-        var targetDomain = new URL(response.links[i]).hostname;
-        if (targetDomain != curDomain) {
-          history.go(-1 * (response.state - i));
-          return;
+
+      var searchSpace = direction > 0 ?
+        response.links.slice(response.state) :
+        response.links.slice(0, response.state + 1).reverse();
+
+      for (var i = 1, domainDistance = 0; i < searchSpace.length; i++) {
+        var targetDomain = new URL(searchSpace[i]).hostname;
+        if (targetDomain !== curDomain) {
+          if (++domainDistance >= repeats) {
+            history.go(i * (direction > 0 ? 1 : -1));
+            break;
+          }
         }
       }
     });
+  },
+  previousDomain: function(repeats) {
+    this._switchDomain(-1, repeats);
   },
   nextDomain: function(repeats) {
-    RUNTIME('getHistoryStates', null, function(response) {
-      if (response.links.length == 0 || response.state == response.links.length - 1) {
-        return;
-      }
-
-      var curDomain = new URL(response.links[response.state]).hostname;
-      for (var i = response.state+1; i < response.links.length; i++) {
-        var targetDomain = new URL(response.links[i]).hostname;
-        if (targetDomain != curDomain) {
-          history.go(1 * (i - response.state));
-          return;
-        }
-      }
-    });
+    this._switchDomain(1, repeats);
   },
+
   goToLastInput: function() {
     if (this.inputElements && this.inputElements[this.inputElementsIndex]) {
       this.inputElements[this.inputElementsIndex].focus();
@@ -1146,27 +1146,24 @@ Mappings.parseLine = function(line) {
   }
 };
 
-Mappings.parseCustom = function(config) {
+Mappings.parseCustom = function(config, updateSiteMappings) {
   this.defaults.forEach(function(e) {
     mappingTrie.insert(Mappings.splitMapping(e[0]), e[1]);
   });
   this.insertDefaults.forEach(function(e) {
     insertMappings.insert(Mappings.splitMapping(e[0]), e[1]);
   });
-  var ignore = false; // ignore 'site DOMAIN {...}' blocks
   Utils.split(config, '\n').forEach(function(e) {
-    var kw = Utils.split(e, ' ');
-    if (kw.length === 3 && kw[0] === 'site' && kw[2] === '{') {
-      ignore = true;
-    }
-    if (ignore && kw.length === 1 && kw[0] === '}') {
-      ignore = false;
-      return;
-    }
-    if (!ignore) {
-      Mappings.parseLine(e);
-    }
+    Mappings.parseLine(e);
   });
+
+  if (updateSiteMappings && settings.sites) {
+    for (var key in settings.sites) {
+      if (matchLocation(document.URL, key)) {
+        Command.addSettingBlock(settings.sites[key]);
+      }
+    }
+  }
 };
 
 Mappings.executeSequence = function(c, r) {

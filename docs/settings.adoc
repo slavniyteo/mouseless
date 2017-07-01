@@ -270,10 +270,6 @@ link:commands.html[commands list]
 | set the default position of the command bar                                               
 | "top"                                                                       
 
-| vimcommand                          
-| string                             
-| set the command to be issued with the `editWithVim` command                               
-| "gvim -f"                                                                   
 
 | langmap                             
 | string                             

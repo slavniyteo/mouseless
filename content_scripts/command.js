@@ -901,12 +901,12 @@ Command.show = function(search, value, complete) {
     });
     return;
   }
-  if (!window.isCommandFrame && (document.hasFocus() ||
-        document.readyState !== 'complete')) {
-    window.wasFocused = true;
-  }
   if (window.isCommandFrame === void 0) {
+    Mappings.handleEscapeKey();
+    Mappings.clearQueue();
+    window.wasFocused = true;
     PORT('showCommandFrame', {
+      frameId: Frames.frameId,
       search: search,
       value: value,
       complete: complete ? value : null
@@ -1164,7 +1164,7 @@ Command.addSettingBlock = function(config) {
   for (var key in config) {
     if (key === 'MAPPINGS') {
       settings.MAPPINGS += '\n' + config[key];
-      Mappings.parseCustom(settings.MAPPINGS);
+      Mappings.parseCustom(settings.MAPPINGS, false);
     } else if (config[key].constructor === Object) {
       settings[key] = Object.extend(settings[key], config[key]);
     } else {
@@ -1175,18 +1175,12 @@ Command.addSettingBlock = function(config) {
 
 
 Command.init = function(enabled) {
-  var key;
   Mappings.defaults = Object.clone(Mappings.defaultsClone);
-  Mappings.parseCustom(settings.MAPPINGS);
+  Mappings.parseCustom(settings.MAPPINGS, true);
   if (enabled) {
     RUNTIME('setIconEnabled');
     this.loaded = true;
     this.updateSettings(settings);
-    for (key in settings.sites) {
-      if (matchLocation(document.URL, key)) {
-        Command.addSettingBlock(settings.sites[key]);
-      }
-    }
     waitForLoad(this.onDOMLoad, this);
     if (settings.autohidecursor) {
       waitForLoad(Cursor.init, Cursor);
