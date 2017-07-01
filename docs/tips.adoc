@@ -231,16 +231,6 @@ asciidoctor -v  -B docs/ *.adoc
 . render all adoc files
 
 
-=== How to do a release?
-
-. merge dev into master
-. edit manifest.json
-. update changelog.adoc
-. render all adoc files
-. tag and release
-.. git tag -a 1.3.0
-.. git push origin 1.3.0
-
 
 == FAQ
 
