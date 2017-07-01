@@ -48,7 +48,6 @@ Actions = (function() {
       var xhr = new XMLHttpRequest();
       xhr.open('POST', 'http://127.0.0.1:' + settings.vimport);
       xhr.send(JSON.stringify({
-        command: settings.vimcommand,
         data: data,
         line: 0,
         column: 0
@@ -978,7 +977,6 @@ Actions = (function() {
       }
     };
     xhr.send(JSON.stringify({
-      command: settings.vimcommand,
       data: '' + (o.request.text || ''),
       line: o.request.line || 0,
       column: o.request.column || 0
