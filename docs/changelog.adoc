@@ -7,6 +7,11 @@ link:index.html[Home]
 == Mouseless Changelog
 
 
+## 1.4.5
+
+ . Added jumplist feature #553 (`previousScrollPosition` is `<C-o>` and `nextScrollPosition` is `<C-i>`).
+ 
+
 ## 1.4.4
 
   . Fixed #547 site mapping being overwritten
