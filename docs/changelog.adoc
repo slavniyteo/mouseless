@@ -9,8 +9,7 @@ link:index.html[Home]
 
 ## 1.4.5
 
- . Added jumplist feature #553 (`previousScrollPosition` is `<C-o>` and `nextScrollPosition` is `<C-i>`).
- 
+  . Added jumplist feature #553 (`previousScrollPosition` is `<C-o>` and `nextScrollPosition` is `<C-i>`).
 
 ## 1.4.4
 
