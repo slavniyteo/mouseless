@@ -234,6 +234,14 @@ Mappings.actions = {
   rootFrame: function() {
     RUNTIME('focusFrame', {isRoot: true});
   },
+
+  loadBookmarksFolder: function(repeats, folderName) {
+    PORT('loadBookmarksFolder', {
+      msg: {
+        folder: folderName
+      }
+    });
+  },
   
   toggleBookmark: function(repeats, folderName) {
     PORT('toggleBookmark', {

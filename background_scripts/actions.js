@@ -1234,6 +1234,56 @@ Actions = (function() {
       })
     })
   }
+
+
+  _.loadBookmarksFolder = function(o) {
+
+    var _ = window._
+
+
+    function deepPluck(obj, k) {
+      var ret = []
+
+      if (_.isArray(obj)) {
+        _.each(obj, function (i) {
+          ret.push(deepPluck(i, k))
+        })
+      }
+      else if (_.isObject(obj) && _.has(obj, k)) {
+        ret.push(obj[k])
+      }
+
+      if (_.isObject(obj)) {
+        _.each(_.keys(obj), function (key) {
+          ret.push(deepPluck(obj[key], k))
+        })
+      }
+
+      return _.flatten(ret)
+
+    }
+
+    chrome.bookmarks.search({
+      title: o.request.msg.folder
+    }, function (marks) {
+      if(marks.length > 1) {
+        alert(`More than one folder by the same name ${o.request.msg.folder}`)
+      }
+
+      chrome.bookmarks.getSubTree(marks[0].id, function (marks) {
+        var ids = _.unique(deepPluck(marks, 'id'))
+        ids = _.without(ids, marks[0].id)
+
+        _.each(ids, function (id) {
+          chrome.bookmarks.removeTree(id)
+        })
+      })
+
+      // TODO(hbt) NEXT add loader using API instead of replacing file + restarting chrome
+    })
+    
+    
+  }
   
   _.toggleBookmark = function(o) {
     // TODO(hbt) ENHANCE refactor to remove vrome msg object
