@@ -10,6 +10,8 @@ link:index.html[Home]
 ## 1.4.5
 
   . Added jumplist feature #553 (`previousScrollPosition` is `<C-o>` and `nextScrollPosition` is `<C-i>`).
+  . Fixed toggling bookmarks saving url as title and added `toggleWindowBookmarks` as a fixup for already saved bookmarks.
+   load all bookmarks in a window and use the command
 
 ## 1.4.4
 

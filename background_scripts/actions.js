@@ -1215,7 +1215,25 @@ Actions = (function() {
     chrome.tabs.reload(tab.id)
 
   }
-  
+
+  _.toggleWindowBookmarks = function(o) {
+    var __ = window._
+    chrome.tabs.get(o.sender.tab.id, function(tab) {
+      chrome.tabs.getAllInWindow(tab.windowId, function (tabs) {
+        __.each(tabs, function(tab){
+
+          var  o2 = {
+          }
+          o2.request = o.request
+          o2.sender =  { tab: tab}
+          o2.callback = o.callback
+          _.toggleBookmark(o2)
+          
+        })
+          
+      })
+    })
+  }
   
   _.toggleBookmark = function(o) {
     // TODO(hbt) ENHANCE refactor to remove vrome msg object
@@ -1258,13 +1276,17 @@ Actions = (function() {
 
         } else {
 
-          chrome.bookmarks.create({
-            parentId: folder.id,
-            url: tabUrl,
-            title: tab.title
-          }, function () {
-            o.callback({type: 'Status.setMessage', text: 'added bookmark to ' + msg.folder})
+          // Note(hbt) for some reason tab information is missing title -- displays url instead
+          chrome.tabs.get(tab.id, function(tab2) {
+            chrome.bookmarks.create({
+              parentId: folder.id,
+              url: tabUrl,
+              title: tab2.title
+            }, function () {
+              o.callback({type: 'Status.setMessage', text: 'added bookmark to ' + msg.folder})
+            })
           })
+          
         }
       })
     }) 

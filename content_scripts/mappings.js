@@ -234,6 +234,7 @@ Mappings.actions = {
   rootFrame: function() {
     RUNTIME('focusFrame', {isRoot: true});
   },
+  
   toggleBookmark: function(repeats, folderName) {
     PORT('toggleBookmark', {
       msg: {
@@ -241,6 +242,15 @@ Mappings.actions = {
       }
     });
   },
+
+  toggleWindowBookmarks: function(repeats, folderName) {
+    PORT('toggleWindowBookmarks', {
+      msg: {
+        folder: folderName
+      }
+    });
+  },
+  
   toggleDomainStylesheets: function(repeats, url) {
     RUNTIME('toggleDomainStylesheets', {url: url, hostname: getHostname(window.location.href)})
   },
