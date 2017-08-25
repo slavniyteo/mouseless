@@ -1278,10 +1278,19 @@ Actions = (function() {
 
           // Note(hbt) for some reason tab information is missing title -- displays url instead
           chrome.tabs.get(tab.id, function(tab2) {
+            var title = tab2.title
+            title = title.trim()
+            if(settings.showtabindices)
+            {
+              // remove first word
+              title = title.substr(title.indexOf(" ") + 1);
+            }
+            
+            
             chrome.bookmarks.create({
               parentId: folder.id,
               url: tabUrl,
-              title: tab2.title
+              title: title
             }, function () {
               o.callback({type: 'Status.setMessage', text: 'added bookmark to ' + msg.folder})
             })
