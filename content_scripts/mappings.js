@@ -235,6 +235,14 @@ Mappings.actions = {
     RUNTIME('focusFrame', {isRoot: true});
   },
 
+  dumpBookmarksFolder: function(repeats, folderName) {
+    PORT('dumpBookmarksFolder', {
+      msg: {
+        folder: folderName
+      }
+    });
+  },
+
   loadBookmarksFolder: function(repeats, folderName) {
     PORT('loadBookmarksFolder', {
       msg: {

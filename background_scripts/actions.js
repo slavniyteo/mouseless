@@ -1235,6 +1235,9 @@ Actions = (function() {
     })
   }
 
+  _.dumpBookmarksFolder = function(o) {
+    let url = 'http://localhost:7077/rest-dump-folder.php'
+  }
 
   _.loadBookmarksFolder = function(o) {
 
@@ -1242,7 +1245,7 @@ Actions = (function() {
 
 
     function deepPluck(obj, k) {
-      var ret = []
+      let ret = []
 
       if (_.isArray(obj)) {
         _.each(obj, function (i) {
@@ -1263,25 +1266,118 @@ Actions = (function() {
 
     }
 
-    chrome.bookmarks.search({
-      title: o.request.msg.folder
-    }, function (marks) {
-      if(marks.length > 1) {
-        alert(`More than one folder by the same name ${o.request.msg.folder}`)
+    function emptyExistingFolder(folder, callback) {
+
+      chrome.bookmarks.search({
+        title: folder
+      }, function (marks) {
+        console.assert(marks.length === 1, 'folder is the only one with that name')
+
+        var omark = marks[0]
+
+        chrome.bookmarks.removeTree(marks[0].id, function () {
+
+
+          chrome.bookmarks.create({
+            parentId: omark.parentId,
+            title: omark.title,
+            index: omark.index
+          }, function () {
+            callback()
+          })
+        })
+
+      })
+    }
+
+
+    function loadEditedBookmarks(folder) {
+      function getBookmarksJSON() {
+        let ret = ''
+        let url = 'http://localhost:7077/rest-finish-folder-edit.php'
+        $.ajax({
+          url: url,
+          async: false
+        }).done(function (data) {
+          ret = JSON.parse(data)
+          console.assert(_.isObject(ret.roots), 'bookmarks loaded properly')
+        });
+        return ret
       }
 
-      chrome.bookmarks.getSubTree(marks[0].id, function (marks) {
-        var ids = _.unique(deepPluck(marks, 'id'))
-        ids = _.without(ids, marks[0].id)
 
-        _.each(ids, function (id) {
-          chrome.bookmarks.removeTree(id)
+      function loadBookmarksIntoFolder(marks, folder) {
+
+        function createMark(mark, folderId, index) {
+          if (mark.type === "folder") {
+            chrome.bookmarks.create({
+              parentId: folderId,
+              title: mark.name,
+              index: index
+            }, function (nmark) {
+              if (mark.children) {
+                _.each(mark.children, (child, index) => {
+                  createMark(child, nmark.id, index)
+                })
+              }
+            })
+          }
+
+          if (mark.type === 'url') {
+            chrome.bookmarks.create({
+              parentId: folderId,
+              title: mark.name,
+              url: mark.url,
+              index: index
+            }, function (nmark) {
+
+            })
+          }
+        }
+
+        {
+
+          chrome.bookmarks.search({
+            title: folder
+          }, function (smarks) {
+            console.assert(smarks.length === 1, 'folder is the only one with that name')
+            let folderId = smarks[0].id
+
+
+            _.each(marks, (mark, index) => {
+              createMark(mark, folderId, index)
+            })
+
+          })
+
+        }
+
+      }
+
+      function getBookmarksByFolderName(allmarks, folder) {
+        var children = deepPluck(allmarks.roots, 'children')
+        var child = _.select(children, child => {
+          return child.type == 'folder' && child.name == folder
         })
-      })
+        console.assert(_.isArray(child) && child[0].children.length > 0, 'found folder and it has data')
+        return child[0].children
+      }
 
-      // TODO(hbt) NEXT add loader using API instead of replacing file + restarting chrome
-    })
-    
+      {
+        let allmarks = getBookmarksJSON()
+        let bmarks = getBookmarksByFolderName(allmarks, folder)
+        loadBookmarksIntoFolder(bmarks, folder)
+      }
+
+
+    }
+
+    {
+
+      emptyExistingFolder(o.request.msg.folder, function () {
+        loadEditedBookmarks(o.request.msg.folder)
+      })
+    }
     
   }
   
