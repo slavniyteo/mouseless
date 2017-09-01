@@ -1236,7 +1236,13 @@ Actions = (function() {
   }
 
   _.dumpBookmarksFolder = function(o) {
-    let url = 'http://localhost:7077/rest-dump-folder.php'
+    let url = 'http://localhost:7077/rest-dump-folder.php?folder_name=' + o.request.msg.folder
+    $.ajax({
+      url: url,
+      async: false
+    }).done(function (data) {
+      // TODO(hbt) NEXT add confirm msg (status bar) everythign went well
+    });
   }
 
   _.loadBookmarksFolder = function(o) {
