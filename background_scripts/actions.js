@@ -1236,6 +1236,7 @@ Actions = (function() {
   }
 
   _.dumpBookmarksFolder = function(o) {
+    // TODO(hbt) NEXT abstract url in settings and flag as experimental -- 2 locations
     let url = 'http://localhost:7077/rest-dump-folder.php?folder_name=' + o.request.msg.folder
     $.ajax({
       url: url,

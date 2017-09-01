@@ -730,7 +730,16 @@ NOTE: Marks (aka local marks) are limited to the current page and are saved by d
 |       create or toggle a bookmark for the current URL                       
 
 | toggleBookmark
-| create/toggle book in a specified folder
+| create/toggle bookmark in a specified folder
+
+| toggleWindowBookmarks
+| same as toggleBookmark but applies to all tabs in window 
+
+| loadBookmarksFolder
+| load bookmarks from external bookmarks-editor program (experimental)
+
+| dumpBookmarksFolder
+| dump bookmarks to external bookmarks-editor program (experimental)
 
 |===
 
