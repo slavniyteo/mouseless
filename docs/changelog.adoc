@@ -12,6 +12,8 @@ link:index.html[Home]
   . Added jumplist feature #553 (`previousScrollPosition` is `<C-o>` and `nextScrollPosition` is `<C-i>`).
   . Fixed toggling bookmarks saving url as title and added `toggleWindowBookmarks` as a fixup for already saved bookmarks.
    load all bookmarks in a window and use the command
+  . Fixed #572 preventing anyone from sending keyboard events to extension via JS
+  
 
 ## 1.4.4
 
