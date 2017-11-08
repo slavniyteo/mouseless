@@ -637,6 +637,10 @@ Actions = (function() {
     });
   };
 
+  _.getPaste = function(o) {
+    o.callback(Clipboard.paste());
+  };
+
   _.createSession = function(o) {
     sessions[o.request.name] = {};
     chrome.tabs.query({

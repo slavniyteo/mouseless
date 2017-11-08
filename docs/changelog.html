@@ -509,6 +509,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Fix [#569](<a href="https://github.com/1995eaton/chromium-vim/issues/569" class="bare">https://github.com/1995eaton/chromium-vim/issues/569</a>) (mappings like <code>map &lt;C-A-M-i&gt; nextTab</code> would work, but <code>map &lt;C-M-A-i&gt; nextTab</code> wouldn&#8217;t)</p>
+</li>
+<li>
+<p>Let <code>@"</code> represent the paste buffer in command bar commands (e.g. <code>tabnew wikipedia "@</code> would search Wikipedia for whatever is in the paste buffer)</p>
+</li>
+<li>
+<p>Make <code>^</code> go to beginning of line when in insert mode</p>
+</li>
+<li>
+<p>Fix vulnerability where sites are able to trigger keyboard events that would be interpreted by cVim ([#572](<a href="https://github.com/1995eaton/chromium-vim/issues/572)" class="bare">https://github.com/1995eaton/chromium-vim/issues/572)</a>)</p>
+</li>
+<li>
 <p>Added jumplist feature #553 (<code>previousScrollPosition</code> is <code>&lt;C-o&gt;</code> and <code>nextScrollPosition</code> is <code>&lt;C-i&gt;</code>).</p>
 </li>
 <li>

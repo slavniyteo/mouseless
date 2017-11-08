@@ -41,7 +41,7 @@ if (HAS_EVENT_KEY_SUPPORT) {
       if (!/^<.*>$/.test(key))
         return key;
       key = key.slice(1, -1).toLowerCase();
-      var mods = key.split('-').filter(function(e) { return e; });
+      var mods = key.split('-').filter(function(e) { return e; }).sort();
       var char;
       if (key.charAt(key.length - 1) === '-')
         char = '-';
@@ -755,6 +755,10 @@ var KeyHandler = {
     }
 
     if (Command.commandBarFocused()) {
+      // If key event ocurred in IME and the key is not regular one,
+      // set key vaule empty to avoid action.
+      if (event.isComposing && /^<.*>$/.test(key))
+        key = '';
       window.setTimeout(function() {
         Command.lastInputValue = Command.input.value;
       }, 0);
