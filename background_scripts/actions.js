@@ -611,7 +611,7 @@ Actions = (function() {
     for (var i = 0; i < o.request.repeats; ++i) {
       for (var j = 0, l = paste.length; j < l; ++j) {
         openTab({
-          url: Utils.toSearchURL(paste[j], o.request.engineUrl),
+          url: Utils.toSearchURL(paste[j].trim(), o.request.engineUrl),
           index: getTabOrderIndex(o.sender.tab)
         });
       }
