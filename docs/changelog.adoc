@@ -7,6 +7,11 @@ link:index.html[Home]
 == Mouseless Changelog
 
 
+## 1.4.6
+
+
+  
+
 ## 1.4.5
 
  . Updated list of `chrome://` completion URLs when `:chrome` is used
