@@ -232,6 +232,13 @@ asciidoctor -v  -B docs/ *.adoc
 
 
 
+=== Why is it crashing on latest google chrome?
+
+View bug https://github.com/hbt/mouseless/issues/134
+
+
+
+
 == FAQ
 
 Check issues labeled link:https://github.com/hbt/mouseless/issues?utf8=%E2%9C%93&q=is%3Aissue%20label%3Aquestion[question]
