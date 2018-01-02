@@ -642,9 +642,6 @@ map x mouselessCommandName
 | cancelAllWebRequests            
 |       stop all tabs from loading                                            
 
-| :chrome://restart&lt;CR&gt;     
-|       restart Google Chrome                                                 
-
 
 | quitChrome                      
 |       close all browser windows                                             
