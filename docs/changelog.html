@@ -509,6 +509,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Updated list of <code>chrome://</code> completion URLs when <code>:chrome</code> is used</p>
+</li>
+<li>
+<p>Fixed issue with <code>openPasteTab</code> [#573](<a href="https://github.com/1995eaton/chromium-vim/issues/573" class="bare">https://github.com/1995eaton/chromium-vim/issues/573</a>)</p>
+</li>
+<li>
+<p>Allow global site matches in cVimrc. For example, the following will unmap <code>j</code> on all sites:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code>site '*://*' {
+  unmap j
+}</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fix issue with certain hints not showing up (like the GitHub profile icon in the top-right corner of the page).</p>
+</li>
+<li>
 <p>Fix [#569](<a href="https://github.com/1995eaton/chromium-vim/issues/569" class="bare">https://github.com/1995eaton/chromium-vim/issues/569</a>) (mappings like <code>map &lt;C-A-M-i&gt; nextTab</code> would work, but <code>map &lt;C-M-A-i&gt; nextTab</code> wouldn&#8217;t)</p>
 </li>
 <li>
