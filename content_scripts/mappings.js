@@ -17,7 +17,6 @@ Mappings.defaults = [
   ['j',         'scrollDown'],
   ['gg',        'scrollToTop'],
   ['a',         ':tabnew google '],
-  ['zr',        ':chrome restart&<CR>'],
   ['o',         ':open '],
   ['O',         ':open @%'],
   ['b',         ':bookmarks '],
@@ -98,6 +97,8 @@ Mappings.defaults = [
   ['zo',        'zoomPageOut'],
   ['z0',        'zoomOrig'],
   ['\'\'',      'lastScrollPosition'],
+  ['<C-o>',     'previousScrollPosition'],
+  ['<C-i>',     'nextScrollPosition'],
   ['\'*',       'goToMark'],
   [';*',        'setMark'],
   ['zt',        'centerMatchT'],
@@ -232,6 +233,23 @@ Mappings.actions = {
   rootFrame: function() {
     RUNTIME('focusFrame', {isRoot: true});
   },
+
+  dumpBookmarksFolder: function(repeats, folderName) {
+    PORT('dumpBookmarksFolder', {
+      msg: {
+        folder: folderName
+      }
+    });
+  },
+
+  loadBookmarksFolder: function(repeats, folderName) {
+    PORT('loadBookmarksFolder', {
+      msg: {
+        folder: folderName
+      }
+    });
+  },
+  
   toggleBookmark: function(repeats, folderName) {
     PORT('toggleBookmark', {
       msg: {
@@ -239,6 +257,15 @@ Mappings.actions = {
       }
     });
   },
+
+  toggleWindowBookmarks: function(repeats, folderName) {
+    PORT('toggleWindowBookmarks', {
+      msg: {
+        folder: folderName
+      }
+    });
+  },
+  
   toggleDomainStylesheets: function(repeats, url) {
     RUNTIME('toggleDomainStylesheets', {url: url, hostname: getHostname(window.location.href)})
   },
@@ -481,6 +508,12 @@ Mappings.actions = {
     var currentPosition = [document.scrollingElement.scrollLeft, document.scrollingElement.scrollTop];
     window.scrollTo.apply(null, Scroll.lastPosition);
     Scroll.lastPosition = currentPosition;
+  },
+  previousScrollPosition: function() {
+    Scroll.previousHistoryState();
+  },
+  nextScrollPosition: function() {
+    Scroll.nextHistoryState();
   },
   goToMark: function() {
     settings.localMarks = settings.localMarks || {}

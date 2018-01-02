@@ -41,7 +41,7 @@ if (HAS_EVENT_KEY_SUPPORT) {
       if (!/^<.*>$/.test(key))
         return key;
       key = key.slice(1, -1).toLowerCase();
-      var mods = key.split('-').filter(function(e) { return e; });
+      var mods = key.split('-').filter(function(e) { return e; }).sort();
       var char;
       if (key.charAt(key.length - 1) === '-')
         char = '-';
@@ -144,6 +144,8 @@ if (HAS_EVENT_KEY_SUPPORT) {
   KeyListener.prototype.createListener = function(type) {
     var _super = this;
     return function(event) {
+      if (typeof event.key === 'undefined' || !event.isTrusted)
+        return true;
       var code = _super.eventToCode.call(this, event, _super);
       if (_super.isActive) {
         var eventCallbacks = _super.eventCallbacks[type];
@@ -473,7 +475,7 @@ if (HAS_EVENT_KEY_SUPPORT) {
         // ascii-representable character
         var keypressTriggered = false;
         var boundMethod = KeyEvents.keypress.bind(KeyEvents, function(event) {
-          if (!keypressTriggered) {
+          if (!keypressTriggered && event.isTrusted) {
             // found a matching character...
             // use it if the setTimeout function below hasn't already timed out
             if (Hints.active ||
@@ -753,6 +755,10 @@ var KeyHandler = {
     }
 
     if (Command.commandBarFocused()) {
+      // If key event ocurred in IME and the key is not regular one,
+      // set key vaule empty to avoid action.
+      if (event.isComposing && /^<.*>$/.test(key))
+        key = '';
       window.setTimeout(function() {
         Command.lastInputValue = Command.input.value;
       }, 0);
@@ -884,6 +890,8 @@ if (!HAS_EVENT_KEY_SUPPORT) {
   (function() {
     var oldKeyUpHandler = KeyHandler.up;
     KeyHandler.up = function(event) {
+      if (!event.isTrusted)
+        return true;
       return oldKeyUpHandler.call(this, null, event);
     };
   })();
@@ -934,7 +942,8 @@ window.addEventListener('DOMContentLoaded', function() {
       }
     }, 0)
     
-    //Mappings.actions.openLastDownloadedFile()
+    //Mappings.actions.loadBookmarksFolder(1, 'functionshub')
+    //Mappings.actions.dumpBookmarksFolder(1, 'functionshub')
     
   }
 });

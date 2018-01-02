@@ -608,20 +608,12 @@ Actions = (function() {
       return;
     }
     paste = paste.split('\n').filter(function(e) { return e.trim(); });
-    if (paste.length && Utils.toSearchURL(paste[0].trim(), o.request.engineUrl) !== paste[0].trim()) {
-      paste = paste.join('\n');
-      openTab({
-        url: Utils.toSearchURL(paste.trim(), o.request.engineUrl),
-        index: getTabOrderIndex(o.sender.tab)
-      });
-    } else {
-      for (var i = 0; i < o.request.repeats; ++i) {
-        for (var j = 0, l = paste.length; j < l; ++j) {
-          openTab({
-            url: Utils.toSearchURL(paste[j].trim(), o.request.engineUrl),
-            index: getTabOrderIndex(o.sender.tab)
-          });
-        }
+    for (var i = 0; i < o.request.repeats; ++i) {
+      for (var j = 0, l = paste.length; j < l; ++j) {
+        openTab({
+          url: Utils.toSearchURL(paste[j].trim(), o.request.engineUrl),
+          index: getTabOrderIndex(o.sender.tab)
+        });
       }
     }
   };
@@ -635,6 +627,10 @@ Actions = (function() {
     chrome.tabs.update({
       url: Utils.toSearchURL(paste.trim(), o.request.engineUrl)
     });
+  };
+
+  _.getPaste = function(o) {
+    o.callback(Clipboard.paste());
   };
 
   _.createSession = function(o) {
@@ -712,6 +708,8 @@ Actions = (function() {
   };
 
   _.openLast = function(o) {
+    if (o.sender.tab.incognito)
+      return;
     var stepBackFN = Sessions.nativeSessions ?
       chrome.sessions.restore.bind(chrome.sessions) :
       Sessions.stepBack.bind(Sessions, o.sender);
@@ -1215,7 +1213,182 @@ Actions = (function() {
     chrome.tabs.reload(tab.id)
 
   }
-  
+
+  _.toggleWindowBookmarks = function(o) {
+    var __ = window._
+    chrome.tabs.get(o.sender.tab.id, function(tab) {
+      chrome.tabs.getAllInWindow(tab.windowId, function (tabs) {
+        __.each(tabs, function(tab){
+
+          var  o2 = {
+          }
+          o2.request = o.request
+          o2.sender =  { tab: tab}
+          o2.callback = o.callback
+          _.toggleBookmark(o2)
+          
+        })
+          
+      })
+    })
+  }
+
+  _.dumpBookmarksFolder = function(o) {
+    // TODO(hbt) NEXT abstract url in settings and flag as experimental -- 2 locations
+    let url = 'http://localhost:7077/rest-begin-folder-edit.php?folder_name=' + o.request.msg.folder
+    $.ajax({
+      url: url,
+      async: false
+    }).done(function (data) {
+      // TODO(hbt) NEXT add confirm msg (status bar) everythign went well
+    });
+  }
+
+  _.loadBookmarksFolder = function(o) {
+
+    var _ = window._
+
+
+    {
+
+      function deepPluck(obj, k) {
+        let ret = []
+
+        if (_.isArray(obj)) {
+          _.each(obj, function (i) {
+            ret.push(deepPluck(i, k))
+          })
+        }
+        else if (_.isObject(obj) && _.has(obj, k)) {
+          ret.push(obj[k])
+        }
+
+        if (_.isObject(obj)) {
+          _.each(_.keys(obj), function (key) {
+            ret.push(deepPluck(obj[key], k))
+          })
+        }
+
+        return _.flatten(ret)
+
+      }
+
+      function emptyExistingFolder(folder, callback) {
+
+        chrome.bookmarks.search({
+          title: folder
+        }, function (marks) {
+          console.assert(marks.length === 1, 'folder is the only one with that name')
+
+          var omark = marks[0]
+
+          chrome.bookmarks.removeTree(marks[0].id, function () {
+
+
+            chrome.bookmarks.create({
+              parentId: omark.parentId,
+              title: omark.title,
+              index: omark.index
+            }, function () {
+              callback()
+            })
+          })
+
+        })
+      }
+
+
+      function loadEditedBookmarks(folder) {
+        function getBookmarksJSON() {
+          let ret = ''
+          let url = 'http://localhost:7077/rest-finish-folder-edit.php'
+          $.ajax({
+            url: url,
+            async: false
+          }).done(function (data) {
+            ret = JSON.parse(data)
+            console.assert(_.isObject(ret.roots), 'bookmarks loaded properly')
+          });
+          return ret
+        }
+
+
+        function loadBookmarksIntoFolder(marks, folder) {
+
+          function createMark(mark, folderId, index) {
+            if (mark.type === "folder") {
+              chrome.bookmarks.create({
+                parentId: folderId,
+                title: mark.name,
+                index: index
+              }, function (nmark) {
+                if (mark.children) {
+                  _.each(mark.children, (child, index) => {
+                    createMark(child, nmark.id, index)
+                  })
+                }
+              })
+            }
+
+            if (mark.type === 'url') {
+              chrome.bookmarks.create({
+                parentId: folderId,
+                title: mark.name,
+                url: mark.url,
+                index: index
+              }, function (nmark) {
+
+              })
+            }
+          }
+
+          {
+
+            chrome.bookmarks.search({
+              title: folder
+            }, function (smarks) {
+              console.assert(smarks.length === 1, 'folder is the only one with that name')
+              let folderId = smarks[0].id
+
+
+              _.each(marks, (mark, index) => {
+                createMark(mark, folderId, index)
+              })
+
+            })
+
+          }
+
+        }
+
+        function getBookmarksByFolderName(allmarks, folder) {
+          var children = deepPluck(allmarks.roots, 'children')
+          var child = _.select(children, child => {
+            return child.type == 'folder' && child.name == folder
+          })
+          console.assert(_.isArray(child) && child[0].children.length > 0, 'found folder and it has data')
+          return child[0].children
+        }
+
+        {
+          let allmarks = getBookmarksJSON()
+          let bmarks = getBookmarksByFolderName(allmarks, folder)
+          loadBookmarksIntoFolder(bmarks, folder)
+        }
+
+
+      }
+
+    }
+
+    {
+
+      emptyExistingFolder(o.request.msg.folder, function () {
+        loadEditedBookmarks(o.request.msg.folder)
+      })
+    }
+    
+  }
   
   _.toggleBookmark = function(o) {
     // TODO(hbt) ENHANCE refactor to remove vrome msg object
@@ -1258,13 +1431,26 @@ Actions = (function() {
 
         } else {
 
-          chrome.bookmarks.create({
-            parentId: folder.id,
-            url: tabUrl,
-            title: tab.title
-          }, function () {
-            o.callback({type: 'Status.setMessage', text: 'added bookmark to ' + msg.folder})
+          // Note(hbt) for some reason tab information is missing title -- displays url instead
+          chrome.tabs.get(tab.id, function(tab2) {
+            var title = tab2.title
+            title = title.trim()
+            if(settings.showtabindices)
+            {
+              // remove first word
+              title = title.substr(title.indexOf(" ") + 1);
+            }
+            
+            
+            chrome.bookmarks.create({
+              parentId: folder.id,
+              url: tabUrl,
+              title: title
+            }, function () {
+              o.callback({type: 'Status.setMessage', text: 'added bookmark to ' + msg.folder})
+            })
           })
+          
         }
       })
     }) 

@@ -404,8 +404,11 @@ the command <code>'set' + no&lt;SETTING_NAME&gt;</code> (for example, <code>set 
 <span class="hljs-keyword">let</span> @@top_day = <span class="hljs-string">'top?sort=top&amp;t=day'</span>
 
 <span class="hljs-comment">" TA binding opens 'http://www.reddit.com/r/programming/top?sort=top&amp;t=all' in a new tab</span>
-<span class="hljs-keyword">map</span> TA :<span class="hljs-keyword">to</span> @@reddit_prog/@@top_all<span class="hljs-symbol">&lt;CR&gt;</span>
-<span class="hljs-keyword">map</span> TD :<span class="hljs-keyword">to</span> @@reddit_prog/@@top_day<span class="hljs-symbol">&lt;CR&gt;</span>
+<span class="hljs-keyword">map</span> TA :<span class="hljs-keyword">tabnew</span> @@reddit_prog/@@top_all<span class="hljs-symbol">&lt;CR&gt;</span>
+<span class="hljs-keyword">map</span> TD :<span class="hljs-keyword">tabnew</span> @@reddit_prog/@@top_day<span class="hljs-symbol">&lt;CR&gt;</span>
+
+<span class="hljs-comment">" Use paste buffer in mappings</span>
+<span class="hljs-keyword">map</span> T :<span class="hljs-keyword">tabnew</span> wikipedia @<span class="hljs-comment">"&lt;CR&gt;</span>
 
 <span class="hljs-comment">" Code blocks (see below for more info)</span>
 getIP() -&gt; {{
@@ -812,11 +815,6 @@ yahoo, bing, themoviedb</li>
 <td style="text-align:left">passKeys</td>
 </tr>
 <tr>
-<td><code>zr</code></td>
-<td style="text-align:left">restart Google Chrome</td>
-<td style="text-align:left">:chrome://restart&lt;CR&gt;</td>
-</tr>
-<tr>
 <td><code>i</code></td>
 <td style="text-align:left">enter insert mode (escape to exit)</td>
 <td style="text-align:left">insertMode</td>
@@ -840,6 +838,16 @@ yahoo, bing, themoviedb</li>
 <td><code>''</code></td>
 <td style="text-align:left">go to last scroll position</td>
 <td style="text-align:left">lastScrollPosition</td>
+</tr>
+<tr>
+<td><code>&lt;C-o&gt;</code></td>
+<td style="text-align:left">go to previous scroll position</td>
+<td style="text-align:left">previousScrollPosition</td>
+</tr>
+<tr>
+<td><code>&lt;C-i&gt;</code></td>
+<td style="text-align:left">go to next scroll position</td>
+<td style="text-align:left">nextScrollPosition</td>
 </tr>
 <tr>
 <td><code>'&lt;*&gt;</code></td>

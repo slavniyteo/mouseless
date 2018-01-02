@@ -497,6 +497,12 @@ Command.execute = function(value, repeats) {
     });
     return;
   }
+  if (value.indexOf('@"') !== -1) {
+    RUNTIME('getPaste', function(paste) {
+      Command.execute(value.split('@"').join(paste), repeats);
+    });
+    return;
+  }
 
   commandMode = false;
 
@@ -1065,7 +1071,9 @@ Command.preventAutoFocus = function() {
     KeyHandler.listener.addListener('keydown', reset);
     window.addEventListener('mousedown', reset, true);
   } else {
-    reset = function() {
+    reset = function(event) {
+      if (!event.isTrusted)
+        return true;
       manualFocus = true;
       window.removeEventListener('keypress', reset, true);
       window.removeEventListener('mousedown', reset, true);
@@ -1108,6 +1116,7 @@ Command.onDOMLoadAll = function() {
   this.setup();
   this.domElementsLoaded = true;
   this.callOnCvimLoad();
+  Scroll.addHistoryState();
 };
 
 Command.updateSettings = function(config) {

@@ -658,7 +658,15 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lastScrollPosition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">go to last scroll position</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">go to last scroll position (toggle)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">previousScrollPosition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">goes to last saved scroll position</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nextScrollPosition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">goes to next saved scroll position</p></td>
 </tr>
 </tbody>
 </table>
@@ -1348,10 +1356,6 @@ map <span class="tok-k">x</span> mouselessCommandName</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">stop all tabs from loading</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:chrome://restart&lt;CR&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">restart Google Chrome</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">quitChrome</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">close all browser windows</p></td>
 </tr>
@@ -1492,7 +1496,19 @@ Marks (aka local marks) are limited to the current page and are saved by domain.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">toggleBookmark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">create/toggle book in a specified folder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create/toggle bookmark in a specified folder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toggleWindowBookmarks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">same as toggleBookmark but applies to all tabs in window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">loadBookmarksFolder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load bookmarks from external bookmarks-editor program (experimental)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dumpBookmarksFolder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dump bookmarks to external bookmarks-editor program (experimental)</p></td>
 </tr>
 </tbody>
 </table>
