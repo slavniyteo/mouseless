@@ -11,6 +11,10 @@ link:index.html[Home]
 
  . Fixed `openLastDownload` in #127 #138
  . Fixed `UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 487: ordinal not in range(128)`  in #139
+ . fixed #135 css colors
+ . fixed #137 cleared up documentation
+ . added #132 tabs detach + goto (outliner based). Only works if chrome keeps the `openerTabId`.
+
 
   
 

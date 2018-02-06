@@ -185,11 +185,10 @@ map x mouselessCommandName
 |       reload the current tab + local cache                                  
 
 | reloadAllTabs                   
-|       reload all tabs                                                       
-
+|       reload all tabs in all windows                                                       
 
 | reloadAllButCurrent             
-|       reload all tabs but current                                           
+|       reload all tabs in current window                                                       
 
 
 | nextTab                         
@@ -238,6 +237,12 @@ map x mouselessCommandName
 
 | myCloseTabsLeft
 | close tabs on the left of the current tab
+
+| tabDetachWithChildren
+| detach tab and its children recursively (tabs created from that tab)
+
+| tabGoToParent
+| go to parent tab (tab that created this child)
 
 | markMergeTab
 | mark tab for merging

@@ -23,7 +23,18 @@ class ExtensionReloader {
 
 var er = new ExtensionReloader();
 
+
 //er.start();
+
+
+//chrome.tabs.query({active: true}, tabs => {
+//  tabs.forEach(tab => {
+//    if(!tab.url.startsWith('chrome')) {
+//      chrome.tabs.reload(tab.id);
+//    }
+//  });
+//});
+
 //chrome.tabs.query({}, tabs => {
 //  tabs.forEach(tab => {
 //    if(!tab.url.startsWith('chrome')) {
