@@ -10,6 +10,7 @@ link:index.html[Home]
 ## 1.4.6
 
  . Fixed `openLastDownload` in #127 #138
+ . Fixed `UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 487: ordinal not in range(128)`  in #139
 
   
 
