@@ -21,6 +21,11 @@ from  BaseHTTPServer import HTTPServer
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 from time import sleep
 
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+print sys.getdefaultencoding()
+
 PORT = 8001
 VIM_COMMAND = 'gvim -f'
 
