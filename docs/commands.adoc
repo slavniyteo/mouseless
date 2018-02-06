@@ -185,11 +185,10 @@ map x mouselessCommandName
 |       reload the current tab + local cache                                  
 
 | reloadAllTabs                   
-|       reload all tabs                                                       
-
+|       reload all tabs in all windows                                                       
 
 | reloadAllButCurrent             
-|       reload all tabs but current                                           
+|       reload all tabs in current window                                                       
 
 
 | nextTab                         
