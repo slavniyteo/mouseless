@@ -9,6 +9,7 @@ link:index.html[Home]
 
 ## 1.4.6
 
+ . Fixed `openLastDownload` in #127 #138
 
   
 

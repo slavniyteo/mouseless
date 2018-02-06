@@ -1143,7 +1143,9 @@ Actions = (function() {
       exists: true,
       state: 'complete'
     }, function(dlds) {
-      var last = dlds.pop();
+      // sort dlds by end time
+      let sortedDlds = window._.sortBy(dlds, (v) => { return v.endTime })
+      let last = sortedDlds.pop();
       chrome.downloads.open(last.id);
     });
   };
