@@ -57,6 +57,7 @@
   "permissions": [
     "<all_urls>",
     "tabs",
+    "management",
     "history",
     "bookmarks",
     "storage",
@@ -93,6 +94,7 @@
       "background_scripts/update.js",
       "background_scripts/tab_creation_order.js",
       "background_scripts/extension-reloader.js",
+      "background_scripts/extension-enabler.js",
       "background_scripts/frames.js"
     ]
   },
