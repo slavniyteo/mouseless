@@ -96,10 +96,58 @@ Actions = (function() {
         url: o.url,
         active: o.request.active,
         pinned: o.request.pinned,
-        index: getTabOrderIndex(o.sender.tab)
+        index: getTabOrderIndex(o.sender.tab),
+        openerTabId: o.sender.tab.id
       }, o.request.repeats);
     }
   };
+  
+  _.tabDetachWithChildren = function(o) {
+
+    function getChildrenRecursively(tabs, tabId) {
+      let _ = window._
+      let childrenTabs = _.filter(tabs, (tab) => {
+        return tab.openerTabId == tabId
+      })
+
+
+      var grandChildren = []
+      _.each(childrenTabs, function (childrenTab) {
+        grandChildren.push(getChildrenRecursively(tabs, childrenTab.id))
+      })
+
+
+      let ret = _.flatten([childrenTabs, grandChildren])
+      return ret
+    }
+
+
+    chrome.tabs.query({currentWindow: true}, function (tabs) {
+      var childrenTabs = getChildrenRecursively(tabs, o.sender.tab.id)
+      let _ = window._
+      var sortedTabs = _.sortBy(childrenTabs, 'index')
+      var sortedTabIds = _.pluck(sortedTabs, 'id')
+
+      chrome.windows.create({
+        tabId: o.sender.tab.id,
+        incognito: o.sender.tab.incognito,
+        state: 'maximized'
+      }, function (window) {
+        chrome.tabs.move(sortedTabIds, {windowId: window.id, index: -1})
+      })
+
+    })
+
+  }
+
+  _.tabGoToParent = function(o) {
+    // TODO(hbt) ENHANCE add repeat
+    var ctab = o.sender.tab
+    if(ctab && ctab.openerTabId) {
+      _.goToTab({request: {id: ctab.openerTabId}})
+    }
+  }
+
 
   _.addFrame = function(o) {
     Frames.add(o.sender.tab.id, o.port, o.request.isCommandFrame);

@@ -676,6 +676,12 @@ Mappings.actions = {
       Find.search(Find.mode || '?', -(Find.mode !== '?'));
     }
   },
+  tabDetachWithChildren: function(r) {
+    RUNTIME('tabDetachWithChildren');
+  },
+  tabGoToParent: function(r) {
+    RUNTIME('tabGoToParent', {repeats: r});
+  },
   nextTab: function(r) {
     RUNTIME('nextTab', {repeats: r});
   },

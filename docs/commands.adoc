@@ -238,6 +238,12 @@ map x mouselessCommandName
 | myCloseTabsLeft
 | close tabs on the left of the current tab
 
+| tabDetachWithChildren
+| detach tab and its children recursively (tabs created from that tab)
+
+| tabGoToParent
+| go to parent tab (tab that created this child)
+
 | markMergeTab
 | mark tab for merging
 
