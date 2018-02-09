@@ -100,7 +100,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>", "chrome://*/*"],
+      "matches": ["<all_urls>"],
       "js": [
         "vendor/jquery.js",
         "vendor/underscore-min.js",
