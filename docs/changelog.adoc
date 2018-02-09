@@ -14,6 +14,7 @@ link:index.html[Home]
  . fixed #135 css colors
  . fixed #137 cleared up documentation
  . added #132 tabs detach + goto (outliner based). Only works if chrome keeps the `openerTabId`.
+ . fixed #134 disabled chrome url support
 
 
   
