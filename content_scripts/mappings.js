@@ -641,10 +641,10 @@ Mappings.actions = {
     RUNTIME('reloadTab', {nocache: true});
   },
   reloadAllButCurrent: function() {
-    RUNTIME('reloadAllTabs', {nocache: false, current: false});
+    RUNTIME('reloadAllTabs', {nocache: false, current: true});
   },
   reloadAllTabs: function() {
-    RUNTIME('reloadAllTabs', {nocache: false, current: true});
+    RUNTIME('reloadAllTabs', {nocache: false, current: false});
   },
   nextSearchResult: function(repeats) {
     if (Find.matches.length) {

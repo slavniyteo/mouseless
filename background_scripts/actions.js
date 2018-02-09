@@ -574,8 +574,12 @@ Actions = (function() {
   _.reloadAllTabs = function(o) {
     chrome.tabs.query({}, function(tabs) {
       tabs.forEach(function(tab) {
-        if (!/^chrome:\/\//.test(tab.url) && !(!o.request.current && tab.id === o.sender.tab.id && tab.windowId === o.sender.tab.windowId)) {
-          chrome.tabs.reload(tab.id);
+        if (!/^chrome:\/\//.test(tab.url)) {
+          if(o.request.current && tab.windowId === o.sender.tab.windowId)
+          {
+          } else {
+            chrome.tabs.reload(tab.id);
+          }
         }
       });
     });
