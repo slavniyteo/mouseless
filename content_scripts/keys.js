@@ -683,7 +683,7 @@ var KeyHandler = {
     if (Command.commandBarFocused())
       event.stopImmediatePropagation();
 
-    var escapeKey = key === '<Esc>' || key === '<C-[>';
+    var escapeKey = key === '<C-[>';
 
     if (Visual.caretModeActive || Visual.visualModeActive) {
       event.stopImmediatePropagation();

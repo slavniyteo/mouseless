@@ -1305,7 +1305,7 @@ Mappings.clearQueue = function() {
 };
 
 Mappings.shouldPrevent = function(key) {
-  if (key === '<Esc>' || key === '<C-[>' || Hints.active) {
+  if (key === '<C-[>' || Hints.active) {
     return true;
   }
   if (/^[0-9]$/.test(key) &&
@@ -1325,7 +1325,7 @@ Mappings.shouldPrevent = function(key) {
 
 Mappings.convertToAction = function(key) {
 
-  if (key === '<Esc>' || key === '<C-[>') {
+  if (key === '<C-[>') {
     this.handleEscapeKey();
     return false;
   }

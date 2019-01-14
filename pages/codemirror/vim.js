@@ -3891,7 +3891,6 @@
     CodeMirror.keyMap['vim-insert'] = {
       // TODO: override navigation keys so that Esc will cancel automatic
       // indentation from o, O, i_<CR>
-      'Esc': exitInsertMode,
       'Ctrl-[': exitInsertMode,
       'Ctrl-C': exitInsertMode,
       'Ctrl-N': 'autocomplete',
