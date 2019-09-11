@@ -463,7 +463,12 @@ Hints.siteFilters = {
   '*://habr.com/*': {
     accept: [
       '.icon_comment-branch',
-      '.spoiler_title'
+      '.spoiler_title',
+    ],
+  },
+  '*://forvo.com/*': {
+    accept: [
+      '.download > .ofLink',
     ],
   },
 };
@@ -620,8 +625,17 @@ Hints.getLinkInfo = Utils.cacheFunction(function(node) {
     info.rect = DOM.getVisibleBoundingRect(node);
   }
 
-  if (!info.rect)
-    return null;
+  if (!info.rect) {
+    if (Hints.hintFilter.shouldAccept(node)) {
+      var rects = node.getClientRects();
+      if (rects.length > 0) {
+        info.rect = rects[0]
+      }
+    }
+  }
+
+  if (!info.rect) 
+    return null
 
   // TODO
   // if (!Hints.isClickable(info))
