@@ -462,7 +462,8 @@ Hints.siteFilters = {
   },
   '*://habr.com/*': {
     accept: [
-      '.icon_comment-branch'
+      '.icon_comment-branch',
+      '.spoiler_title'
     ],
   },
 };
