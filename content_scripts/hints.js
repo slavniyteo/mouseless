@@ -460,6 +460,11 @@ Hints.siteFilters = {
       '.carousel-button'
     ],
   },
+  '*://habr.com/*': {
+    accept: [
+      '.icon_comment-branch'
+    ],
+  },
 };
 
 Hints.createHintFilter = function(url) {
