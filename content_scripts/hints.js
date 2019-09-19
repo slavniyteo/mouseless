@@ -447,6 +447,7 @@ Hints.siteFilters = {
     ],
     accept: [
       '.js-menu-close',
+      'a.anchor',
     ],
   },
   '*://twitter.com/*': {
@@ -464,6 +465,7 @@ Hints.siteFilters = {
     accept: [
       '.icon_comment-branch',
       '.spoiler_title',
+      'label.checkbox',
     ],
   },
   '*://forvo.com/*': {
