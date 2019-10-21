@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
 
 '''
 USAGE: ./cvim_server.py
@@ -15,7 +15,7 @@ import shlex
 from json import loads
 import subprocess
 from tempfile import mkstemp
-from http.server import HTTPServer, BaseHTTPRequestHandler
+# from http.server import HTTPServer, BaseHTTPRequestHandler
 from SocketServer import ThreadingMixIn
 from  BaseHTTPServer import HTTPServer
 from SimpleHTTPServer import SimpleHTTPRequestHandler
@@ -64,7 +64,7 @@ class CvimServer(SimpleHTTPRequestHandler):
         self.wfile.write(edit.encode('utf8'))
 
 
-def init_server(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
+def init_server(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
     ThreadingServer(('127.0.0.1', PORT), CvimServer).serve_forever()
 
 try:
