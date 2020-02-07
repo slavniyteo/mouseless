@@ -418,60 +418,50 @@ Hints.evaluateLink = function(item) {
   }
 };
 
-Hints.siteFilters = {
-  '*://*.reddit.com/*': {
-    reject: [
-      'a:not([href])',
-      '*[onclick^=click_thing]',
-    ],
-    accept: [
-      '.grippy'
-    ],
-  },
-  '*://*.google.*/*': {
-    reject: [
-      'li[class$="_dropdownitem"]',
-      'div[class$="_dropdown"]',
-      'div[aria-label="Apps"]',
-      '.hdtbna.notl',
-      '.irc_rit',
-      'a[href^="imgres"]',
-      'div[id=hdtbMenus]',
-      'div[aria-label="Account Information"]',
-      'img[jsaction^="load:"]'
-    ],
-  },
-  '*://github.com/*': {
-    reject: [
-      '.select-menu-modal-holder.js-menu-content'
-    ],
-    accept: [
-      '.js-menu-close',
-    ],
-  },
-  '*://twitter.com/*': {
-    accept: [
-      '.new-tweets-bar.js-new-tweets-bar'
-    ],
-  },
-  '*://imgur.com/*': {
-    accept: [
-      '.thumb-title',
-      '.carousel-button'
-    ],
-  },
-  '*://habr.com/*': {
-    accept: [
-      '.icon_comment-branch',
-      '.spoiler_title',
-    ],
-  },
-  '*://forvo.com/*': {
-    accept: [
-      '.download > .ofLink',
-    ],
-  },
-};
+  Hints.siteFilters = {
+    '*://*.reddit.com/*': {
+      reject: [
+        'a:not([href])',
+        '*[onclick^=click_thing]',
+      ],
+      accept: [
+        '.grippy'
+      ],
+    },
+    '*://*.google.*/*': {
+      reject: [
+        'li[class$="_dropdownitem"]',
+        'div[class$="_dropdown"]',
+        'div[aria-label="Apps"]',
+        '.hdtbna.notl',
+        '.irc_rit',
+        'a[href^="imgres"]',
+        'div[id=hdtbMenus]',
+        'div[aria-label="Account Information"]',
+        'img[jsaction^="load:"]'
+      ],
+    },
+    '*://github.com/*': {
+      reject: [
+        '.select-menu-modal-holder.js-menu-content'
+      ],
+      accept: [
+        '.js-menu-close',
+        'a.anchor',
+      ],
+    },
+    '*://twitter.com/*': {
+      accept: [
+        '.new-tweets-bar.js-new-tweets-bar'
+      ],
+    },
+    '*://imgur.com/*': {
+      accept: [
+        '.thumb-title',
+        '.carousel-button'
+      ],
+    },
+  };
 
 Hints.createHintFilter = function(url) {
   var siteFilters = Hints.siteFilters;
